@@ -1,17 +1,25 @@
 \documentclass[twoside]{report}
 \usepackage{brandon}
+\course{MATH 308}
+\sect{513}
+\class{Differential Equations}
+\textbook{Elementary Differential Equations, 11\textsuperscript{th} Edition}
+\name{Brandon Nguyen}
 \begin{document}
     \maketitle
-    \chapter{First Order Differential Equations}
-    \sss{14 January 2020}
-    \begin{definition}
-        The basic form of a \textbf{first order differential equation} is
-        \[
+    \tableofcontents
+    \np
+
+    \chapter{14 January 2020}
+    \section{First Order Differential Equations}
+    \begin{definition}[First Order Differential Equation]
+        The generic form of a \textbf{first order differential equation} is \begin{equation}
             y' = f(x, y)
-        \]
+        \end{equation}
+        Sometimes, $t$ is substituted for $x$, especially if the function relates to time.
     \end{definition}
-    \begin{definition}
-        A solution is considered to be \textbf{general} if there is an arbitrary constant, $C$ in the final answer, i.e. a problem without an initial value.
+    \begin{definition}[General Solution]
+        A solution to a differential equation is considered to be \textbf{general} if there is an arbitrary constant present in the final answer, i.e. a problem without initial values.
     \end{definition}
     \begin{example}
         \begin{alignat}{1}
@@ -22,7 +30,7 @@
         \end{alignat}
     \end{example}
     \np
-    \begin{definition}
+    \begin{definition}[Open Differential Equations]
         Equations without solutions are considered to be \textbf{open}. Many differential equations are without solutions.
     \end{definition}
     \begin{example}[Open Differential Equation]
@@ -48,10 +56,10 @@
         \end{equation}
     \end{example}
     \begin{remark}[Regarding Example 1.3]
-        If both sides of a differential equation are dependent on the same varible --- i.e. the same variable appearing on both sides of the equation, then taking the intergal of both sides is not a valid method to solve the equation.
+        If both sides of a differential equation are dependent on the same variable --- i.e. the same variable appearing on both sides of the equation, then taking the intergal of both sides is not a valid method to solve the equation.
     \end{remark}
-    \begin{definition}
-        An \textbf{initial value problem}, or \textbf{initial condition problem}, is a problem where an initial condition of the equation is defined which leads to a \textbf{unique solution} to the equation.
+    \begin{definition}[Initial Value Problems]
+        An \textbf{initial value problem} (IVP), or \textbf{initial condition problem}, is a problem where an initial condition of the equation is defined which leads to a \textbf{unique solution} to the equation.
     \end{definition}
     \np
     \begin{example}[Initial Value Problem]
@@ -68,8 +76,9 @@
             &\implies&y&=\frac{1}{2}x^{2} + 1
         \end{alignat}
     \end{example}
-    \begin{definition}
-        A function $f: \mathbb{R} \to \mathbb{R}$ is \textbf{differentiable} at point $a$ if $\exists\ T_1(a)$ where $T_1$ is the Taylor polynomial of the first degree. (Or, there exists a tangent line at $a$).
+    \section{Differentiable Functions}
+    \begin{definition}[Differentiability]
+        Given $f: \mathbb{R} \to \mathbb{R}$ and point $a$, $\exists f'(a) \iff \exists T_{1}(a)$, where $T_1$ is a tangent line (Taylor polynomial of degree one).
         \begin{center}
             \begin{tikzpicture}
                 \draw[<->] (-1,0) -- (5,0) node[right] {$x$};
@@ -84,7 +93,8 @@
         In the example, point A has a singular tangent line and is therefore differentiable. Point B has infinitely many tangent lines, and is therefore both undefined and not differentiable.
     \end{definition}
     \np
-    \begin{example}[Kinematics and Differential Equations]
+    \section{Kinematics}
+    \begin{example}[Kinematics with Differential Equations]
         Given an object with a velocity $v_0$, and acceleration $a$, find the position $s$ at any time $t$.
         \begin{alignat}{3}
             &&\frac{d}{dt}v(t) &= a\\
@@ -99,15 +109,15 @@
             &&&= \frac{1}{2}a t^{2} + v_{0}t
         \end{alignat}
     \end{example}
-    \chapter{Linear Differential Equations}
-    \sss{16 January 2020}
-    \begin{definition}
+    \chapter{16 January 2020}
+    \section{Linear Differential Equations}
+    \begin{definition}[First Order Linear Differential Equations]
         \begin{equation}
             \underbrace{y' + p(t)y = g(t)}_\text{\tiny Usual form}\iff y' = g(t) - p(t)y
         \end{equation}
-        A \textbf{linear differential equation} (LDE) is a first order differential equation due to $y$ being dependent on only one variable, $t$.
+        A \textbf{first order linear differential equation} (LDE) is linear due to $y$ being dependent on only one variable, $t$.
     \end{definition}
-    \textbf{Note:} $t$ is typically used in place of $x$ as most differential equations are used in models dependent on time; as such, most differential equations are in the form $y' = f(t, y)$ as opposed to $y' = f(x, y)$.
+    Notice that $t$ is typically used in place of $x$ as most differential equations are used in models dependent on time; as such, most differential equations are in the form $y' = f(t, y)$ as opposed to $y' = f(x, y)$.
     \begin{example}
         \begin{alignat}{3}
             &\text{Solve } &(4 + t^{2})y' + 2ty &= 4t\\
@@ -128,13 +138,14 @@
     \begin{remark}[Constants]
         Notice in the above example that the constant, $C$, is being multiplied by $\frac{1}{4 + t^{2}}$. When expanding the answer, it now becomes $y = \frac{2t^{2}}{4+t^{2}} + \frac{C}{4+t^{2}}$. Notice how the constant is dependent on the variable $t$, and is therefore not the same as just $C$.
     \end{remark}
-    \begin{definition}
+    \begin{definition}[Integrating Factors with LDEs]
         An \textbf{integrating factor}, $\mu(t)$ is a function $\mu(t): \RR \to \RR$, that satisfies $\frac{d}{dt}\mu(t) = \mu(t)y'+\mu(t)p(t)y$.
     \end{definition}
     \begin{remark}
         There are infinitely many integrating factors due to the arbitrary constant $C$ from indefinite integration, see \textbf{Method 2.1} and \textbf{Example 2.2} on the following page.
-    \end{remark}\np
-    \begin{method}[Solution of the General Case]
+    \end{remark}
+    \np
+    \begin{method}[Solution of the General LDE Case]
         Solve $y' + p(t)y = g(t)$.
         \begin{enumerate}
             \item Multiply the LDE by $\mu(t)$ results in:
@@ -145,15 +156,15 @@
                 \begin{align}
                     z(t) &= \int \mu(t)g(t)\,dt\\
                     \implies y(t) &= \frac{1}{\mu(t)}\int \mu(t)g(t)\,dt\\
-                    \implies \mu(t) &= \pow\BBp{\int p(t)\,dt}
+                    \implies \mu(t) &= \exp\BBp{\int p(t)\,dt}
                 \end{align}
             \item Therefore the solution of the general case is
                 \begin{equation}
-                    y(t) = \BBp{\pow\Bp{\int p(t)\,dt}}^{-1}\cdot \int \pow\Bp{\int p(t)\,dt}g(t)\,dt
+                    y(t) = \BBp{\exp\Bp{\int p(t)\,dt}}^{-1}\cdot \int \exp\Bp{\int p(t)\,dt}g(t)\,dt
                 \end{equation}
         \end{enumerate}
     \end{method}
-    \begin{example}[Solving an Initial Value Problem]
+    \begin{example}[Solving an IVP involving LDEs]
         Working with example 2.1.4 from the textbook:
         \begin{equation}
             ty' +4 2y = 4 t^{2},\ y(1) = 2
@@ -161,9 +172,9 @@
         \begin{enumerate}
             \item Compute the integrating factor ($\mu(t)$)
                 \begin{align}
-                    \mu(t) &= \pow\bbbp{\int p(t)\,dt}\\
-                    &= \pow\bbbp{\int 2 t^{-1}\,dt}\\
-                    &= \pow\bp{2\ln(t) + C} \Leftrightarrow e^{2\ln(t) + C}
+                    \mu(t) &= \exp\bbbp{\int p(t)\,dt}\\
+                    &= \exp\bbbp{\int 2 t^{-1}\,dt}\\
+                    &= \exp\bp{2\ln(t) + C} \Leftrightarrow e^{2\ln(t) + C}
                 \end{align}
             \item Find the general case\\
                 When solving, $0$ can be subsituted in for $C$ to simplify calculations; for $C \neq 0$ it is trivially shown that the constant will cancel out in computing the solution.
@@ -182,17 +193,16 @@
                 \end{alignat}
         \end{enumerate}
     \end{example}
-    \chapter{Separable Differential Equations}
-    \sss{21 January 2020}
-    More LDE examples
+    \chapter{21 January 2020}
+    \section{Linear Differential Equations (cont).}
     \begin{example}
         Given $y'-2y=t^{2}e^{2t}$ find:
         \begin{enumerate}
             \item The general solution
             \begin{align}
                 p(t) = -2,&\ g(t) = t^{2}e^{2t}\\
-                \mu(t) %&= \pow\bbbp{\int p(t)\,dt}\\
-                &= \pow\bbbp{\int -2\,dt}\\
+                \mu(t) %&= \exp\bbbp{\int p(t)\,dt}\\
+                &= \exp\bbbp{\int -2\,dt}\\
                 &= e^{-2t+C}\\
                 y_c(t) &= e^{2t}\int t^{2}\,dt\\
                 &= e^{2t}\BBp{\frac{1}{3}t^{3} + C}
@@ -203,8 +213,9 @@
         \end{enumerate}
     \end{example}
     \np
-    \begin{definition}
-        A \textbf{separable differential equation} can be defined by
+    \section{Separable Differential Equations}
+    \begin{definition}[Separable Differential Equations]
+        A \textbf{separable differential equation} (SDE) can be defined by
         \begin{equation}
             \frac{dy}{dx}=y'=f(x, y)=-\frac{M(x, y)}{N(x, y)}
         \end{equation}
@@ -219,15 +230,17 @@
         \end{equation}
     \end{definition}
     \begin{btheorem}
-        If $\frac{dy}{dx} = \frac{M(x)}{N(y)}$, then $\int N(y)\,dy=\int M(x)\,dx$\\
-        \textbf{Proof:} Choose $\widetilde{N}$ such that $\frac{d\widetilde{N}(y)}{dx} = M(x)$:
-        \begin{align}
-            \frac{d\widetilde{N}(y)}{dy} = \frac{d\widetilde{N}(y)}{dx}\frac{dx}{dy} &= \frac{d\widetilde{N}(y)}{dy}\frac{dy}{dx}= \frac{d\widetilde{N}(x)}{dx}\\
-            \frac{d\widetilde{N}(y)}{dy} &= \frac{dy}{dx}
-            \\
-            \implies \frac{d\widetilde{N}(y)}{dx} &= M(x)
-        \end{align}
+        If $\frac{dy}{dx} = \frac{M(x)}{N(y)}$, then $\int N(y)\,dy=\int M(x)\,dx$
     \end{btheorem}
+    \begin{bproof}
+        Choose $\widetilde{N}$ such that $\frac{d\widetilde{N}(y)}{dx} = M(x)$:
+    \begin{align}
+        \frac{d\widetilde{N}(y)}{dy} = \frac{d\widetilde{N}(y)}{dx}\frac{dx}{dy} &= \frac{d\widetilde{N}(y)}{dy}\frac{dy}{dx}= \frac{d\widetilde{N}(x)}{dx}\\
+        \frac{d\widetilde{N}(y)}{dy} &= \frac{dy}{dx}
+        \\
+        \implies \frac{d\widetilde{N}(y)}{dx} &= M(x)
+    \end{align}
+    \end{bproof}
     \np
     \begin{example}
         Find a particular solution that passes through the point $(0, 1)$.
@@ -251,9 +264,8 @@
             y(x) &= \pm \sqrt{\frac{2}{3}x^{3} + C}
         \end{align}
     \end{homework}
-    \chapter{Applications of Mathematical Modelling}
-    \sss{23 January 2020}
-    More separable equation examples
+    \chapter{23 January 2020}
+    \section{Separable Equations (cont.)}
     \begin{example}
         From the textbook, 2.2, ex. 2.
         \begin{alignat}{2}
@@ -298,6 +310,7 @@
         At point $x = -2$, the unique solution is defined, however, it is not differentiable as $\lim_{x \to -2^{-}}$ does not exist, because the function is not defined for $x < -2$.
     \end{remark}
     \np
+    \section{Mathematical Modelling}
     \begin{example}[Modelling]
         Consider a pond fille with 10 million gallons of fresh water. A flow of 5 million gallons per year with water that is contaminated wiht a chemical enters the pond. There is also an outflow of this mixture on the order of 5 million gallons per year.\bigskip
 
@@ -337,8 +350,569 @@
     \begin{remark}[Behavior of Example 4.2]
         When graphing this equation, it can be seen that in the long term the equation becomes periodic despite beginning with an irregular pattern. This is due to the fact that the term $- \frac{3\cdot10^{8}}{17}e^{-\frac{1}{2}t}$ is able to affect the behavior in the short term, however, it is decaying exponentially and tends towards $0$. The $\sin$ and $\cos$ functions are periodic which cause the sinusoidial shape of the graph as $t \to \infty$.
     \end{remark}
-    \chapter{TBD}
-    \sss{28 January 2020}
-    \chapter{TBD}
-    \sss{30 January 2020}
+    \chapter{28 January 2020}
+    \section{Mathematical Modelling (cont.)}
+    \begin{example}
+        Example 2.3.1 from the textbook.
+        \begin{enumerate}
+            \item Find the amount of salt in the tank at a time $t$ (find $Q(t)$).
+            Inference: $Q(0) = Q_{0}$
+            \begin{alignat}{3}
+                &&\frac{dQ}{dt}&=\frac{1}{4}r - \frac{rQ}{100}\\
+                &\implies&Q' + \frac{r}{100}Q&=\frac{1}{4}r\\
+                &\implies&Q_{c}&=\exp\bbbp{-\frac{r}{100}t}\int\BBp{\exp\bbbp{\frac{r}{100}t}\frac{1}{4}r\,}dt\\
+                &&&=\frac{r}{4}\exp\bbbp{\frac{-r}{100}t}\BBp{\frac{100}{r}\exp\bbbp{\frac{r}{100}t}+C}\\
+                &&&=25 + \frac{r}{4}\exp\bbbp{-\frac{r}{100}t}C\\
+                &&&=25 + C\exp\bbbp{-\frac{r}{100}t}\\
+                &&Q(0)&=Q_{0}\\
+                &\implies&C&=(Q_{0} - 25)\exp\bbbp{-\frac{r}{100}t}\\
+                &\implies&Q(t)&=25 + (Q_{0} - 25)\exp\bbbp{-\frac{r}{100}t}
+            \end{alignat}
+            \item Find the limiting amount, $Q_{l}$, after a long time.
+            \begin{equation}
+                \lim_{t\to\infty}(Q_{c}(t)) = Q_{c} = 25
+            \end{equation}
+        \end{enumerate}
+    \end{example}
+    \begin{remark}[Regarding Example 5.1]
+        Notice that no matter the amount of salt that the system starts with, it will always tend towards 25 lbs of salt in the tank.
+    \end{remark}
+    \section{Exact Differential Equations}
+    \begin{definition}[Exact Differential Equations]
+        A differential equation is exact iff
+        \begin{equation}
+            \frac{\partial M(x,y)}{\partial y} = \frac{\partial N(x,y)}{\partial x} \Leftrightarrow N(x, y)y' + M(x, y) = 0
+        \end{equation}
+        \begin{equation}
+            M(x, y)\,dx + N(x, y)\,dy = 0
+        \end{equation}
+    \end{definition}
+    Given $\psi(x, y)$, parameterize by using $\delta(t) = \psi(f_{1}(t), f_{2}(t))$.
+    \begin{alignat}{1}
+        \frac{d\psi(x, y)}{dt} &= \frac{d\delta}{dt}\\
+        &= \frac{\partial \psi(x, y)}{\partial x}\frac{df_{1}}{dt} + \frac{\partial \psi(x, y)}{\partial y}\frac{df_{2}}{dt}
+    \end{alignat}
+    \begin{example}
+        \begin{alignat}{1}
+            \psi(x, y) &= x^{2}y + xy\\
+            f_{1}(t) = t&,\quad f_{2}(t) = t^{2}\\
+            \delta(t) &= \psi(f_{1}, f_{2})\\
+            &= t^{2}t^{2}+t t^{2}\\
+            \delta'(t) &= 4t^{3} + 3t^{2}\label{5219}\\
+            \frac{\partial \psi(x, y)}{\partial x}\cdot 1 &+ \frac{\partial \psi(x, y)}{\partial y}\cdot2t\\
+            &= (2f_{1}f_{2} + f_{2})\cdot 1 + (f_{1}^{2} + f_{1})\cdot 2ty\\
+            &= 4t^{3} + 3t^{2}\label{5222}
+        \end{alignat}
+        Notice how \textbf{Equation \ref{5219}} and \textbf{Equation \ref{5222}} are the same, but derived via different methods.
+    \end{example}
+    \begin{example}
+        \begin{enumerate}
+            \item $y' = \frac{\frac{1}{y}}{x}$ is an exact differential equation.\\
+            Let $M(x, y) = \frac{1}{x}$, and $N(x, y) = y$.
+            \[\frac{\partial M(x,y)}{\partial y} = \frac{\partial \frac{1}{x}}{\partial y} = 0\]
+            \[\frac{\partial N(x,y)}{\partial x} = \frac{\partial y}{\partial x} = 0\]
+            Because both partial derivatives are equal, they are exact.
+            \item $y' = x$ is exact.
+            \item $y' = \frac{xy}{x + y} \iff (x + y)\,dy + xy\,dx = 0$ is exact.
+            \item $y' = \frac{xy + x}{\frac{1}{2}x^2 + y}$ is exact.
+        \end{enumerate}
+    \end{example}
+    \begin{btheorem}[Exactness]
+        The equation \[
+            M(x, y)\,dx + N(x, y)\,dy = 0
+        \] is exact if, and only if, $\exists\,\psi(x, y)$ s.t.
+        \[
+            \frac{\partial \psi(x,y)}{\partial x} = M(x, y)
+            \]\[
+            \frac{\partial \psi(x,y)}{\partial y} = N(x, y)
+        \]
+    \end{btheorem}
+    \begin{remark}[Relationship]
+        Exact differential equations are a superset of the separable differential equations, i.e. all separable differential equations are exact differential equations.
+    \end{remark}
+    \chapter{30 January 2020}
+    \section{Exact Differential Equations (cont.)}
+    \begin{example}
+        Solve
+        \begin{equation}
+            \label{Exact1}
+            (y\cos x + 2xe^{y}) + (\sin x + x^{2} + x^{2}e^{y} - 1)y' = 0
+        \end{equation}
+        Checking if \textbf{Equation \ref{Exact1}} is exact,
+        \begin{alignat}{2}
+            \frac{\partial M(x, y)}{\partial y} &= \frac{\partial (y\cos x + 2xe^y)}{\partial y} &= \cos x + 2xe^y\\
+            \frac{\partial N(x, y)}{\partial x} &= \frac{\partial (\sin x + x^{2}e^{y} - 1)}{\partial y} &= \cos x + 2xe^y
+        \end{alignat}
+        From the above, this is an exact differential equation.
+        \begin{alignat}{1}
+            \psi(x, y) &= \int M(x, y)\,dx + h(y)\\
+            &= \int (y\cos x + 2xe^{y})\,dx + h(y)\\
+            &= h(y) + y\sin x+ x^{2}e^{y} + C\\
+            &= h(y) + y\sin x + x^{2}e^{y}
+         \end{alignat}
+         Notice that the constant can be neglected as it can be contained in $h(y)$. Now solving for $h(y)$,
+         \begin{alignat}{3}
+            &&\psi_{y}(x, y) &= N(x, y)\\
+            &\implies&\frac{dh}{dy} + \frac{\partial(y\sin x + e^{y}x^{2})}{\partial y}&=\sin x + x^{2}e^{y} - 1\\
+            &&\frac{dh}{dy} + \sin x + x^{2}e^{y}&=\sin x + x^{2}e^{y} - 1\\
+            &&\frac{dh}{dy}&= -1\\
+            &&h&=-y + C
+         \end{alignat}
+         Then,
+         \begin{equation}
+             \psi(x, y) = y\sin x + x^{2}e^{y} - y + C
+         \end{equation}
+         Finally, $y(x)$ is given by the implicit expression
+         \begin{equation}
+             y\sin x + x^{2}e^{y} - y = C
+         \end{equation}
+    \end{example}
+    \begin{example}
+        Solve
+        \begin{equation}
+            \label{Exact2}
+            (3xy + y^{2}) + (x^{2} + xy)y' = 0
+        \end{equation}
+        Checking if the equation is exact,
+        \begin{alignat}{1}
+            \frac{\partial (3xy + y^{2})}{\partial y} &= 3x + 2y\\
+            \frac{\partial (x^{2} + xy)}{\partial x} &= 2x + y
+        \end{alignat}
+        Notice that they are not equal; however,
+        \begin{equation}
+            \mu(x)(3xy + y^{2}) + \mu(x)(x^{2} + xy)y' = 0
+        \end{equation}
+        is an exact differential equation if
+        \begin{equation}
+            -\frac{N_{x}(x, y) + M_{y})x, y}{N(x, y)}
+        \end{equation}
+        is a function dependent only on $x$. However, $\nexists\mu(x)\forall (M(x, y) \wedge N(x,y))$. $\mu(x)$ can be found by solving the differential equation,
+        \begin{alignat}{1}
+            \frac{d\mu}{dx} &= \frac{-N_{x}(x, y) + M_{y}(x, y)}{N(x, y)}\mu\\
+            \mu(x) &= \exp\bbbp{\int\frac{N_{x} - M_{y}}{N}\,dx}
+        \end{alignat}
+        In this problem,
+        \begin{equation}
+            \frac{M_{y} - N_{x}}{N} = \frac{(3x + 2y) - (2x + y)}{x^2 + xy} = \frac{1}{x}
+        \end{equation}
+        \begin{equation}
+            \mu(x) = \exp\bbbp{\int\frac{dx}{x}} = x + C
+        \end{equation}
+        Multiplying \textbf{Equation \ref{Exact2}} by $\mu(x)$ yields,
+        \begin{equation}
+            (3x^{2}y + y^{2}x) + (x^{3} + x^{2}y)y' = 0
+        \end{equation}
+        Checking if the equation is exact yields the following,
+        \begin{alignat}{1}
+            \frac{\partial 3x^{2}y + xy^{2}}{\partial y} &= 3x^{2} + 2xy\\
+            \frac{\partial x^{3} + x^{2}y}{\partial x} &= 3x^{2} + 2xy
+        \end{alignat}
+        and is therefore exact.
+        \begin{alignat}{1}
+            \psi(x, y) &= \int(3x^{2}y + xy^{2})\,dx + h(y)\\
+            &= x^{3}y + \frac{1}{2}x^{2}y^{2}+h(y)\\
+            \frac{\partial\psi(x, y)}{\partial y} &= x^{3} + x^{2}y + \frac{dh}{dy}\\
+            &= N(x, y)\\
+            \frac{dh}{dy} &= x^{3} + x^{2}y = x^{3} + x^{2}y\label{6232}\\
+            h &= 0
+        \end{alignat}
+        Finally, $y(x)$ can be expressed as,
+        \begin{equation}
+            x^{3}y + \frac{1}{2}x^{2}y^{2} = C
+        \end{equation}
+    \end{example}
+    \begin{method}[Solving Exact Differential Equations]
+        \begin{enumerate}
+            \item Step 1: Determine if the equation is exact
+            \begin{equation}
+                \frac{\partial M(x, y)}{\partial y} = \frac{\partial N(x, y)}{\partial x}
+            \end{equation}
+            \item Step 2: Find $\psi(x, y)$ such that $\psi_{x}(x, y) = M(x, y)$, and $\psi_{y}(x, y) = N(x, y)$. Generally,
+            \begin{equation}
+                    \psi(x, y) = \int M(x, y)\,dx + h(y)
+            \end{equation}
+            this works because
+            \begin{alignat}{1}
+                \frac{\partial \psi(x, y)}{\partial x} &= \frac{\partial \int M(x, y)\,dx}{\partial x} + \frac{\partial h(y)}{\partial x}\\
+                &= M(x, y) + 0
+            \end{alignat}
+            Then find $h(y)$ such that $\psi_{y}(x, y) = N(x, y)$.
+        \end{enumerate}
+    \end{method}
+    \begin{remark}
+        Note in step 2 of \textbf{Method 6.1}
+        \begin{equation}
+            \psi(x, y) = \int M(x, y)\,dx + h(y)
+        \end{equation}
+        can also be defined as
+        \begin{alignat}{1}
+            \psi(x, y) &= \int N(x, y)\,dy + h(x)\\
+            \frac{\partial \psi(x, y)}{\partial y} = \psi_{y}(x, y) &= \frac{\partial \int N(x, y)\,dy}{\partial y} + \frac{\partial h(x)}{\partial y}\\
+            &= N(x, y) + 0
+        \end{alignat}
+    \end{remark}
+    \begin{remark}
+        $y(x)$ is a solution for $M(x, y)\,dx + N(x, y)\,dy = 0$ iff $\psi(x, y(x)) = c$.
+        Consider the following,
+        \[
+            \frac{d\psi(f_{1}, f_{2})}{dt} = \frac{\partial \psi(x, y)}{\partial x}\frac{df_{1}}{dt} + \frac{\partial \psi(x, y)}{\partial y}\frac{df_{2}}{dt}
+        \]
+        we can replace $t$ with $x$, let $f_{1} \equiv x$ and $f_{2} \equiv y(x)$, then
+        \begin{alignat}{1}
+            \frac{d\psi(f_{1}(x), f_{2}(x))}{dx} &= \frac{\partial \psi(x, y)}{\partial x}\frac{df_{1}}{dx} + \frac{\partial \psi(x, y)}{\partial y}\frac{df_{2}}{dx}\\
+            &= \frac{\partial \psi(x, y)}{\partial x} + \frac{\partial \psi(x, y)}{\partial y}\frac{dy}{dx}
+        \end{alignat}
+        finally,
+        \[
+            N(x, y)\frac{dy}{dx} = \frac{\partial \psi(x, y)}{\partial y} \frac{dy}{dx} = \frac{d\psi(x, y(x))}{dx} - \frac{\partial \psi(x, y)}{\partial x}
+        \]
+    \end{remark}
+    \begin{remark}
+        Notice in \textbf{Equation \ref{6232}} has 3 variables: $h, x, y$; however, the terms with $x$ cancel, leaving just $h$ and $y$. This occurs due to the equation being exact.
+    \end{remark}
+    \chapter{4 February 2020}
+    Recall in the last lecture:
+    \begin{alignat}{1}
+        M_{y}(x, y) &= N_{x}(x, y)\\
+        \implies \exists\,\psi(x, y(x)):&= \psi_{x}=M(x,y); \psi_{y}=N(x, y)\\
+        \psi(x) = \psi(x, y) &\equiv C
+    \end{alignat}
+    For example,
+    \begin{alignat}{1}
+        \psi(x, y) &= x + y\\
+        x + y(x) &= C\\
+        y &= C - x
+    \end{alignat}
+    And if $\frac{M_{y}(x, y) - N_{x}(x, y)}{N(x, y)}$ depends only on $x$, then $\exists\,\mu(x): \frac{d\mu}{dx} = \frac{M_{y}(x, y) - N_{x}(x, y)}{N(x, y)}\mu$. Thus, the differential equation $\mu M + \mu Ny' = 0$ is an exact differential equation.
+    \section{Uniqueness and Exactness}
+    \begin{btheorem}[Uniqueness of Linear Differential Equations]
+        Consider the linear first order differential equation,
+        \begin{equation}
+            y' + p(t)y = g(t);\quad y(t_{0}) = y_{0}
+        \end{equation}
+        such that in some open interval, $I = (\alpha; \beta)$, $p(t)$ and $g(t)$ are continuous and $t_{0} \in I$.\\
+        Then,
+        \begin{equation}
+            \exists!\,y(t): y(t_{0}) = y_{0} \wedge y' + p(t)y = g(t)
+        \end{equation}
+    \end{btheorem}
+    \begin{btheorem}[Uniqueness of Non-linear Differential Equations]
+        Consider the following,
+        \begin{equation} 
+            y' = f(t, y) \wedge y(t_{0}) = y_{0}
+        \end{equation}
+        such that $f(t, y)$ and $\frac{\partial f(t, y)}{\partial y}$ are continuous over the domains $t \in (\alpha; \beta)$, and $y \in (\gamma; \delta)$.\\
+        Then, $\exists\,h > 0$, such that in $I = (t_{0} - h, t_{0} + h)$ there $\exists\,! y(t): y(t_{0}) = y_{0}$.
+    \end{btheorem}
+    \begin{example}
+        \begin{equation}
+            ty' + 2y = 4t^{2};\quad y(1) = 2
+        \end{equation}
+        Use \textbf{Theorem 7.1} to find an interval $\exists!y(t)$.
+        \begin{alignat}{1}
+            y' + \frac{2}{t}y &= 4t\\
+            p(t) = \frac{2}{t}&,\quad g(t) = 4t
+        \end{alignat}
+        In the interval $I := (\alpha,\beta)$, $\exists!y(t) \Leftrightarrow \exists p(t) \wedge \exists g(t)$.
+        \begin{enumerate}
+            \item $\exists p(t) \forall t \in (-\infty, 0)\cup(0,\infty)$
+            \item $\exists g(t) \forall t \in (-\infty, \infty)$
+            \item $1 \in (\alpha,\beta)$
+            \item Therefore, $\alpha = 0, \beta = \infty \implies I = (0, \infty) = \mathbb{R}^{+}$
+        \end{enumerate}
+    \end{example}
+    % TODO: Comeback and add the other example
+    \chapter{6 February 2020}
+    \section{First Order Differential Equation Review}
+    Topics covered in First Order Differential Equations.
+    \begin{itemize}
+        \item $y' = f(x, y)$\quad$y(x_{0}) = y_{0}$
+        \item First Order LDE, $y' + p(t)y = g(t)$
+        \item Separable, $y' = \frac{M(x, y)}{N(x, y)}$
+        \item Exact, $M(x, y) + N(x, y)y' = 0$; $M_{y}(x, y) = N_{x}(x, y)$
+        \item Uniqueness and Existance Theorems
+        \item Modelling
+    \end{itemize}
+    \section{Second Order Differential Equations}
+    \begin{definition}[Second Order Differential Equations]
+        The general form of a \textbf{second order differential equation} (SODE) is
+        \begin{equation}
+            y'' = f(x, y, y');\quad y(x_{0}) = y_{0};\quad y'(x_{0}) = y_{1}
+        \end{equation}
+    \end{definition}
+    \np
+    \begin{example}
+        The following are SODEs,
+        \begin{alignat}{1}
+            y'' &= 1\\
+            y'' &= 1 + y'\\
+            y'' &= \frac{x}{t}
+        \end{alignat}
+        An example of a SODE IVP,
+        \begin{equation}
+            y'' = x + y + y';\quad y(0) = 1;\quad y'(0) = -3
+        \end{equation}
+    \end{example}
+    \begin{definition}[Second Order Linear Differential Equations]
+        A \textbf{second order linear differential equation} (SOLDE) has the general form
+        \begin{equation}
+            y'' + p(t)y' + q(t)y = g(t)
+        \end{equation}
+        where $p(t)$, $q(t)$, $g(t)$ are continuous over some interval $I$.
+    \end{definition}
+    \begin{btheorem}[SOLDE Uniqueness Theorem]
+        If $p(t), q(t), g(t)$ are continuous in some interval $I: (\alpha, \beta)$\\
+        Then, for any $t_{0} \in I$, the IVP defined by
+        \begin{equation}
+            y'' + p(t)y' + q(t)y = g(t),\quad y(x_{0}) = y_{0},\quad y'(x_{0}) = y_{1}
+        \end{equation}
+        has a unique solution.
+    \end{btheorem}
+    \begin{definition}[Cases of SOLDEs]
+        \textbf{Homogeneous SOLDEs} (HSOLDE) are of the following form
+        \begin{equation}
+            y'' + p(t)y' + q(t)y = 0
+        \end{equation}
+        If a Homogeneous SODE is defined where $p(t)$, and $q(t)$ are constants, it is considered as a \textbf{homogeneous SOLDE with Constant Coefficients} (CHSOLDE).
+    \end{definition}
+    \np
+    \section{Homogeneous Second Order Linear Differential Equations with Constant Coefficients}
+    \begin{example}[CHSOLDE]
+        Find the general solution of
+        \begin{equation}
+            \label{CHSOLDE1}
+            L[y] = y'' + 5y' + 6y = 0
+        \end{equation}
+        Consider the following quadratic (characteristic function, or characteristic polynomial).
+        \begin{equation}
+            f(r) = r^{2} + 5r + 6 = 0
+        \end{equation}
+        There are 2 different roots to the characteristic function,
+        \begin{equation}
+            r_{1} = -3;\quad r_{2} = -2
+        \end{equation}
+        Now consider the equations,
+        \begin{equation}
+            y_{1}(t) = e^{r_{1}t} = e^{-2t}
+        \end{equation}
+        \begin{equation}
+            y_{2}(t) = e^{r_{1}t} = e^{-3t}
+        \end{equation}
+        Then, $y_{1}(t)$ and $y_{2}(t)$ are solutions of \textbf{Equation \ref{CHSOLDE1}}.\\
+        \textbf{Proof:}
+        \begin{alignat}{1}
+            &y_{1}'(t) = -3e^{-3t};\quad y_{1}'' = 9e^{-3t}\\
+            L[y_{1}] &= 9e^{-3t} + 5(-3)e^{-3t} + 6e^{-3t} = 0 \\
+            0&= (9 - 15 + 6)e^{-3t}
+        \end{alignat}
+        Therefore, the general solution to \textbf{Equation \ref{CHSOLDE1}}
+        \begin{alignat}{1}
+            y_{c} = C_{1}e^{-3t} + C_{2}e^{-2t}
+        \end{alignat}
+        where $C_1$ and $C_2$ are constants.
+    \end{example}
+    \np
+    \begin{example}
+        \begin{equation}
+            L[y] = y'' + ay' + by = 0
+        \end{equation}
+        \begin{equation}
+            f(r) = r^{2} + ar + b = 0
+        \end{equation}
+        Suppose that $r_{0}$ is a root of $f(r) = 0$\\
+        Consider \begin{alignat}{1}
+            y_{0}(t) &= e^{r_{0}t}\\
+            y_{0}'(t) &= r_{0}e^{r_{0}t}\\
+            y_{0}''(t) &= r_{0}^{2}e^{r_{0}t}\\
+            \implies L(y_{0}) &= r_{0}^{2}e^{r_{0}t} + ar_{0}e^{r_{0}t} + be^{r_{0}t}\\
+            &=e^{r_{0}t}(r_{0}^{2} + ar_{0} + b)
+        \end{alignat}
+        Things to consider, what if $r_{0} \in \mathbb{C}$ or $r_{0} = r_{1}$?
+    \end{example}
+    \begin{example}[CHSOLDE IVP]
+        Find the solution of the CHSOLDE IVP,
+        \begin{equation}
+            L[y] = y'' + 5y' + 6y = 0;\quad y(0) = 2;\quad y'(0) = 3
+        \end{equation}
+        \begin{enumerate}
+            \item Find the general solution
+            \begin{equation}
+                y_{c}(t) = C_{1}y_{1} + C_{2}y_{2} \implies y_{c}(t) = C_{1}e^{-3t} + C_{2}e^{-2t}
+            \end{equation}
+            \item Find the particular values of $C_1$ and $C_2$ such that $C_{1}y_{1}(0) + C_{2}y_{2}(0) = 2$ and $(C_{1}y_{1}(0) + C_{2}y_{2}(0))' = 3$.
+            \begin{equation}
+                \begin{cases}
+                    C_{1}e^{-3(0)} + C_{2}e^{-2(0)} = 2\\
+                    -3C_{1}e^{-3(0)} + -2C_{2}e^{-2(0)} = 3\\
+                \end{cases}
+            \end{equation}
+            Solving the linear combination yields $C_{1} = 7$, $C_{2} = 9$.
+            Then, the solution to this IVP is
+            \begin{equation}
+                y(t) = -7e^{-3t} + 9 e^{-2t}
+            \end{equation}
+        \end{enumerate}
+    \end{example}
+    \chapter{11 February 2020}
+    \section{Second Order Linear Differential Equations}
+    \begin{btheorem}[Principle of Superposition]
+        Suppose that $y_{1}$ and $y_{2}$ are solutions of
+        \begin{equation}
+            L[y]= y'' + p(t)y' + q(t)y= 0
+        \end{equation}
+        Then, $C_{1}y_{1} + C_{2}y_{2}$ is another solution for $L[y] = 0$ where $C_{1}$ and $C_{2}$ are constants.
+        ($C_{1}y_{1} + C_{2}y_{2}$ is the liear combination of $y_{1}$ and $y_{2}$)
+    \end{btheorem}
+    \begin{bproof}[Principle of Superposition]
+        Show that
+        \begin{equation}
+            L[C_{1}y_{1} + C_{2}y_{2}] = 0
+        \end{equation}
+        \begin{alignat}{1}
+            &L[C_{1}y_{1} + C_{2}y_{2}]\\
+            &= (C_{1}y_{1} + C_{2}y_{2})'' + p(t)(C_{1}y_{1} + C_{2}y_{2})' + q(t)(C_{1}y_{1} + C_{2}y_{2})\\
+            &=C_{1}y_{1}'' + C_{2}y_{2}'' + p(t)C_{1}y_{1}' + p(t)C_{2}y_{2}' + q(t)C_{1}y_{1} + q(t)C_{2}y_{2}\\
+            &= (C_{1}y_{1}'' + p(t)C_{1}y_{1}' + q(t)C_{1}y_{1}) + (C_{2}y_{2}'' + p(t)C_{2}y_{2}' + q(t)C_{2}y_{2})\\
+            &= C_{1}L[y_{1}] + C_{2}L[y_{2}] = 0
+        \end{alignat}
+        From the above, $C_{1}L[y_{1}] = 0$ and $C_{2}L[y_{2}] = 0$, therefore
+        \begin{equation}
+            L[C_{1}y_{1} + C_{2}y_{2}] = 0
+        \end{equation}
+    \end{bproof}
+    \np
+    \begin{btheorem}[Existance and Uniqueness Theorem]
+        Given
+        \begin{equation}
+            L[y] = y'' + p(t)y' + q(t)y = g(t);\quad y(t_{0}) = z_{0};\quad y'(t_{0}) = z_{1}
+        \end{equation}
+        suppose $t_{0}\in I$.\\Then, this IVP has exactly 1 solution. Moreover, this solution will be defined throughout the interval.
+    \end{btheorem}
+    \begin{example}[Application of Existance and Uniqueness Theorem]
+        Find the longest interval in which the solution of the IVP is certain to exist.
+        \begin{equation}
+            (t^{2}-3t)y'' + ty' - (t + 3) y = 0;\quad y(1) = 2;\quad y(1) = 1
+        \end{equation}
+        The equation is equivalent to
+        \begin{equation}
+            L[y] = y'' + \frac{t}{t^{2} - 3t}y' - \frac{t + 3}{{t^{2} - 3t}}y = 0
+        \end{equation}
+        \begin{enumerate}
+            \item $\exists \lim_{a\to t}(g(a))\ \forall\ t \in (-\infty, \infty)$
+            \item $\exists \lim_{a\to t}(q(a))\ \forall\ t \in (-\infty, 0)\cup(0, 3)\cup(3,\infty)$
+            \item $\exists \lim_{a\to t}(p(a))\ \forall\ t \in (-\infty, 3)\cup(3,\infty)$
+        \end{enumerate}
+        From the above,
+        \begin{equation}
+            I = (0, 3)
+        \end{equation}
+    \end{example}
+    \begin{example}
+        Find the unique solution of the IVP given by
+        \begin{equation}
+            L[y] = y'' + p(t)y' + q(t) y = 0;\quad y(t_{0}) = 0;\quad y'(t_{0}) = 0
+        \end{equation}
+        where $p(t)$ and $q(t)$ are continuous for $t \in (-\infty, \infty)$.\\
+        The solution is
+        \begin{equation}
+            y(t) = 0
+        \end{equation}
+        and because of the uniqueness theorem, this is the only answer.
+    \end{example}
+    \np
+    \section{Linear Algebra with 2 Unknowns Detour}
+    \begin{definition}
+        General form of a linear system with 2 Unknowns
+        \begin{equation}
+            \begin{cases}
+                a_{1}x + b_{1}y = c_{1}\\
+                a_{2}x + b_{2}y = c_{2}
+            \end{cases}
+        \end{equation}
+        where $x$ and $y$ are the two unknowns.
+        In matrix form, the linear combination above can be rewritten as
+        \begin{equation}
+            A = 
+            \begin{pmatrix}
+                a_{1} & b_{1}\\
+                a_{2} & b_{2}
+            \end{pmatrix}
+        \end{equation}
+    \end{definition}
+    \begin{definition}[Matricies]
+        A $n \times m$ \textbf{matrix} is a $n \times m$ table filled with numbers or functions. They are written with parenthesis or brackets around the numbers, such as
+        \begin{equation}
+            \begin{pmatrix}
+                0 & 1\\
+                -1 & 2
+            \end{pmatrix}=
+            \begin{bmatrix}
+                0 & 1\\
+                -1 & 2
+            \end{bmatrix}
+        \end{equation}
+        When $n = m$, the matrix is considered to be a \textbf{square matrix}.
+    \end{definition}
+    \np
+    \begin{definition}[Determinant]
+        An import concept involved with square matricies is the determinant, in the case of
+        \begin{equation}
+            \det(A) = 
+        \det\begin{pmatrix}
+            a_{1} & b_{1}\\
+            a_{2} & b_{2}
+        \end{pmatrix} = ad - bc
+        \end{equation}
+    \end{definition}
+    \begin{btheorem}
+        The solution to
+        \begin{equation}
+            \begin{cases}
+                a_{1}x + b_{1}y = c_{1}\\
+                a_{2}x + b_{2}y = c_{2}
+            \end{cases}
+        \end{equation}
+        is given by
+        \begin{equation}
+            x = \frac{\begin{vmatrix}
+                c_{1} & b_{1}\\
+                c_{2} & b_{2}
+            \end{vmatrix}}{\begin{vmatrix}
+                a_{1} & b_{1}\\
+                a_{2} & b_{2}
+            \end{vmatrix}};\quad
+            y = \frac{\begin{vmatrix}
+                a_{1} & c_{1}\\
+                a_{2} & c_{2}
+            \end{vmatrix}}{\begin{vmatrix}
+                a_{1} & b_{1}\\
+                a_{2} & b_{2}
+            \end{vmatrix}}
+        \end{equation}
+        where $\begin{vmatrix}a_{1} & b_{1}\\a_{2} & b_{2}\end{vmatrix} \neq 0$. No other solution exists.
+    \end{btheorem}
+    \section{Wronkskian}
+    \begin{definition}[Wronkskian]
+        For two differentiable functions $y_{1}(t)$ and $y_{2}(t)$ are solutions to $L[y]= 0$, the \textbf{Wronkskian} of $y_{1}$ and $y_{2}$ is defined by
+        \begin{equation}
+            W[y_{1}, y_{2}] = \begin{vmatrix}
+                y_{1} & y_{2}\\
+                y_{1}' & y_{2}'
+            \end{vmatrix}
+        \end{equation}
+    \end{definition}
+    \np
+    \section{Miscellaneous Definitions}
+    Additional notes that were either not covered or were missed from previous lectures.
+    \begin{definition}[Differential Operator]
+        Let $p$ and $q$ are continuous over the open interval $I$, where $t\in(\alpha, \beta)$, where $\alpha = -\infty$ or $\beta = \infty$ are included. Then for any function $\phi$ that is twice differentiable on $I$.
+        The \textbf{differential operator} is defined by
+        \begin{equation}
+            L[\phi] = \phi'' + p\phi' + q\phi
+        \end{equation}
+        Note that result of the operator is a function itself, so the value of $L[\phi]$ at point $t$ is
+        \begin{equation}
+            L[\phi] = \phi''(t) + p(t)\phi'(t) + q(t)\phi(t)
+        \end{equation}
+    \end{definition}
 \end{document}
