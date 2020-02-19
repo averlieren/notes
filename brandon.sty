@@ -1,7 +1,6 @@
-\usepackage{fancyhdr, amsfonts, amsmath, amssymb, mathtools, xparse, enumitem, multicol, tikz, mathtools, empheq, xcolor, mdframed}
+\usepackage{fancyhdr, amsfonts, amsmath, amssymb, mathtools, xparse, enumitem, multicol, tikz, mathtools, empheq, xcolor, mdframed, hyperref}
 \usepackage[utf8]{inputenc}
 \usepackage[mathscr]{euscript}
-\usepackage{hyperref}
 \let\euscr\mathscr \let\mathscr\relax
 \usepackage[scr]{rsfso}
 %\usepackage[letterpaper, portrait, margin=1.5in]{geometry}
@@ -47,6 +46,7 @@
 \def\Set{\set*}
 
 % ---- Aliases ---- %
+\newcommand{\nequiv}{\not\equiv}
 \newcommand{\ipl}{\mathllap{\implies}}
 \DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
 \DeclarePairedDelimiter\ceil{\lceil}{\rceil}
@@ -103,3 +103,4 @@
 \regenv{btheorem}{C8}{C9}{Theorem} % purple
 \regenv{bproof}{CA}{CB}{Proof} % grey
 \regenv{remark}{CA}{CB}{Remark} % grey
+\regenv{corollary}{C0}{C1}{Corollary} % blue
