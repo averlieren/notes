@@ -12,7 +12,7 @@ My notes as a student at Texas A&M
 |POLS 207| State and Local Government | n/a | | |
 |PHYS 216| Engineering Lab II | n/a | | |
 |GEOG 205| Environmental Change | n/a | | |
-#### Fall 2020
+#### Fall 2019
 |Course||Available|Digitization|Last Updated|
 |-|-|-|-|-|
 |HIST 101| Western Civilization until 1660 | n/a | | |
