@@ -1,0 +1,127 @@
+{
+	"Start environment": {
+		"prefix": "ss",
+		"body": [
+			"\\begin{$1}$2",
+			"\t$3",
+			"\\end{$1}"
+		]
+	},
+	"Bold": {
+		"prefix": "bb",
+		"body": [
+			"\\textbf{$1}$2"
+		]
+	},
+	"Alignat environment": {
+		"prefix": "sa",
+		"body": [
+			"\\begin{alignat}{${1:1}}",
+			"\t$2",
+			"\\end{alignat}"
+		]
+	},
+	"Alignat* environment": {
+		"prefix": "saa",
+		"body": [
+			"\\begin{alignat*}{${1:1}}",
+			"\t$2",
+			"\\end{align*}"
+		]
+	},
+	"Itemize environment": {
+		"prefix": "si",
+		"body": [
+			"\\begin{itemize}[label={$1}]",
+			"\t$2",
+			"\\end{itemize}"
+		]
+	},
+	"Item": {
+		"prefix": "ii",
+		"body": [
+			"\\item $1"
+		]
+	},
+	"Multicols environment": {
+		"prefix": "sm",
+		"body": [
+			"\\begin{multicols}{${1:2}}",
+			"\t$2",
+			"\\end{multicols}"
+		]
+	},
+	"Enumerate environment": {
+		"prefix": "se",
+		"body": [
+			"\\begin{enumerate}",
+			"\t$1",
+			"\\end{enumerate}"
+		]
+	},
+	"Math (inline)": {
+		"prefix": "mi",
+		"body": [
+			"$$1$"
+		]
+	},
+	"Math (multiline)": {
+		"prefix": "mm",
+		"body": [
+			"\\[",
+			"\t$1",
+			"\\]"
+		]
+	},
+	"Equation": {
+		"prefix": "sq",
+		"body": [
+			"\\begin{equation}",
+			"\t$1",
+			"\\end{equation}"
+		]
+	},
+	"Equation Label": {
+		"prefix": "sqq",
+		"body": [
+			"\\begin{equation}",
+			"\t\\label{$1}",
+			"\t$2",
+			"\\end{equation}"
+		]
+	},
+	"Example": {
+		"prefix": "sx",
+		"body": [
+			"\\begin{example}$1",
+			"\t$2",
+			"\\end{example}"
+		]
+	},
+	"Power": {
+		"prefix": "qq",
+		"body": [
+			"$1^{$2}"
+		]
+	},
+	"Subscript": {
+		"prefix": "qw",
+		"body": [
+			"$1_{$2}"
+		]
+	},
+	"Sub/superscript": {
+		"prefix": "qqw",
+		"body": [
+			"$1_{$2}^{$3}"
+		]
+	},
+	"Definition": {
+		"prefix": "sd",
+		"body": [
+			"\\begin{definition}$1",
+			"\t$2",
+			"\\end{definition}"
+		]
+	}
+}
