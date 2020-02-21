@@ -1120,8 +1120,16 @@
     \end{example}
     \chapter{18 February 2020}
     \section{Test Corrections}
+    No points were missed, however, to clear a misunderstanding:
     \begin{enumerate}
-        \item[7.] Prove that $y_{1} = t^{-1}$, $y_{2} = t^{1/2}$ form a fundamental set for $L[y] = 0$.
+        \item[7.] Show that
+        \begin{equation}
+            y_{1} = t^{-1};\quad y_{2} = t^{1/2}
+        \end{equation}
+        form a fundamental set of solutions for
+        \begin{equation}
+            L[y] = 2ty'' + 3y' - \frac{1}{t}y = 0; t > 0
+        \end{equation}
         Wrong:
         \begin{equation}
             L[c_{1}t^{-1} + c_{2}t^{1/2}] = 0 \implies c_{1}L[t^{-1}] + c_{2}L[t^{1/2}] = 0
@@ -1135,6 +1143,8 @@
             W[t^{-1}, t^{1/2}] \neq 0
         \end{equation}
     \end{enumerate}
+    The wrong assumption proved the principle of superposition (the linear combination of $y_{1}, y_{2}$ are also solutions to $L[y]$), however, it does not prove that $y_{1}, y_{2}$ are indeed solutions to $L[y]$.
+    To correctly do the problem, one must compute the linear operator on $y_{1}$ and $y_{2}$, and ensure that they equal 0.
     \chapter{20 February 2020}
     \section{Imaginary Roots}
     Now consider a characteristic function,
