@@ -80,7 +80,7 @@
     \end{example}
     \section{Differentiable Functions}
     \begin{definition}[Differentiability]
-        Given $f: \mathbb{R} \to \mathbb{R}$ and point $a$, $\exists f'(a) \iff \exists T_{1}(a)$, where $T_1$ is a tangent line (Taylor polynomial of degree one).
+        Given $f: \RR \to \RR$ and point $a$, $\exists f'(a) \iff \exists T_{1}(a)$, where $T_1$ is a tangent line (Taylor polynomial of degree one).
         \begin{center}
             \begin{tikzpicture}
                 \draw[<->] (-1,0) -- (5,0) node[right] {$x$};
@@ -620,7 +620,7 @@
             \item $\forall\ t \in (-\infty, 0)\cup(0,\infty), p(t)$
             \item $\forall\ t \in (-\infty, \infty), g(t)$
             \item $1 \in (\alpha,\beta)$
-            \item Therefore, $\alpha = 0, \beta = \infty \implies I = (0, \infty) = \mathbb{R}^{+}$
+            \item Therefore, $\alpha = 0, \beta = \infty \implies I = (0, \infty) = \RR^{+}$
         \end{enumerate}
     \end{example}
     % TODO: Comeback and add the other example
@@ -729,7 +729,7 @@
             \implies L(y_{0}) &= r_{0}^{2}e^{r_{0}t} + ar_{0}e^{r_{0}t} + be^{r_{0}t}\\
             &=e^{r_{0}t}(r_{0}^{2} + ar_{0} + b)
         \end{alignat}
-        Things to consider, what if $r_{0} \in \mathbb{C}$ or $r_{0} = r_{1}$?
+        Things to consider, what if $r_{0} \in \CC$ or $r_{0} = r_{1}$?
     \end{example}
     \begin{example}[CHSOLDE IVP]
         Find the solution of the CHSOLDE IVP,
@@ -1151,7 +1151,7 @@
     \begin{equation}
         f(r) = r^{2} + ar + b = 0
     \end{equation}
-    where $r \in \mathbb{C}$. The roots of $f(r) = 0$ can then be expressed by
+    where $r \in \CC$. The roots of $f(r) = 0$ can then be expressed by
     \begin{equation}
         r_{1,2} = \lambda \pm i\tau
     \end{equation}

@@ -1,0 +1,137 @@
+\documentclass[twoside]{report}
+\usepackage{brandon}
+
+\course{MATH 251}
+\sect{506}
+\class{Engineering Calculus III}
+\textbook{Calculus: Early Trancendentials, 8\textsuperscript{th} Edition}
+\name{Brandon Nguyen}
+\begin{document}
+    \maketitle
+    \chapter{14 January 2020}
+    \section{Three-Dimensional Coordinate System}
+    \begin{definition}[Three Dimensional Coordinate System]
+        A point in three dimensions is represented by a triple, $(x, y, z)$, of numbers. The set of all triples is denoted by $\RRR$.
+    \end{definition}
+    \begin{definition}[Right Hand Rule]
+        The \textbf{right hand rule} describes the relationship between the three axes. To use the rule, curl the fingers of your right hand around the $z$ axis.
+    \end{definition}
+    \begin{example}
+        Plot the point $(-3, 4, 2)$ in the coordinate system.
+    \end{example}
+    \np
+    \begin{definition}[Coordinate Planes]
+        In $\RRR$ there exists the following coordinate planes:
+        \begin{itemize}
+            \item \xy defined by $(x, y, 0)$.
+            \item \xz defined by $(x, 0, z)$.
+            \item \yz defined by $(0, y, z)$.
+        \end{itemize}
+        These coordinate planes split $\RRR$ into \textbf{octants}. Octant 1 is defined to be where the $x, y, z$ are positive.
+    \end{definition}
+    \begin{definition}[Projection onto Coordinate Planes]
+        Given a point $P(a, b, c)$:
+        \begin{itemize}
+            \item $Q(a, b, 0)$ is the \textbf{projection} of P onto the \xy
+            \item $R(0, b, c)$ is the projection of P onto the \yz
+            \item $S(a, 0, c)$ is the projection of P onto the \xz
+        \end{itemize}
+    \end{definition}
+    \begin{example}
+        Find the projections of $(3, -1, 4)$ onto the coordinate planes.
+    \end{example}
+    \section{Surfaces}
+    \begin{definition}[Surfaces]
+        An equation given in $x, y, z$ gives a \textbf{surface} in $\RRR$.
+    \end{definition}
+    The coordinate planes can be represented by:
+    \begin{itemize}
+        \item \yz $\iff x = 0$, or all points $(0, y, z)$
+        \item \xz $\iff y = 0$, or all points $(x, 0, z)$
+        \item \xy $\iff z = 0$, or all points $(x, y, 0)$
+    \end{itemize}
+    The equations in the form of $x = c, y = c, z = c$ in $\RRR$ give planes.
+    \begin{example}
+        Describe and sketch the following planes
+        \begin{enumerate}
+            \item $x = 5$, a plane 5 units ahead and parallel to \yz
+            \item $z = 2$, a plane 2 units above and parallel to \xy
+        \end{enumerate}
+    \end{example}
+    \begin{example}
+        How do the planes $x = 5, z = 2$ intersect?
+        \begin{equation}
+            (5, y, z) \cap (x, y, 2) = (5, y, 2)
+        \end{equation}
+        $(5, y, 2)$ represents a line parallel to the $y$-axis.
+    \end{example}
+    \begin{method}[Two-Variable Equations]
+        A surface formed by a two-variable equation can be graphed by first creating the graph in $\RR^{2}$ corresponding to the two variables. This can then be extended to $\RRR$ w.r.t. the missing axis.
+    \end{method}
+    \begin{example}
+        Sketch and describe the following surfaces in $\RRR$
+        \begin{enumerate}
+            \item $y + x = 2$
+            \item $x^{2} + y^{2} = 9$
+            \item $x^{2} + (z-4)^{2} = 4$
+        \end{enumerate}
+    \end{example}
+    \section{Spheres}
+    \begin{definition}[Equation of a Sphere]
+        The equation of a sphere with a center $C(h, k, l)$ and radius $r$ is given by
+        \begin{equation}
+            (x - h)^{2} + (y - r)^{2} + (z - l)^{2} = r^{2}
+        \end{equation}
+    \end{definition}
+    \begin{example}
+        Find an equation of the sphere with center (5, 3, 2) and radius 3. Find and describe the intersection of this sphere and the coordinate planes.
+    \end{example}
+    \chapter{21 January 2020}
+    \section{Spheres (cont.)}
+    \begin{example}
+        Show that
+        \begin{equation}
+            x^{2} + y^{2} + z^{2} - 6x + 8y - 4z = 20
+        \end{equation}
+        represents a sphere, find the centre and radius.
+    \end{example}
+    \begin{example}
+        What is the equation of the sphere with center $(1, 2, 3)$ that touches the \xy
+    \end{example}
+    \section{Formulae}
+    \begin{definition}[Distance Formula]
+        The distance between points $P(a, b, c)$ and $Q(x, y, z)$ is given by
+        \begin{equation}
+            |PQ| = \sqrt{(x - a)^{2} + (y - b)^{2} + (z - c)^{2}}
+        \end{equation}
+    \end{definition}
+    \begin{example}
+        Consider the points $P(5,5,1),Q(3,3,2),R(1,4,4)$
+        \begin{enumerate}
+            \item Find the lengths of the triangle
+            \item What type of triangle is it?
+        \end{enumerate}
+    \end{example}
+    \begin{definition}[Midpoint Formula]
+        The midpoint of $P(a, b, c)$ and $Q(x, y, z)$ is given by
+        \begin{equation}
+            \bbbp{\frac{x + a}{2},\frac{y + b}{2},\frac{z + c}{2}}
+        \end{equation}
+    \end{definition}
+    \begin{example}
+        Find an equation of a sphere if one of its diameters has endpoints $(2,1,4)$, and $(4,3,10)$.
+    \end{example}
+    \section{Solids}
+    \begin{definition}[Solids]
+        Inequalities involving $x, y, z$ gives solids in $\RRR$.
+    \end{definition}
+    Like a circle is just a line outlining the boundary and a disk is the circle and everything inside. A sphere refers to the shell, while a ball refers to both the sphere and everything inside.
+
+    \begin{example}
+        Sketch and describe the following regions in $\RRR$
+        \begin{enumerate}
+            \item $x^{2} + y^{2} \leq 25$
+            \item $1 < x^{2} + y^{2} + z^{2} < 16$
+        \end{enumerate}
+    \end{example}
+\end{document}
