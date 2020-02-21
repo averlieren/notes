@@ -4,7 +4,6 @@
 \RequirePackage[mathscr]{euscript}
 \let\euscr\mathscr \let\mathscr\relax
 \RequirePackage[scr]{rsfso}
-%\usepackage[letterpaper, portrait, margin=1.5in]{geometry}
 
 % ---- Config ---- %
 \newcommand{\course}[1]{\renewcommand{\course}{#1}}
@@ -20,8 +19,6 @@
     \fancyhead[RO]{\name}
     \fancyhead[LE]{\leftmark}
     \fancyfoot[LE,RO]{\thepage}
-    %\fancyhead{}
-    %\fancyfoot{}
     \author{\name}
     
     \title{
@@ -60,15 +57,14 @@
 % ---- Aliases ---- %
 \newcommand{\nequiv}{\not\equiv}
 \newcommand{\ipl}{\mathllap{\implies}}
+\DeclarePairedDelimiter\vecc{\langle}{\rangle}
 \DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
 \DeclarePairedDelimiter\ceil{\lceil}{\rceil}
-\DeclarePairedDelimiter{\bp}{(}{)}
-\DeclarePairedDelimiter{\bbp}{\big(}{\big)}
-\DeclarePairedDelimiter{\bbbp}{\bigg(}{\bigg)}
-\DeclarePairedDelimiter{\Bp}{\Big(}{\Big)}
-\DeclarePairedDelimiter{\BBp}{\Bigg(}{\Bigg)}
-%\newcommand{\fb}[1]{\fbox{$#1$}}
-%\newcommand{\sss}[1]{\subsubsection*{#1}}
+\DeclarePairedDelimiter\bp{(}{)}
+\DeclarePairedDelimiter\bbp{\big(}{\big)}
+\DeclarePairedDelimiter\bbbp{\bigg(}{\bigg)}
+\DeclarePairedDelimiter\Bp{\Big(}{\Big)}
+\DeclarePairedDelimiter\BBp{\Bigg(}{\Bigg)}
 \newcommand{\np}{
     \raggedbottom
     \pagebreak
