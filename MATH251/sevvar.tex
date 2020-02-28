@@ -141,14 +141,14 @@
         Algebraically:\\
         In three dimensions, a vector is given by
         \begin{equation}
-            \vec{a} = \vecc{a_{1}, a_{2}, a_{3}}
+            \vec{a} = \langle a_{1}, a_{2}, a_{3}\rangle
         \end{equation}
         where $a_{1}, a_{2}, a_{3}$ are the components of $\vec{a}$, each corresponding to the $x, y, z$ respectively.\\
         Geometrically:\\
         A vector has initial and terminal points. For example, a vector starting at the origin $O$, and terminal point $P(a_{1}, a_{2}, a_{3})$ is referred to the position vector of $P$.\\
         Given the points $A(x_{1}, y_{1}, z_{1}), B(x_{2}, y_{2}, z_{2})$, the vector with initial point $A$ and terminal point $B$ is given by
         \begin{equation}
-            \vec{ab} = \vecc{x_{2} - x_{1}, y_{2} - y_{1}, z_{2} - z_{1}}
+            \vec{ab} = \langle x_{2} - x_{1}, y_{2} - y_{1}, z_{2} - z_{1}\rangle
         \end{equation}
     \end{definition}
     \begin{definition}[Magnitude]
@@ -160,17 +160,26 @@
     \subsection{Vector Algebra}
     Addition
     \begin{equation}
-        \vec{a} + \vec{b} = \vecc{a_{1} + b{1}, a_{2} + b{2}, a_{3} + b{3}}
+        \vec{a} + \vec{b} = \langle a_{1} + b{1}, a_{2} + b{2}, a_{3} + b{3}\rangle
     \end{equation}
     Scalar Multiplication
     \begin{equation}
-        c\vec{a} = \vecc{ca_{1}, ca_{2}, ca_{3}}
+        c\vec{a} = \langle ca_{1}, ca_{2}, ca_{3}\rangle
     \end{equation}
     Difference
     \begin{equation}
-        \vec{a} - \vec{b} = \vec{a} + (-\vec{b})  = \vecc{a_{1} - b{1}, a_{2} - b{2}, a_{3} - b{3}}
+        \vec{a} - \vec{b} = \vec{a} + (-\vec{b})  = \langle a_{1} - b{1}, a_{2} - b{2}, a_{3} - b{3}\rangle
     \end{equation}
     \begin{definition}[Standard Basis Vectors]
-        % TODO: Complete.
+        \begin{equation}
+            \vec{i} = \langle 1,0,0\rangle;\quad \vec{j} = \langle 0,1,0\rangle;\quad \vec{k} = \langle 0,0,1\rangle
+        \end{equation}
+        A vector can be written as
+        \begin{equation}
+            \vec{a} = \langle a_{1}, a_{2}, a_{3}\rangle = a_{1}\vec{i} + a_{2}\vec{j} + a_{3}\vec{k}
+        \end{equation}
+        \begin{equation}
+            \langle 23,2,2,3,,4,\rangle
+        \end{equation}
     \end{definition}
 \end{document}

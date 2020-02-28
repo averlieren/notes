@@ -2,12 +2,12 @@
 My notes as a student at Texas A&M
 
 ## Courses
-- Courses marked with `n/a` under the **Notes in Repo** column will not be digitized.
+- Courses marked with `n/a` under the **Available** column will not be digitized.
 #### Spring 2020
 |Course||Available|Digitization|Last Updated|
 |-|-|-|-|-|
-|MATH 308| Differential Equations | Yes | 100% (12/12) | 20/02/2020 |
-|MATH 251| Engineering Calculus III | Yes | 16.7% (2/12) | 20/02/2020 |
+|MATH 308| Differential Equations | Yes | 92.8% (13/14) | 27/02/2020 |
+|MATH 251| Engineering Calculus III | Yes | 14.3% (2/14) | 22/02/2020 |
 |MUSC 226| History of Rock | n/a | | |
 |POLS 207| State and Local Government | n/a | | |
 |PHYS 216| Engineering Lab II | n/a | | |
