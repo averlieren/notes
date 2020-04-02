@@ -1786,7 +1786,116 @@
         The full solution would involve the inverse Laplacian of the last equation (\textbf{16.25}).
     \end{example}
     \chapter{26 March 2020}
-
+    \section{Inverse Laplace Transform}
+    \begin{definition}
+        If
+        \begin{equation}
+            F(s) = \lp{f(t)}
+        \end{equation}
+        then, the \textbf{inverse Laplace transform} is
+        \begin{equation}
+            f(t) = \lpinv{F(s)}
+        \end{equation}
+    \end{definition}
+    Addendum to the previous lecture, when solving for:
+    \begin{equation}
+        y'' + y = \sin(2t), y(0) = 2, y'(0) = 1
+    \end{equation}
+    We came to the point,
+    \begin{equation}
+        \lp{y} = \frac{2s + 1}{s^{2} + 1}\cdot\frac{2}{(s^{2} + 1)(s^{2} + 4)}
+    \end{equation}
+    So then,
+    \begin{equation}
+        y = \lpinv{\frac{2s + 1}{s^{2} + 1}\cdot\frac{2}{(s^{2} + 1)(s^{2} + 4)}}
+    \end{equation}
+    \subsection{Step Functions} % TODO: Add graphs
+    For every function $f: \RR \to \RR$, there exists a graph. Most graphs we are accustomed to seeing are continuous. However, there exists step functions where there are a finite number of steps.
+    \np
+    \begin{definition}
+        The unit step function can be defined as follows:
+        \begin{equation}
+            u_{c}(t) = \begin{cases}
+                0 & t < c\\
+                1 & t \geq c
+            \end{cases}
+        \end{equation}
+    \end{definition}
+    \begin{example}
+        Consider
+        \begin{equation}
+            f(t) = \begin{cases}
+                2 & t \in [0, 4) \\
+                5 & t \in [4, 7) \\
+                -1 & t \in [7, 9) \\
+                1 & t \geq 9
+            \end{cases}
+        \end{equation}
+        % TODO: Insert graph
+        It can be written as the linear combination of multiple unit step functions:
+        \begin{equation}
+            f(t) = 2u_{0}(t) + 3u_{4}(t) - 6u_{7}(t) + 2u_{9}(t)
+        \end{equation}
+    \end{example}
+    \begin{btheorem}
+        \begin{equation}
+            \lp{u_{c}(t)\cdot f(t-c)} = e^{-cs}\lp{f(t)}, t > c
+        \end{equation}
+    \end{btheorem}
+    \begin{corollary}
+        \begin{equation}
+            \lpinv{e^{-cs}F(s)} = u_{c}(t)f(t-c)
+        \end{equation}
+    \end{corollary}
+    \begin{example}
+        Compute the following
+        \begin{equation}
+            \lpinv{e^{-2s}\cdot \frac{1}{s}}
+        \end{equation}
+        Note that
+        \begin{equation}
+            \lpinv{\frac{1}{s}} = 1
+        \end{equation}
+        \begin{equation}
+            \lpinv{e^{-2s}\cdot \frac{1}{s}} = u_{c}(t)\cdot f(t-2)
+        \end{equation}
+    \end{example}
+    \begin{btheorem}
+        \begin{equation}
+            \lp{e^{ct}f(t)} = F(s - c)
+        \end{equation}
+        \begin{equation}
+            \lpinv{F(s)} = e^{ct}\lpinv{F(s + c)}
+        \end{equation}
+    \end{btheorem}\np
+    Also, in the last lecture
+    \begin{equation}
+        \lp{y} = \frac{\frac{1}{3}}{s - 2} + \frac{\frac{2}{3}}{s + 1}
+    \end{equation}
+    Notice that in both fractions, it can be expressed as a linear combination of the following function
+    \begin{equation}
+        F(s) = \frac{1}{s}
+    \end{equation}
+    rewriting the expression yields:
+    \begin{equation}
+        \lp{y} = \frac{1}{3}F(s - 2) + \frac{2}{3}F(s + 1)
+    \end{equation}
+    Now solving for y
+    \begin{equation}
+        y = \lc^{-1}\left\{\frac{1}{3}F(s - 2) + \frac{2}{3}F(s + 1)\right\}
+    \end{equation}
+    The inverse Laplacian can also be written as a linear combination
+    \begin{equation}
+        y = \lc^{-1}\left\{\frac{1}{3}F(s - 2)\right\} + \lc^{-1}\left\{\frac{2}{3}F(s + 1)\right\}
+    \end{equation}
+    Remember to \textbf{Theorem 17.2}, we can adjust $F(s + c)$ back to $F(s)$:
+    \begin{equation}
+        y = \frac{1}{3}e^{2t}\lpinv{F(s + 2)} + \frac{2}{3}e^{t}\lpinv{F(s + 1)}
+    \end{equation}
+    Now, notice that $\lpinv{F(s)} = 1$, and rearranging \textbf{Theorem 17.2}, we find that $\lpinv{F(s + c)} = e^{-ct}\lpinv{F(s)}$. If we apply this to our solution, we get the final solution:
+    \begin{equation}
+        y = \frac{1}{3}e^{-2t}+\frac{2}{3}e^{-t}
+    \end{equation}
     \chapter{31 March 2020}
     \chapter{2 April 2020}
 \end{document}
