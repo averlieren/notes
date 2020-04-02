@@ -1524,15 +1524,15 @@
         \begin{equation}
             y = c_{1}\cos(2t) + c_{2}\sin(2t)
         \end{equation}
-        If the constants $c_{1,2}$ are replaced by some functions $u_{1,2}$,
+        If the constants $c_{1,2}$ are replaced by some functions $u_{1,2}$ then,
         \begin{equation}
             y = u_{1}(t)\cos(2t) + u_{2}(t)\sin(2t)
         \end{equation}
-        is a solution of the original NSOLDE. Then,
+        is a solution of the original NSOLDE.
         \begin{equation}
             y' = -2u_{1}\sin(2t) + 2u_{2}\cos(2t)+u_{1}'\cos(2t)+u_{2}'\sin(2t)
         \end{equation}
-        Then, restricting
+        Then, choosing a restriction and applying it yields
         \begin{equation}
             u_{1}'\cos(2t) + u_{2}'\sin(2t) = 0
         \end{equation}
@@ -1542,7 +1542,7 @@
         \begin{equation}
             y'' = -4u_{1}\cos(2t)-4u_{2}\sin(2t)-2u_{1}'\sin(2t)+2u_{2}'\cos(2t)
         \end{equation}
-        Substitution yields,
+        Substituting the values into the NSOLDE,
         \begin{equation}
             \begin{alignedat}{1}
                 y'' + 4y = &-4u_{1}\cos(2t) - 4u_{2}\sin(2t)-2u_{1}'\sin(2t)+2u_{2}'\cos(2t)\\
@@ -1586,11 +1586,137 @@
             y = c_{1}y_{1} + c_{2}y_{2} + Y
         \end{equation}
     \end{btheorem}
+    \begin{bproof}
+        Given
+        \begin{equation}
+            L[y] = y'' + py' + qy = g
+        \end{equation}
+        Where $p,q,g$ are continuous functions, in the case that $g = 0$, gives us a HSOLDE which has a general solution
+        \begin{equation}
+            y_{c} = c_{1}y_{1} + c_{2}y_{2}
+        \end{equation}
+        (Keep in mind that only CHSOLDEs, or cases where $p, q$ are constants have been discussed.)
+        Substituting $c_{1,2}$ for $u_{1,2}$
+        \begin{equation}
+            y = u_{1}y_{1} + u_{2}y_{2}
+        \end{equation}
+    \end{bproof}
+    \begin{bproof*}[14.1]
+        To ensure that the solution is one of the NSOLDE and not the HSOLDE, we take the derivative
+        \begin{equation}
+            y' = u_{1}'y_{1} + u_{1}y_{1}' + u_{2}'y_{2} + u_{2}y_{2}'
+        \end{equation}
+        Setting a restriction
+        \begin{equation}
+            u_{1}'y_{1} + u_{2}'y_{2} = 0
+        \end{equation}
+        Then, $y'$ can be simplified and be differentiated once more,
+        \begin{equation}
+            y' = u_{1}y_{1}' + u_{2}y_{2}'
+        \end{equation}
+        \begin{equation}
+            y'' = u_{1}'y_{1}' + u_{1}y_{1}'' + u_{2}'y_{2}' + u_{2}y_{2}''
+        \end{equation}
+        Then substituting for $y, y', y''$ yields
+        \begin{equation}
+            \begin{alignedat}{1}
+                g =\ &u_{1}\left(y_{1}'' + py_{1}' + qy_{1}\right)\\
+                &+u_{2}\left(y_{2}'' + py_{2}' + qy_{2}\right)\\
+                &+u_{1}'y_{1}' + u_{2}'y_{2}'
+            \end{alignedat}
+        \end{equation}
+        In the above equation, the lines with coefficients $u_{1,2}$ are equal to zero, as $y_{1,2}$ are solutions to the HSOLDE, giving
+        \begin{equation}
+            u_{1}'y_{1}' + u_{2}'y_{2}' = g
+        \end{equation}
+        Then, solving the system gives
+        \begin{equation}
+            u_{1}' = -\frac{y_{2}g}{W[y_{1}, y_{2}]};\quad u_{2}' = \frac{y_{1}g}{W[y_{1}, y_{2}]}
+        \end{equation}
+        Note that because $y_{1,2}$ form a FSS, $W[y_{1}, y_{2}] \nequiv 0$. Now to solve for $u_{1,2}$
+        \begin{equation}
+            u_{1} = -\int \frac{y_{2}g}{W[y_{1},y_{2}]}\,dt + c_{1};\quad u_{2} = \int \frac{y_{1}g}{W[y_{1},y_{2}]}\,dt + c_{2}
+        \end{equation}
+    \end{bproof*}
     \chapter{3 March 2020}
-    \chapter{5 March 2020}
-    \chapter{17 March 2020}
-    \chapter{22 March 2020}
+    \section{Indefinite Integrals}
+
+    \begin{definition}[Improper Integrals]
+        \begin{equation}
+            \int_{a}^{\infty}f(t)\,dt = \lim_{A\to\infty}\int_{a}^{A}f(t)\,dt
+        \end{equation}
+        If the limit exists then it is convergent, otherwise it is considered to be divergent
+    \end{definition}
+    \np
+    \begin{example}
+        Does the following integral converge?
+        \begin{equation}
+            \int_{1}^{\infty} t^{-1}\,dt
+        \end{equation}
+        Solution:
+        \begin{alignat}{1}
+            \lim_{A\to\infty}\int_{1}^{A}(t^{-1})\,dt&\\
+            \lim_{A\to\infty}\left(\ln(t)|_{1}^{A}\right) &= \infty
+        \end{alignat}
+        Therefore, it is divergent.
+    \end{example}
+    \begin{example}
+        For what values does the following integral converge?
+        \begin{alignat}{1}
+            &\int_{0}^{\infty}e^{ct}\,dt\\
+            =&\lim_{A\to\infty}\int_{0}^{A}e^{ct}\,dt\\
+            =&\lim_{A\to\infty}\frac{1}{c}e^{ct}\bigg|_{0}^{A}\\
+            =&\lim_{A\to\infty}\left[\frac{1}{c}e^{ct}-\frac{1}{c}\right]\\
+            =& \frac{1}{c}, c < 0
+        \end{alignat}
+    \end{example}
+    \np
+    \begin{example}
+        For what values of $p$ does the integral converge?
+        \begin{alignat}{1}
+            &\int_{1}^{\infty}t^{-p}\,dt\\
+            =&\lim_{A\to\infty}\int_{1}^{A}t^{-p}\,dt\\
+            =&\lim_{A\to\infty}\frac{1}{1-p}t^{1-p}\bigg|_{1}^{A}\\
+            =&\lim_{A\to\infty}\frac{1}{1-p}\left(A^{1-p}-1\right), p \neq -1\\
+            =& \frac{1}{p - 1}, p > 1
+        \end{alignat}
+    \end{example}
+    % TODO: Write stuff about piecewise continuity here, was not covered in original lecture notes
+    \section{Laplace Transformation}
+    In algebra, we were introduced to the concept of factorization,
+    \begin{alignat}{1}
+        x^{2} + 4x + 3 &= 0 \\
+        (x + 3)(x + 1) &= 0 \\
+        \implies x \in \{-2, -1\}
+    \end{alignat}
+    Factorization is useful because it was a tool to solve for the roots of a polynomial. The Laplace tranformation can also be thought of as a tool that would help in solving ODEs.
+
+    \begin{definition}
+        The \textbf{Laplace Transformation} is an integral transformation, given by
+        \begin{equation}
+            \lp{f(t)} = F(s) = \int_{0}^{\infty}e^{-st}f(t)\,dt
+        \end{equation}
+    \end{definition}
+
+    \begin{btheorem}
+        Suppose that
+        \begin{enumerate}
+            \item $f$ is piecewise continuous on the intervals $t\in[0,A], A \in \RR^{+}$
+            \item $\exists (k, a, M), (K, M) > 0, |f(t)| \leq ke^{at}, t \geq M$
+        \end{enumerate}
+        Then, $\forall s > a, F(s)$
+    \end{btheorem}
+    \np
+    \begin{example} % TODO: workout this example
+        Find \begin{equation}
+            \lp{1} = \frac{1}{s^{2}}
+        \end{equation}
+    \end{example}
+
+    \chapter*{5 - 22 March 2020}
+    Lectures on dates 5, 17, 22 March were cancelled.
     \chapter{24 March 2020}
     \chapter{29 March 2020}
     \chapter{31 March 2020}
+    \chapter{2 April 2020}
 \end{document}
