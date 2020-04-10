@@ -123,5 +123,16 @@
 			"\t$2",
 			"\\end{definition}"
 		]
+	},
+	"Lecture": {
+		"prefix": "lecture",
+		"body": [
+			"% !TeX root = ../diffeq.tex",
+			"\\documentclass[diffeq.tex]{subfiles}",
+			"",
+			"\\begin{document}",
+			"$1",
+			"\\end{document}"
+		]
 	}
 }
