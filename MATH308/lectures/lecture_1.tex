@@ -1,0 +1,104 @@
+% !TeX root = ../diffeq.tex
+\documentclass[diffeq.tex]{subfiles}
+
+\begin{document}
+\chapter{14 January 2020}
+    \section{First Order Differential Equations}
+    \begin{definition}[First Order Differential Equation]
+        The generic form of a \textbf{first order differential equation} is \begin{equation}
+            y' = f(x, y)
+        \end{equation}
+        Sometimes, $t$ is substituted for $x$, especially if the function relates to time.
+    \end{definition}
+    \begin{definition}[General Solution]
+        A solution to a differential equation is considered to be \textbf{general} if there is an arbitrary constant present in the final answer, i.e. a problem without initial values.
+    \end{definition}
+    \begin{example}
+        \begin{alignat}{1}
+            y' &= 1\\
+            y &= \int y'\,dx\\
+            &= 1\,dx\\
+            &= x + C
+        \end{alignat}
+    \end{example}
+    \np
+    \begin{definition}[Open Differential Equations]
+        Equations without solutions are considered to be \textbf{open}. Many differential equations are without solutions.
+    \end{definition}
+    \begin{example}[Open Differential Equation]
+        \begin{equation}
+            y' = x'y - x^{3}
+        \end{equation}
+        This differential equation does not have a solution; thusly open.
+    \end{example}
+    \begin{example}
+        \begin{equation}
+            y' = y
+        \end{equation}
+        \begin{equation}
+            \int y'\,dy = \int y\,dy \notLeftrightarrow y' = y
+        \end{equation}
+        Notice above that the integration of both sides is not the same as the differential equation.
+        \begin{equation}
+            y' = e^x \implies y \int y'\,dx = \int e^x\,dx
+        \end{equation}
+        Using the above, the general solution can be found
+        \begin{equation}
+            y = Ce^{x}
+        \end{equation}
+    \end{example}
+    \begin{remark}[Regarding Example 1.3]
+        If both sides of a differential equation are dependent on the same variable --- i.e. the same variable appearing on both sides of the equation, then taking the intergal of both sides is not a valid method to solve the equation.
+    \end{remark}
+    \begin{definition}[Initial Value Problems]
+        An \textbf{initial value problem} (IVP), or \textbf{initial condition problem}, is a problem where an initial condition of the equation is defined which leads to a \textbf{unique solution} to the equation.
+    \end{definition}
+    \np
+    \begin{example}[Initial Value Problem]
+        \begin{equation}
+            y' = x,\ y(0) = 1
+        \end{equation}
+        Notice that this is an \textbf{initial value problem}, because $y(0) = 1$. Also notice that $y$ is an anti-derivative w.r.t. $x$; because each side of the equation is independent of one another (unlike \emph{Example 1.3}).
+        \begin{alignat}{3}
+            &&\int y'\,dx &= \int x\,dx\\
+            &\implies & y &= \frac{1}{2}x^{2} + C\\
+            &&y(0) &= 1\\
+            &\implies&=&\frac{1}{2}(0^2) + C\\
+            &\implies&C&=1\\
+            &\implies&y&=\frac{1}{2}x^{2} + 1
+        \end{alignat}
+    \end{example}
+    \section{Differentiable Functions}
+    \begin{definition}[Differentiability]
+        Given $f: \RR \to \RR$ and point $a$, $\exists f'(a) \iff \exists T_{1}(a)$, where $T_1$ is a tangent line (Taylor polynomial of degree one).
+        \begin{center}
+            \begin{tikzpicture}
+                \draw[<->] (-1,0) -- (5,0) node[right] {$x$};
+                \draw[<->] (0,-1) -- (0,5) node[above] {$y$};
+                \draw[red,<->] (-1,1.625) --(1,1.625);
+                \node[red,label={[xshift=5]A}] at (0,1.6) {\textbullet};
+                \node[black,label={B}] at (2.6,.585) {\textbullet};
+                \draw[scale = .65, domain=-1:4,smooth,variable=\x,blue] plot ({\x}, {-.1*\x*\x+2.5});
+                \draw[scale = .65, domain=4:8,smooth,variable=\x,blue] plot ({\x}, {-.1*(\x-14)*(\x-14)+10.9});
+            \end{tikzpicture}
+        \end{center}
+        In the example, point A has a singular tangent line and is therefore differentiable. Point B has infinitely many tangent lines, and is therefore both undefined and not differentiable.
+    \end{definition}
+    \np
+    \section{Kinematics}
+    \begin{example}[Kinematics with Differential Equations]
+        Given an object with a velocity $v_0$, and acceleration $a$, find the position $s$ at any time $t$.
+        \begin{alignat}{3}
+            &&\frac{d}{dt}v(t) &= a\\
+            &\implies &v(t) &= \int a\,dt\\
+            &&&= at + C\\
+            &\because & v(0) &= v_{0}\\
+            &&v_{0} &= a(0) + C\\
+            &&C &= v_{0}\\
+            &&\frac{d}{dt}s(t) &= \int v\,dt\\
+            &\implies& s(t) &= \int v\,dt\\
+            &&&= \int (at + v_{0})\,dt\\
+            &&&= \frac{1}{2}a t^{2} + v_{0}t
+        \end{alignat}
+    \end{example}
+\end{document}

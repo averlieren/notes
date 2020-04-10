@@ -1,0 +1,85 @@
+% !TeX root = ../diffeq.tex
+\documentclass[diffeq.tex]{subfiles}
+
+\begin{document}
+\chapter{28 January 2020}
+    \section{Mathematical Modelling (cont.)}
+    \begin{example}
+        Example 2.3.1 from the textbook.
+        \begin{enumerate}
+            \item Find the amount of salt in the tank at a time $t$ ($Q(t)$).\\
+            Inference: $Q(0) = Q_{0}$
+            \begin{alignat}{3}
+                &&\frac{dQ}{dt}&=\frac{1}{4}r - \frac{rQ}{100}\\
+                &\implies&Q' + \frac{r}{100}Q&=\frac{1}{4}r\\
+                &\implies&Q_{c}&=\exp\bbbp{-\frac{r}{100}t}\int\BBp{\exp\bbbp{\frac{r}{100}t}\frac{1}{4}r\,}dt\\
+                &&&=\frac{r}{4}\exp\bbbp{\frac{-r}{100}t}\BBp{\frac{100}{r}\exp\bbbp{\frac{r}{100}t}+C}\\
+                &&&=25 + \frac{r}{4}\exp\bbbp{-\frac{r}{100}t}C\\
+                &&&=25 + C\exp\bbbp{-\frac{r}{100}t}\\
+                &&Q(0)&=Q_{0}\\
+                &\implies&C&=(Q_{0} - 25)\exp\bbbp{-\frac{r}{100}t}\\
+                &\implies&Q(t)&=25 + (Q_{0} - 25)\exp\bbbp{-\frac{r}{100}t}
+            \end{alignat}
+            \item Find the limiting amount, $Q_{l}$, after a long time.
+            \begin{equation}
+                \lim_{t\to\infty}(Q_{c}(t)) = Q_{c} = 25
+            \end{equation}
+        \end{enumerate}
+    \end{example}
+    \begin{remark}[Regarding Example 5.1]
+        Notice that no matter the amount of salt that the system starts with, it will always tend towards 25 lbs of salt in the tank.
+    \end{remark}
+    \section{Exact Differential Equations}
+    \begin{definition}[Exact Differential Equations]
+        A differential equation is exact iff
+        \begin{equation}
+            \frac{\partial M(x,y)}{\partial y} = \frac{\partial N(x,y)}{\partial x} \Leftrightarrow N(x, y)y' + M(x, y) = 0
+        \end{equation}
+        \begin{equation}
+            M(x, y)\,dx + N(x, y)\,dy = 0
+        \end{equation}
+    \end{definition}
+    Given $\psi(x, y)$, parameterize by using $\delta(t) = \psi(f_{1}(t), f_{2}(t))$.
+    \begin{alignat}{1}
+        \frac{d\psi(x, y)}{dt} &= \frac{d\delta}{dt}\\
+        &= \frac{\partial \psi(x, y)}{\partial x}\frac{df_{1}}{dt} + \frac{\partial \psi(x, y)}{\partial y}\frac{df_{2}}{dt}
+    \end{alignat}
+    \begin{example}
+        \begin{alignat}{1}
+            \psi(x, y) &= x^{2}y + xy\\
+            f_{1}(t) = t&,\quad f_{2}(t) = t^{2}\\
+            \delta(t) &= \psi(f_{1}, f_{2})\\
+            &= t^{2}t^{2}+t t^{2}\\
+            \delta'(t) &= 4t^{3} + 3t^{2}\label{5219}\\
+            \frac{\partial \psi(x, y)}{\partial x}\cdot 1 &+ \frac{\partial \psi(x, y)}{\partial y}\cdot2t\\
+            &= (2f_{1}f_{2} + f_{2})\cdot 1 + (f_{1}^{2} + f_{1})\cdot 2ty\\
+            &= 4t^{3} + 3t^{2}\label{5222}
+        \end{alignat}
+        Notice how \textbf{Equation \ref{5219}} and \textbf{Equation \ref{5222}} are the same, but derived via different methods.
+    \end{example}
+    \begin{example}
+        \begin{enumerate}
+            \item $y' = \frac{\frac{1}{y}}{x}$ is an exact differential equation.\\
+            Let $M(x, y) = \frac{1}{x}$, and $N(x, y) = y$.
+            \[\frac{\partial M(x,y)}{\partial y} = \frac{\partial \frac{1}{x}}{\partial y} = 0\]
+            \[\frac{\partial N(x,y)}{\partial x} = \frac{\partial y}{\partial x} = 0\]
+            Because both partial derivatives are equal, they are exact.
+            \item $y' = x$ is exact.
+            \item $y' = \frac{xy}{x + y} \iff (x + y)\,dy + xy\,dx = 0$ is exact.
+            \item $y' = \frac{xy + x}{\frac{1}{2}x^2 + y}$ is exact.
+        \end{enumerate}
+    \end{example}
+    \begin{btheorem}[Exactness]
+        The equation \[
+            M(x, y)\,dx + N(x, y)\,dy = 0
+        \] is exact if, and only if, $\exists\,\psi(x, y)$ s.t.
+        \[
+            \frac{\partial \psi(x,y)}{\partial x} = M(x, y)
+            \]\[
+            \frac{\partial \psi(x,y)}{\partial y} = N(x, y)
+        \]
+    \end{btheorem}
+    \begin{remark}[Relationship]
+        Exact differential equations are a superset of the separable differential equations, i.e. all separable differential equations are exact differential equations.
+    \end{remark}
+\end{document}

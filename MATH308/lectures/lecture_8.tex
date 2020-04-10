@@ -1,0 +1,137 @@
+% !TeX root = ../diffeq.tex
+\documentclass[diffeq.tex]{subfiles}
+
+\begin{document}
+
+\chapter{6 February 2020}
+\section{First Order Differential Equation Review}
+Topics covered in First Order Differential Equations.
+\begin{itemize}
+    \item $y' = f(x, y)$\quad$y(x_{0}) = y_{0}$
+    \item First Order LDE, $y' + p(t)y = g(t)$
+    \item Separable, $y' = \frac{M(x, y)}{N(x, y)}$
+    \item Exact, $M(x, y) + N(x, y)y' = 0$; $M_{y}(x, y) = N_{x}(x, y)$
+    \item Uniqueness and Existance Theorems
+    \item Modelling
+\end{itemize}
+\section{Second Order Differential Equations}
+\begin{definition}[Second Order Differential Equations]
+    The general form of a \textbf{second order differential equation} (SODE) is
+    \begin{equation}
+        y'' = f(x, y, y');\quad y(x_{0}) = y_{0};\quad y'(x_{0}) = y_{1}
+    \end{equation}
+\end{definition}
+\np
+\begin{example}
+    The following are SODEs,
+    \begin{alignat}{1}
+        y'' &= 1\\
+        y'' &= 1 + y'\\
+        y'' &= \frac{x}{t}
+    \end{alignat}
+    An example of a SODE IVP,
+    \begin{equation}
+        y'' = x + y + y';\quad y(0) = 1;\quad y'(0) = -3
+    \end{equation}
+\end{example}
+\begin{definition}[Second Order Linear Differential Equations]
+    A \textbf{second order linear differential equation} (SOLDE) has the general form
+    \begin{equation}
+        y'' + p(t)y' + q(t)y = g(t)
+    \end{equation}
+    where $p(t)$, $q(t)$, $g(t)$ are continuous over some interval $I$.
+\end{definition}
+\begin{btheorem}[SOLDE Uniqueness Theorem]
+    If $p(t), q(t), g(t)$ are continuous in some interval $I: (\alpha, \beta)$\\
+    Then, for any $t_{0} \in I$, the IVP defined by
+    \begin{equation}
+        y'' + p(t)y' + q(t)y = g(t),\quad y(x_{0}) = y_{0},\quad y'(x_{0}) = y_{1}
+    \end{equation}
+    has a unique solution.
+\end{btheorem}
+\begin{definition}[Cases of SOLDEs]
+    \textbf{Homogeneous SOLDEs} (HSOLDE) are of the following form
+    \begin{equation}
+        y'' + p(t)y' + q(t)y = 0
+    \end{equation}
+    If a Homogeneous SODE is defined where $p(t)$, and $q(t)$ are constants, it is considered as a \textbf{homogeneous SOLDE with Constant Coefficients} (CHSOLDE).
+\end{definition}
+\np
+\section{Homogeneous Second Order Linear Differential Equations with Constant Coefficients}
+\begin{example}[CHSOLDE]
+    Find the general solution of
+    \begin{equation}
+        \label{CHSOLDE1}
+        L[y] = y'' + 5y' + 6y = 0
+    \end{equation}
+    Consider the following quadratic (characteristic function, or characteristic polynomial).
+    \begin{equation}
+        f(r) = r^{2} + 5r + 6 = 0
+    \end{equation}
+    There are 2 different roots to the characteristic function,
+    \begin{equation}
+        r_{1} = -3;\quad r_{2} = -2
+    \end{equation}
+    Now consider the equations,
+    \begin{equation}
+        y_{1}(t) = e^{r_{1}t} = e^{-2t}
+    \end{equation}
+    \begin{equation}
+        y_{2}(t) = e^{r_{1}t} = e^{-3t}
+    \end{equation}
+    Then, $y_{1}(t)$ and $y_{2}(t)$ are solutions of \textbf{Equation \ref{CHSOLDE1}}.\\
+    \textbf{Proof:}
+    \begin{alignat}{1}
+        &y_{1}'(t) = -3e^{-3t};\quad y_{1}'' = 9e^{-3t}\\
+        L[y_{1}] &= 9e^{-3t} + 5(-3)e^{-3t} + 6e^{-3t} = 0 \\
+        0&= (9 - 15 + 6)e^{-3t}
+    \end{alignat}
+    Therefore, the general solution to \textbf{Equation \ref{CHSOLDE1}}
+    \begin{alignat}{1}
+        y_{c} = C_{1}e^{-3t} + C_{2}e^{-2t}
+    \end{alignat}
+    where $C_1$ and $C_2$ are constants.
+\end{example}
+\np
+\begin{example}
+    \begin{equation}
+        L[y] = y'' + ay' + by = 0
+    \end{equation}
+    \begin{equation}
+        f(r) = r^{2} + ar + b = 0
+    \end{equation}
+    Suppose that $r_{0}$ is a root of $f(r) = 0$\\
+    Consider \begin{alignat}{1}
+        y_{0}(t) &= e^{r_{0}t}\\
+        y_{0}'(t) &= r_{0}e^{r_{0}t}\\
+        y_{0}''(t) &= r_{0}^{2}e^{r_{0}t}\\
+        \implies L(y_{0}) &= r_{0}^{2}e^{r_{0}t} + ar_{0}e^{r_{0}t} + be^{r_{0}t}\\
+        &=e^{r_{0}t}(r_{0}^{2} + ar_{0} + b)
+    \end{alignat}
+    Things to consider, what if $r_{0} \in \CC$ or $r_{0} = r_{1}$?
+\end{example}
+\begin{example}[CHSOLDE IVP]
+    Find the solution of the CHSOLDE IVP,
+    \begin{equation}
+        L[y] = y'' + 5y' + 6y = 0;\quad y(0) = 2;\quad y'(0) = 3
+    \end{equation}
+    \begin{enumerate}
+        \item Find the general solution
+        \begin{equation}
+            y_{c}(t) = C_{1}y_{1} + C_{2}y_{2} \implies y_{c}(t) = C_{1}e^{-3t} + C_{2}e^{-2t}
+        \end{equation}
+        \item Find the particular values of $C_1$ and $C_2$ such that $C_{1}y_{1}(0) + C_{2}y_{2}(0) = 2$ and $(C_{1}y_{1}(0) + C_{2}y_{2}(0))' = 3$.
+        \begin{equation}
+            \begin{cases}
+                C_{1}e^{-3(0)} + C_{2}e^{-2(0)} = 2\\
+                -3C_{1}e^{-3(0)} + -2C_{2}e^{-2(0)} = 3\\
+            \end{cases}
+        \end{equation}
+        Solving the linear combination yields $C_{1} = 7$, $C_{2} = 9$.
+        Then, the solution to this IVP is
+        \begin{equation}
+            y(t) = -7e^{-3t} + 9 e^{-2t}
+        \end{equation}
+    \end{enumerate}
+\end{example}
+\end{document}

@@ -1,0 +1,173 @@
+% !TeX root = ../diffeq.tex
+\documentclass[diffeq.tex]{subfiles}
+
+\begin{document}
+\chapter{11 February 2020}
+    \section{Second Order Linear Differential Equations}
+    \begin{btheorem}[Principle of Superposition]
+        Suppose that $y_{1}$ and $y_{2}$ are solutions of
+        \begin{equation}
+            L[y]= y'' + p(t)y' + q(t)y= 0
+        \end{equation}
+        Then, $C_{1}y_{1} + C_{2}y_{2}$ is another solution for $L[y] = 0$ where $C_{1}$ and $C_{2}$ are constants.
+        ($C_{1}y_{1} + C_{2}y_{2}$ is the liear combination of $y_{1}$ and $y_{2}$)
+    \end{btheorem}
+    \begin{bproof}[Principle of Superposition]
+        Show that
+        \begin{equation}
+            L[C_{1}y_{1} + C_{2}y_{2}] = 0
+        \end{equation}
+        \begin{alignat}{1}
+            &L[C_{1}y_{1} + C_{2}y_{2}]\\
+            &= (C_{1}y_{1} + C_{2}y_{2})'' + p(t)(C_{1}y_{1} + C_{2}y_{2})' + q(t)(C_{1}y_{1} + C_{2}y_{2})\\
+            &=C_{1}y_{1}'' + C_{2}y_{2}'' + p(t)C_{1}y_{1}' + p(t)C_{2}y_{2}' + q(t)C_{1}y_{1} + q(t)C_{2}y_{2}\\
+            &= (C_{1}y_{1}'' + p(t)C_{1}y_{1}' + q(t)C_{1}y_{1}) + (C_{2}y_{2}'' + p(t)C_{2}y_{2}' + q(t)C_{2}y_{2})\\
+            &= C_{1}L[y_{1}] + C_{2}L[y_{2}] = 0
+        \end{alignat}
+        From the above, $C_{1}L[y_{1}] = 0$ and $C_{2}L[y_{2}] = 0$, therefore
+        \begin{equation}
+            L[C_{1}y_{1} + C_{2}y_{2}] = 0
+        \end{equation}
+    \end{bproof}
+    \np
+    \begin{btheorem}[Existance and Uniqueness Theorem]
+        Given
+        \begin{equation}
+            L[y] = y'' + p(t)y' + q(t)y = g(t);\quad y(t_{0}) = z_{0};\quad y'(t_{0}) = z_{1}
+        \end{equation}
+        suppose $t_{0}\in I$.\\Then, this IVP has exactly 1 solution. Moreover, this solution will be defined throughout the interval.
+    \end{btheorem}
+    \begin{example}[Application of Existance and Uniqueness Theorem]
+        Find the longest interval in which the solution of the IVP is certain to exist.
+        \begin{equation}
+            (t^{2}-3t)y'' + ty' - (t + 3) y = 0;\quad y(1) = 2;\quad y(1) = 1
+        \end{equation}
+        The equation is equivalent to
+        \begin{equation}
+            L[y] = y'' + \frac{t}{t^{2} - 3t}y' - \frac{t + 3}{{t^{2} - 3t}}y = 0
+        \end{equation}
+        \begin{enumerate}
+            \item $\forall\ t \in (-\infty, \infty), \lim_{a\to t}(g(a))$
+            \item $\forall\ t \in (-\infty, 0)\cup(0, 3)\cup(3,\infty), \lim_{a\to t}(q(a))$
+            \item $\forall\ t \in (-\infty, 3)\cup(3,\infty), \lim_{a\to t}(p(a))$
+        \end{enumerate}
+        From the above,
+        \begin{equation}
+            I = (0, 3)
+        \end{equation}
+    \end{example}
+    \begin{example}
+        Find the unique solution of the IVP given by
+        \begin{equation}
+            L[y] = y'' + p(t)y' + q(t) y = 0;\quad y(t_{0}) = 0;\quad y'(t_{0}) = 0
+        \end{equation}
+        where $p(t)$ and $q(t)$ are continuous for $t \in (-\infty, \infty)$.\\
+        The solution is
+        \begin{equation}
+            y(t) = 0
+        \end{equation}
+        and because of the uniqueness theorem, this is the only answer.
+    \end{example}
+    \np
+    \section{Linear Algebra with 2 Unknowns Detour}
+    \begin{definition}
+        General form of a linear system with 2 Unknowns
+        \begin{equation}
+            \begin{cases}
+                a_{1}x + b_{1}y = c_{1}\\
+                a_{2}x + b_{2}y = c_{2}
+            \end{cases}
+        \end{equation}
+        where $x$ and $y$ are the two unknowns.
+        The linear combination above can be rewritten as
+        \begin{equation}
+            \begin{pmatrix}
+                a_{1} & b_{1}\\
+                a_{2} & b_{2}
+            \end{pmatrix}
+            \begin{pmatrix}
+                x\\ y
+            \end{pmatrix}
+            =
+            \begin{pmatrix}
+                c_{1}\\ c_{2}
+            \end{pmatrix}
+        \end{equation}
+    \end{definition}
+    \begin{definition}[Matricies]
+        A $n \times m$ \textbf{matrix} is a $n \times m$ table filled with numbers or functions. They are written with parenthesis or brackets around the numbers, such as
+        \begin{equation}
+            \begin{pmatrix}
+                0 & 1\\
+                -1 & 2
+            \end{pmatrix}=
+            \begin{bmatrix}
+                0 & 1\\
+                -1 & 2
+            \end{bmatrix}
+        \end{equation}
+        When $n = m$, the matrix is considered to be a \textbf{square matrix}.
+    \end{definition}
+    \np
+    \begin{definition}[Determinant]
+        An import concept involved with square matricies is the determinant, in the case of
+        \begin{equation}
+            \det(A) = 
+        \det\begin{pmatrix}
+            a_{1} & b_{1}\\
+            a_{2} & b_{2}
+        \end{pmatrix} = ad - bc
+        \end{equation}
+    \end{definition}
+    \begin{btheorem}
+        The solution to
+        \begin{equation}
+            \begin{cases}
+                a_{1}x + b_{1}y = c_{1}\\
+                a_{2}x + b_{2}y = c_{2}
+            \end{cases}
+        \end{equation}
+        is given by
+        \begin{equation}
+            x = \frac{\begin{vmatrix}
+                c_{1} & b_{1}\\
+                c_{2} & b_{2}
+            \end{vmatrix}}{\begin{vmatrix}
+                a_{1} & b_{1}\\
+                a_{2} & b_{2}
+            \end{vmatrix}};\quad
+            y = \frac{\begin{vmatrix}
+                a_{1} & c_{1}\\
+                a_{2} & c_{2}
+            \end{vmatrix}}{\begin{vmatrix}
+                a_{1} & b_{1}\\
+                a_{2} & b_{2}
+            \end{vmatrix}}
+        \end{equation}
+        where $\begin{vmatrix}a_{1} & b_{1}\\a_{2} & b_{2}\end{vmatrix} \neq 0$. No other solution exists.
+    \end{btheorem}
+    \section{Wronskian}
+    \begin{definition}[Wronskian]
+        For two differentiable functions $y_{1}(t)$ and $y_{2}(t)$ are solutions to $L[y]= 0$, the \textbf{Wronskian} of $y_{1}$ and $y_{2}$ is defined by
+        \begin{equation}
+            W[y_{1}, y_{2}] = \begin{vmatrix}
+                y_{1} & y_{2}\\
+                y_{1}' & y_{2}'
+            \end{vmatrix}
+        \end{equation}
+    \end{definition}
+    \np
+    \section{Miscellaneous Definitions}
+    Additional notes that were either not covered or were missed from previous lectures.
+    \begin{definition}[Differential Operator]
+        Let $p$ and $q$ are continuous over the open interval $I$, where $t\in(\alpha, \beta)$, where $\alpha = -\infty$ or $\beta = \infty$ are included. Then for any function $\phi$ that is twice differentiable on $I$.
+        The \textbf{differential operator} is defined by
+        \begin{equation}
+            L[\phi] = \phi'' + p\phi' + q\phi
+        \end{equation}
+        Note that result of the operator is a function itself, so the value of $L[\phi]$ at point $t$ is
+        \begin{equation}
+            L[\phi] = \phi''(t) + p(t)\phi'(t) + q(t)\phi(t)
+        \end{equation}
+    \end{definition}
+\end{document}

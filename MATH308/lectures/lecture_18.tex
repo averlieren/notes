@@ -1,0 +1,169 @@
+% !TeX root = ../diffeq.tex
+\documentclass[diffeq.tex]{subfiles}
+
+\begin{document}
+\chapter{31 March 2020}
+    \section{Examples Involving Inverse Laplacians}
+    For examples 1-4, find the inverse Laplacian of the given.
+    \begin{example}
+        \begin{equation}
+            F(s) = \frac{3}{s^{2} + 4}
+        \end{equation}
+        \begin{alignat}{1}
+            \lpinv{\frac{a}{s^{2} + a^{2}}} &= \sin(at)\\
+            F(s) &= \frac{3}{2} \cdot \frac{2}{s^{2} + 2^{2}}\\
+            \lpinv{F(s)} &= \frac{3}{2}\lpinv{\frac{2}{s^{2} + 2^{2}}}\\
+            f(t) &= \frac{3}{2}\sin(2t)
+        \end{alignat}
+    \end{example}
+    \begin{example}
+        \begin{equation}
+            F(s) = \frac{2}{s^{2} - 3s - 4}
+        \end{equation}
+        First, complete the square
+        \begin{alignat}{1}
+            F(s) &= \frac{2}{\left(s^{2} - \frac{3}{2}\right) - 4 - \frac{9}{4}}\\
+            &= \frac{2}{\left(s + \frac{3}{2}\right)^{2} - \frac{25}{4}}
+        \end{alignat}
+        \begin{equation}
+            \lpinv{F(s)} = e^{-\frac{3}{2}t}\lpinv{\underbrace{\frac{2}{s^{2} - \frac{25}{4}}}_{E(s)}}
+        \end{equation}
+        We obtained the above from \textbf{Theorem 17.1}:
+        \begin{equation}
+            \lpinv{E(s + c)} = e^{-ct}\lpinv{E(s)}
+        \end{equation}
+        \begin{alignat}{1}
+            f(t) = e^{-\frac{3}{2}t}\cdot 2\cdot \frac{2}{5}\cdot \lci\left\{\frac{\frac{5}{2}}{s^{2} - \left(\frac{5}{2}\right)^{2}}\right\}
+        \end{alignat}
+        Then, by using the table, we see that
+        \begin{equation}
+            \lci\left\{\frac{a}{s^{2} - a^{2}}\right\} = \sinh(at)
+        \end{equation}
+        Therefore, the inverse Laplacian
+        \begin{equation}
+            \lpinv{F(s)} = f(t) = \frac{4}{5}e^{-\frac{3}{2}t}\sinh(\frac{5}{2}t)
+        \end{equation}
+    \end{example}
+    \begin{example}
+        \begin{equation}
+            F(s) = \frac{8s^{2} - 4s + 12}{s(s^{2} + 4)}
+        \end{equation}
+        In order to solve this problem, the method of partial fractions is required
+        \begin{alignat}{1}
+            F(s) &= \frac{8s^{2} - 4s + 12}{s(s^{2} + 4)}\\
+            &= \frac{A}{s} + \frac{Bs + C}{s^{2} + 4}\\
+            &= \frac{(A+B)s^{2} + Cs + 4A}{s(s^{2} + 4)}\\
+            \implies A &= 3, B = 5, C = -4\\
+            F(s) &= \frac{3}{s} + \frac{5s - 4}{s^{2} + 4}
+        \end{alignat}
+        Then, the inverse Laplacian
+        \begin{alignat}{1}
+            \lpinv{F(s)} &= \lci\left\{\frac{3}{s}\right\} + \lci\left\{\frac{5s}{s^{2} + 4}\right\} + \lci\left\{\frac{-4}{s^{2} + 4}\right\}\\
+            &= 3 + \frac{5}{2}\cos(2t) - 2\sin(2t)
+        \end{alignat}
+    \end{example}
+    \begin{example}
+        \begin{equation}
+            F(s) = \frac{1-2s}{s^{2} + 4s + 1}
+        \end{equation}
+        Employing both completing the square, and partial fractions
+        \begin{alignat}{1}
+            F(s) &= \frac{1-2s}{s^{2} + 4s + 1}\\
+            &= \frac{1 - 2s}{s^{2} + 1}\\
+            &= \frac{1}{(s + 2)^{2} + 1} - \frac{2s}{(s + 2)^{2} + 1}
+        \end{alignat}
+        Then, the inverse Laplacian
+        \begin{alignat}{2}
+            \lpinv{F(s)} &= \lci\left\{\frac{1}{(s + 2)^{2} + 1}\right\} &- \lci\left\{\frac{2s}{(s + 2)^{2} + 1}\right\}\\
+            &= e^{-2t}\sin t &- 2e^{-2t}\left(\cos t - 2\sin t\right)
+        \end{alignat}
+    \end{example}
+    \np
+    \section{Using Laplacians to solve ODEs}
+    For the following examples, solve the SOLDE using Laplacians
+    \begin{example}
+        \begin{equation}
+            y'' - 2y' + 2y = e^{-t},\quad y(0) = 0,\quad y'(0) = 1
+        \end{equation}
+        \begin{equation}
+            \lp{y'' - 2y' + 2y} = \lp{e^{-t}}
+        \end{equation}
+        \begin{alignat}{1}
+            \lp{y'' - 2y' + 2y} &= \lp{y''} - 2\lpinv{y'} + 2\lpinv{y}\\
+            &= (s^{2}\lpinv{y} - sy(0) - y'(0))\\
+            &\quad- 2s\lpinv{y} - 2y(0)) + 2\lpinv{y}\nonumber\\
+            &= (s^{2} - 2s + 2)\lpinv{y} - 1
+        \end{alignat}
+        \begin{equation}
+            \lp{e^{-t}} = \frac{1}{s + 1}
+        \end{equation}
+        Then,
+        \begin{alignat}{1}
+            (s^{2} - 2s + 2)\lp{y} - 1 &= \frac{1}{s + 1}\\
+            \lp{y} &= \frac{1}{s^{2} - 2s + 2} + \frac{1}{(s + 1)(s^{2}-2s + 2)}
+        \end{alignat}
+        \begin{equation}
+            y = \lci\left\{\frac{1}{s^{2} - 2s + 2}\right\} + \lci\left\{\frac{1}{(s + 1)(s^{2}-2s + 2)}\right\}
+        \end{equation}
+        \begin{alignat}{1}
+            \lci\left\{\frac{1}{s^{2} - 2s + 2}\right\} &= \lci\left\{\frac{1}{(s - 1)^{2} + 1}\right\}\\
+            &= e^{t}\lci\left\{\frac{1}{s^{2} + 1}\right\}\\
+            &= e^{t}\sin(t)
+        \end{alignat}
+        \begin{alignat}{1}
+            \lci\left\{\frac{1}{(s + 1)(s^{2} - 2s + 2)}\right\} &= \lci\left\{\frac{A}{s + 1}\right\} + \lci\left\{\frac{Bs + C}{s^{2} - 2s + 2}\right\}\\
+            &= \lci\left\{\frac{-\frac{1}{5}}{s + 1}\right\} + \lci\left\{\frac{-\frac{1}{5}s + \frac{3}{5}}{s^{2} - 2s + 2}\right\}\\
+            &= \frac{1}{5}e^{-t} + \lci\left\{\frac{-\frac{1}{5}(s - 1) + \frac{1}{5} + \frac{3}{5}}{(s - 1)^{2} + 1}\right\}\\
+            &= \frac{1}{5}e^{-t} + e^{t}\lci\left\{\frac{-\frac{1}{5}s - \frac{1}{5}+ \frac{3}{5}}{s^{2} + 1}\right\}\\
+            &= \frac{1}{5}e^{-t} + e^{t}\left(-\frac{1}{5}\cos(t) + \frac{2}{5}\sin(t)\right)
+        \end{alignat}
+        Therefore, the solution is
+        \begin{equation}
+            y = e^{t}\sin(t) + \frac{1}{5}e^{-t} + e^{t}\left(-\frac{1}{5}\cos(t) + \frac{2}{5}\sin(t)\right)
+        \end{equation}
+    \end{example}
+    \begin{example}
+        \begin{equation}
+            y'' + 4y = \begin{cases}
+                t & t \in [0, 1)\\
+                2 - t & t \in [1, 2)\\
+                0 & t \in [2, \infty)
+            \end{cases}
+        \end{equation}
+        Let $g(t)$ represent the piecewise function on the right hand side.
+        \begin{alignat}{1}
+            g(t) &= \begin{cases}
+                f_{1}(t) & t \in [0, 1)\\
+                f_{2}(t) - t & t \in [1, 2)\\
+                f_{3}(t) & t \in [2, \infty)
+            \end{cases}\\
+            &= u_{0}(t)f_{1}(t) + u_{1}(t)\left(f_{2}(t) - f_{1}(t)\right) + u_{2}(t)\left(f_{3}(t) - f_{2}(t)\right)\\
+            &= u_{0}(t)\cdot t + u_{1}(t)(2 - 2t) + u_{2}(t)(t - 2)
+        \end{alignat}
+        Then,
+        \begin{alignat}{1}
+            \lp{g(t)} &= \lp{u_{0}(t)\cdot t} + \lp{u_{1}(2 - 2t) + \lp{u_{2}(t)(t - 2)}}\\
+            \lp{u_{0}(t)\cdot t} &= \frac{1}{s^{2}}\\
+            \lp{u_{1}(2 - 2t)} &= e^{-s}\lp{2-2t}\\
+            &= -\frac{2e^{-s}}{s^{2}}\\
+            \lp{u_{2}(t)(t - 2)} &= \frac{e^{-2s}}{s^{2}}\\
+            \lp{g(t)} &= \frac{1}{s^{2}} - \frac{2e^{-s}}{s^{2}} + \frac{e^{-2s}}{s^{2}}\\
+        \end{alignat}
+        \begin{alignat}{1}
+            \lp{y'' + 4y} &= \lp{y''} + 4\lp{y}\\
+            &= s^{2}\lp{y}-sy(0)-y'(0)+4\lp{y}\\
+            &= (s^{2} + 4)\lp{y}
+        \end{alignat}
+        Remember,
+        \begin{equation}
+            \lp{y'' + 4y} = \lp{g(t)}
+        \end{equation}
+        \begin{alignat}{1}
+            y &= \lci\left\{\frac{1}{s^{2}(s^{2} + 4)}\right\} - 2\lci\left\{\frac{e^{-s}}{s^{2}(s^{2} + 4)}\right\} + \lci\left\{\frac{e^{-2s}}{s^{2}(s^{2} + 4)}\right\}\\
+            &= \frac{1}{4}\left(\lci\left\{\frac{1}{s^{2}}\right\} - \lci\left\{\frac{1}{s^{2} + 4}\right\}\right)\\
+            &\quad - \frac{1}{2}\left(\lci\left\{\frac{e^{-s}}{s^{2}}\right\} - \lci\left\{\frac{1}{s^{2} + 4}\right\}\right)\\
+            &\quad + \frac{1}{4}\left(\lci\left\{\frac{e^{-2s}}{s^{2}}\right\} - \lci\left\{\frac{e^{-2s}}{s^{2} + 4}\right\}\right)\nonumber
+            %TODO: Complete example.
+        \end{alignat}
+    \end{example}
+\end{document}

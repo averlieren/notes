@@ -1,0 +1,229 @@
+% !TeX root = ../diffeq.tex
+\documentclass[diffeq.tex]{subfiles}
+
+\begin{document}
+\chapter{25 February 2020}
+    Note: Lectures from 25 February to 3 March, 2020 are not presented by Dr. Darbinyan
+    \section{Nonhomogeneous SOLDEs}
+    \begin{definition}[Nonhomogeneous SOLDE]
+        The general form of a Nonhomogeneous SOLDE (NSOLDE) is given by
+        \begin{equation}
+            L[y] = y'' + p(t)y' + q(t)y = g(t)
+        \end{equation}
+    \end{definition}
+    \begin{btheorem}
+        Suppose that $y_{1}, y_{2}$ are solutions of
+        \begin{equation}
+            L[y] = y'' + p(t)y' + q(t)y = g(t)
+        \end{equation}
+        then,
+        \begin{equation}
+            y_{1} - y_{2} = 0
+        \end{equation}
+    \end{btheorem}
+    \begin{bproof}
+        \begin{alignat}{1}
+            L[y_{1}] & = g\\
+            L[y_{2}] & = g
+        \end{alignat}
+        Then,
+        \begin{equation}
+            L[y_{1}] - L[y_{2}] = L[y_{1}, y_{2}] = g - g = 0
+        \end{equation}
+    \end{bproof}
+    \begin{btheorem}[General Solutions to NSOLDEs]
+        Given the following NSOLDE
+        \begin{equation}
+            \label{gsnsolde}
+            L[y] = y'' + p(t)y' + q(t)y = g(t)
+        \end{equation}
+        and its corresponding HSOLDE,
+        \begin{equation}
+            \label{gshsolde}
+            L[y] = y'' + p(t)y' + q(t)y = 0
+        \end{equation}
+        The general solution involves a particular solution of \textbf{Equation \ref{gsnsolde}} consists of a particular solution and a solution of the corresponding HSODLE,
+        \begin{equation}
+            \label{gs}
+            y = \phi(t) = C_{1}y_{1} + C_{2}y_{2} + Y
+        \end{equation}
+        where $y_{1}, y_{2}$ are solutions to \textbf{Equation \ref{gshsolde}}, and $Y$ is a particular solution of \textbf{Equation \ref{gsnsolde}}
+    \end{btheorem}
+    \begin{bproof}
+        From the \textbf{Theorem 13.1}, we get
+        \begin{equation}
+            \phi - Y = c_{1}y_{1} + c_{2}y_{2}
+        \end{equation}
+        this is the same as \textbf{Equation \ref{gs}}.
+    \end{bproof}
+    From \textbf{Theorem  13.2}, solving NSOLDEs involves
+    \begin{enumerate}
+        \item Finding the general solution of the corresponding HSOLDE. (complementary solution; $y_c$)
+        \item Find any particular solution, $Y$, to the NSOLDE.
+        \item Then, the solution to the NSOLDE is the sum of the particular and general solutions.
+    \end{enumerate}
+    \np
+    \section{Method of Undetermined Coefficients}
+    \begin{example}
+        Find a particular solution to
+        \begin{equation}
+            y''-3y'-4y=3e^{2t}
+        \end{equation}
+        The corresponding HSOLDE is given by
+        \begin{equation}
+            y'' - 3y' -4y = 0
+        \end{equation}
+        It is possible to "guess" the particular solution to a NSOLDE based on the form of $g(t)$. In this case, a reasonable guess would be
+        \begin{equation}
+            Y = Ae^{2t}
+        \end{equation}
+        Substituting $Y$ into the original equation yields
+        \begin{equation}
+            L[Ae^{2t}] = (Ae^{2t})'' - 3(Ae^{2t})' - 4(Ae^{2t}) = 3e^{2t}
+        \end{equation}
+        Solving for the undetermined coefficient,
+        \begin{equation}
+            (Ae^{2t})' = (2Ae^{2t}), (Ae^{2t})'' = (4Ae^{2t})
+        \end{equation}
+        \begin{alignat}{1}
+            4Ae^{2t} - 3(2Ae^{2t}) - 4(Ae^{2t}) &= 3e^{2t}\\
+            4A - 6A - 4A &= 3\\
+            -6A &= 3\\
+            A &= -\frac{1}{2}
+        \end{alignat}
+        Therefore,
+        \begin{equation}
+            Y = -\frac{1}{2}e^{2t}
+        \end{equation}
+        is a particular solution to this NSOLDE.
+    \end{example}
+    \np
+    \begin{example}
+        Find a particular solution of
+        \begin{equation}
+            y'' - 3y' - 4y = 2\sin(t)
+        \end{equation}
+        Guess,
+        \begin{alignat}{1}
+            Y &= A\sin(t)\\
+            \implies  2\sin(t) &= -A\sin(t)-3A\cos(t)-6A\sin(t)
+        \end{alignat}
+        As can be seen above, the guess $A\sin(t)$ is incorrect due to the appearance of the $\cos(t)$ term, creating an open subspace. Creating a closed subspace yields
+        \begin{equation}
+            Y = A\cos(t) + B\sin(t)
+        \end{equation}
+        Then,
+        \begin{alignat}{1}
+            Y' &= -A\sin(t) + B\cos(t)\\
+            Y'' &= -A\cos(t) + B\sin(t)\\
+            L[Y] &= (-A\cos(t) + B\sin(t)) -3(-A\sin(t) + B\cos(t))\\
+            &-4(A\cos(t) + B\sin(t)) = 2\sin(t)\\
+            2\sin(t) &=\cos(t)(-A-3B-4A) + \sin(t)(-B+3A-4B)\\
+            &\begin{cases}
+                -A-3B-4A &= 0\\
+                -B+3A-4B &= 2
+            \end{cases}
+        \end{alignat}
+        By solving the linear combination,
+        \begin{equation}
+            A = \frac{3}{17},\quad B = -\frac{5}{17}
+        \end{equation}
+        Finally, a particular solution given by this method is
+        \begin{equation}
+            y = \frac{3}{17}\cos(t) = \frac{5}{7}\sin(t)
+        \end{equation}
+    \end{example}
+    \np
+    \begin{example}
+        Find a particular solution of
+        \begin{equation}
+            y'' - 3y' -4y = -8e^{t}\cos(2t)
+        \end{equation}
+        A guess at a particular solution would be
+        \begin{equation}
+            Y = Ae^{t}\cos(2t) + Be^{t}\sin(2t)
+        \end{equation}
+        Then, substitution
+        \begin{alignat}{1}
+            Y' &= Ae^{t}\cos(2t)-2Ae^{t}\sin(2t) + Be^{t}\sin(2t) + 2Be^{t}\cos(2t)\\
+            Y'' &= (-3A + 4B)e^{t}\cos(2t) - (4A + 3B)\sin(2t)\\
+            & \begin{cases}
+                10A + 2B &= 8\\
+                2A-10B &= 0
+            \end{cases}
+        \end{alignat}
+        Solving the linear combination yields
+        \begin{equation}
+            A = \frac{10}{13};\quad B = \frac{2}{13}
+        \end{equation}
+        Finally, a particular solution given by this method is
+        \begin{equation}
+            y = \frac{10}{13}e^{t}\cos(2t) + \frac{2}{13}e^{t}\sin(2t)
+        \end{equation}
+    \end{example}
+    \np
+    \begin{example}
+        Find a particular solution of
+        \begin{equation}
+            \label{nsolde41}
+            L[y] = y'' -3y' -4y = 3e^{2t} + 2\sin(t)
+        \end{equation}
+        It is possible to separate this NSOLDE into two,
+        \begin{equation}
+            \label{nsolde42}
+            L[y] = 3e^{2t}; L[y] = 2\sin(t)
+        \end{equation}
+        And a particular solution to \textbf{Equation \ref{nsolde41}} is the linear combination of the solutions to the two NSOLDEs in \textbf{\ref{nsolde42}}.
+        Having solved the two NSOLDEs previously,
+        \begin{alignat}{1}
+            Y_{1} &= -\frac{1}{2}e^{2t}\\
+            Y_{2} &= -\frac{5}{17}\cos(t) + \frac{3}{17}\sin(t)
+        \end{alignat}
+        Then, a particular solution is given by
+        \begin{equation}
+            y = -\frac{1}{2}e^{2t} -\frac{5}{17}\cos(t) + \frac{3}{17}\sin(t)
+        \end{equation}
+    \end{example}
+    \np
+    \begin{example}
+        Find a particular solution of
+        \begin{equation}
+            L[y] = y''- 3y' - 4y = 2e^{2t}
+        \end{equation}
+        if
+        \begin{equation}
+            Y = Ae^{-t};\quad Y' = -Ae^{-t};\quad Y'' = Ae^{-t}
+        \end{equation}
+        then,
+        \begin{equation}
+            L[Y] = Ae^{-t} - 3(-Ae^{-t}) - 4(Ae^{-t}) = 2e^{-t}
+        \end{equation}
+        When solving for A, we get $0 = 2$, which is false, therefore $Ae^{-t}$ is not a form of a particular solution.
+        Then,
+        \begin{equation}
+            Y = Ate^{-t};\quad L[Y] = 2e^{-t}
+        \end{equation}
+        \begin{alignat}{1}
+            L[Y] &= (Ate^{-t} - 2Ae^{-t})-3(Ae^{-t}-Ate^{-t}) - 4Ate^{-t}\\
+            -5Ae^{t}&=2e^{-t}\\
+            A &= -\frac{2}{5}\\
+            y &= -\frac{2}{5}te^{-t}
+        \end{alignat}
+    \end{example}
+    In the previous example, the corresponding homogeneous equation is
+    \begin{equation}
+        L[y] = y'' - 3y' - 4y = 0
+    \end{equation}
+    And the solutions to this equation are
+    \begin{equation}
+        y_{1} = e^{-t};\quad y_{2} = e^{4t}
+    \end{equation}
+    As it can be seen, the guess of $Y = Ae^{-t} = Ay_{1}$,
+    \begin{equation}
+        L[Ae^{-t}] = L[Ay_{1}] = AL[y_{1}] = 0
+    \end{equation}
+    Therefore,
+    \begin{equation}
+        L[Y] \neq 2e^{-t}
+    \end{equation}
+\end{document}

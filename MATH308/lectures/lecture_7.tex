@@ -1,0 +1,57 @@
+% !TeX root = ../diffeq.tex
+\documentclass[diffeq.tex]{subfiles}
+
+\begin{document}
+\chapter{4 February 2020}
+    Recall in the last lecture:
+    \begin{alignat}{1}
+        M_{y}(x, y) &= N_{x}(x, y)\\
+        \implies \exists\,\psi(x, y(x)):&= \psi_{x}=M(x,y); \psi_{y}=N(x, y)\\
+        \psi(x) = \psi(x, y) &\equiv C
+    \end{alignat}
+    For example,
+    \begin{alignat}{1}
+        \psi(x, y) &= x + y\\
+        x + y(x) &= C\\
+        y &= C - x
+    \end{alignat}
+    And if $\frac{M_{y}(x, y) - N_{x}(x, y)}{N(x, y)}$ depends only on $x$, then $\exists\,\mu(x): \frac{d\mu}{dx} = \frac{M_{y}(x, y) - N_{x}(x, y)}{N(x, y)}\mu$. Thus, the differential equation $\mu M + \mu Ny' = 0$ is an exact differential equation.
+    \section{Uniqueness and Exactness}
+    \begin{btheorem}[Uniqueness of Linear Differential Equations]
+        Consider the linear first order differential equation,
+        \begin{equation}
+            y' + p(t)y = g(t);\quad y(t_{0}) = y_{0}
+        \end{equation}
+        such that in some open interval, $I = (\alpha; \beta)$, $p(t)$ and $g(t)$ are continuous and $t_{0} \in I$.\\
+        Then,
+        \begin{equation}
+            \exists!\,y(t): y(t_{0}) = y_{0} \wedge y' + p(t)y = g(t)
+        \end{equation}
+    \end{btheorem}
+    \begin{btheorem}[Uniqueness of Non-linear Differential Equations]
+        Consider the following,
+        \begin{equation} 
+            y' = f(t, y) \wedge y(t_{0}) = y_{0}
+        \end{equation}
+        such that $f(t, y)$ and $\frac{\partial f(t, y)}{\partial y}$ are continuous over the domains $t \in (\alpha; \beta)$, and $y \in (\gamma; \delta)$.\\
+        Then, $h > 0, I = (t_{0} - h, t_{0} + h): \exists t_{0} \in I, y(t_{0}) = y_{0}$.
+    \end{btheorem}
+    \begin{example}
+        \begin{equation}
+            ty' + 2y = 4t^{2};\quad y(1) = 2
+        \end{equation}
+        Use \textbf{Theorem 7.1} to find an interval $\exists!y(t)$.
+        \begin{alignat}{1}
+            y' + \frac{2}{t}y &= 4t\\
+            p(t) = \frac{2}{t}&,\quad g(t) = 4t
+        \end{alignat}
+        In the interval $I := (\alpha, \beta)$, $\exists t \in I: p(t), g(t) \implies \exists! y(t)$
+        \begin{enumerate}
+            \item $\forall\ t \in (-\infty, 0)\cup(0,\infty), p(t)$
+            \item $\forall\ t \in (-\infty, \infty), g(t)$
+            \item $1 \in (\alpha,\beta)$
+            \item Therefore, $\alpha = 0, \beta = \infty \implies I = (0, \infty) = \RR^{+}$
+        \end{enumerate}
+    \end{example}
+    % TODO: Comeback and add the other example
+\end{document}

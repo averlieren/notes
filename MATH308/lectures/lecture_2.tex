@@ -1,0 +1,89 @@
+% !TeX root = ../diffeq.tex
+\documentclass[diffeq.tex]{subfiles}
+
+\begin{document}
+\chapter{16 January 2020}
+    \section{Linear Differential Equations}
+    \begin{definition}[First Order Linear Differential Equations]
+        \begin{equation}
+            \underbrace{y' + p(t)y = g(t)}_\text{\tiny Usual form}\iff y' = g(t) - p(t)y
+        \end{equation}
+        A \textbf{first order linear differential equation} (LDE) is linear due to $y$ being dependent on only one variable, $t$.
+    \end{definition}
+    Notice that $t$ is typically used in place of $x$ as most differential equations are used in models dependent on time; as such, most differential equations are in the form $y' = f(t, y)$ as opposed to $y' = f(x, y)$.
+    \begin{example}
+        \begin{alignat}{3}
+            &\text{Solve } &(4 + t^{2})y' + 2ty &= 4t\\
+            &\text{Notice: }&(4y + t^{2}y)' &= \frac{d}{dt}(4y + t^{2}y) = 4t\\
+            &&&= 4y' + (t^{2}y)^{2}\\
+            &&&= 4y' + (2ty + t^{2}y')\\
+            &&&= (4 + t^2)y' + 2ty
+        \end{alignat}
+        The original problem can now be reduced to:
+        \begin{alignat}{3}
+            &&\frac{d}{dt}(4y + t^2y)&= 4t\\
+            &&\text{let\quad}z(t) &= 4y + t^{2}y\\
+            &&&= 2 t^{2} + C\\
+            &\implies& 4y + t^{2}y &= 2 t^{2}+C\\
+            &\therefore& y &= \frac{1}{4+t^{2}}(2 t^{2}+C)
+        \end{alignat}
+    \end{example}
+    \begin{remark}[Constants]
+        Notice in the above example that the constant, $C$, is being multiplied by $\frac{1}{4 + t^{2}}$. When expanding the answer, it now becomes $y = \frac{2t^{2}}{4+t^{2}} + \frac{C}{4+t^{2}}$. Notice how the constant is dependent on the variable $t$, and is therefore not the same as just $C$.
+    \end{remark}
+    \begin{definition}[Integrating Factors with LDEs]
+        An \textbf{integrating factor}, $\mu(t)$ is a function $\mu(t): \RR \to \RR$, that satisfies $\frac{d}{dt}\mu(t) = \mu(t)y'+\mu(t)p(t)y$.
+    \end{definition}
+    \begin{remark}
+        There are infinitely many integrating factors due to the arbitrary constant $C$ from indefinite integration, see \textbf{Method 2.1} and \textbf{Example 2.2} on the following page.
+    \end{remark}
+    \np
+    \begin{method}[Solution of the General LDE Case]
+        Solve $y' + p(t)y = g(t)$.
+        \begin{enumerate}
+            \item Multiply the LDE by $\mu(t)$ results in:
+                \begin{equation}
+                    \mu(t)(y' + p(t)y) = \mu(t)g(t)
+                \end{equation}
+            \item Letting $z(t) = \mu(t)y$, and $z' = \mu(t)g(t)$ yields:
+                \begin{align}
+                    z(t) &= \int \mu(t)g(t)\,dt\\
+                    \implies y(t) &= \frac{1}{\mu(t)}\int \mu(t)g(t)\,dt\\
+                    \implies \mu(t) &= \exp\BBp{\int p(t)\,dt}
+                \end{align}
+            \item Therefore the solution of the general case is
+                \begin{equation}
+                    y(t) = \BBp{\exp\Bp{\int p(t)\,dt}}^{-1}\cdot \int \exp\Bp{\int p(t)\,dt}g(t)\,dt
+                \end{equation}
+        \end{enumerate}
+    \end{method}
+    \begin{example}[Solving an IVP involving LDEs]
+        Working with example 2.1.4 from the textbook:
+        \begin{equation}
+            ty' +4 2y = 4 t^{2},\ y(1) = 2
+        \end{equation}
+        \begin{enumerate}
+            \item Compute the integrating factor ($\mu(t)$)
+                \begin{align}
+                    \mu(t) &= \exp\bbbp{\int p(t)\,dt}\\
+                    &= \exp\bbbp{\int 2 t^{-1}\,dt}\\
+                    &= \exp\bp{2\ln(t) + C} \Leftrightarrow e^{2\ln(t) + C}
+                \end{align}
+            \item Find the general case\\
+                When solving, $0$ can be subsituted in for $C$ to simplify calculations; for $C \neq 0$ it is trivially shown that the constant will cancel out in computing the solution.
+                \begin{align}
+                    y_c(t) &= \frac{1}{\mu(t)}\int \mu(t)g(t)\,dt\\
+                    &= \frac{1}{t^{2}}\bbbp{\int t^{2}\cdot 4t\,dt}\\
+                    &= \frac{1}{t^{2}}(t^{4} + C)
+                \end{align}
+                \textbf{Note:} $y_c(t)$ is used to denote the general case.
+            \item Find formula w.r.t. intial value
+                \begin{alignat}{3}
+                    &&y(1) &= 2\\
+                    &\implies &y(1) &= (1)^{2} + \frac{C}{(1)^{2}}\\
+                    &\implies &C &= 1\\
+                    &\therefore &y(t) &= t^{2} + t^{-2}
+                \end{alignat}
+        \end{enumerate}
+    \end{example}
+\end{document}

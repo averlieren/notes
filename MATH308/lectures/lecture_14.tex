@@ -1,0 +1,173 @@
+% !TeX root = ../diffeq.tex
+\documentclass[diffeq.tex]{subfiles}
+
+\begin{document}
+\chapter{27 February 2020}
+    \section{Method of Undetermined Coefficients (cont)}
+    From the last lecture, we have considered
+    \begin{equation}
+        L[y] = y'' - 3y' + 4y = g(t)
+    \end{equation}
+    with the following cases for $g(t)$
+    \begin{multicols}{3}
+        \begin{enumerate}
+            \item $g = \text{polynomial}$
+            \item $g = e^{\alpha t}$
+            \item $g = \sin(\alpha t)$
+            \item $g = e^{\alpha t}\sin(\beta t)$
+            \item $g = \alpha e^{-t}$
+        \end{enumerate}
+    \end{multicols}
+    \begin{example}
+        Given
+        \begin{equation}
+            L[y] = y'' -2y' + y = e^{t}
+        \end{equation}
+        Possible guesses following the previously considered equation and cases,
+        \begin{equation}
+            Y = \begin{cases}
+                Ae^{t}\\
+                Ate^{t}
+            \end{cases}
+        \end{equation}
+        However, neither one of these cases work, because the corresponding homogeneous equation has solutions $y_{1} = e^{t}, y_{2} = te^{t}$. Therefore, another guess would be $At^{2}e^{t}$.
+        \begin{equation}
+            L[At^{2}e^{t}] \implies A = \frac{1}{2}
+        \end{equation}
+    \end{example}
+    A general rule of thumb is to increase the order of $t$ until $L[Y] \neq 0$.
+    \np
+    \section{Variation of Parameters}
+    What if a NSOLDE is given by
+    \begin{equation}
+        L[Y] = \frac{P(t)}{e^{\alpha t}}
+    \end{equation}
+    or some other complicated function?
+    \begin{example}
+        Find the general solution of
+        \begin{equation}
+            L[y] = y'' + 4y = 8\tan(t);\quad t\in\left(-\frac{\pi}{2}, \frac{\pi}{2}\right)
+        \end{equation}
+        Solution:
+        \begin{equation}
+            L[Y] = 0 \implies f(r) = r^{2} + 4 = 0 \implies r_{1,2} = \pm 2i
+        \end{equation}
+        Then, a general solution to the CHSOLDE
+        \begin{equation}
+            y = c_{1}\cos(2t) + c_{2}\sin(2t)
+        \end{equation}
+        If the constants $c_{1,2}$ are replaced by some functions $u_{1,2}$ then,
+        \begin{equation}
+            y = u_{1}(t)\cos(2t) + u_{2}(t)\sin(2t)
+        \end{equation}
+        is a solution of the original NSOLDE.
+        \begin{equation}
+            y' = -2u_{1}\sin(2t) + 2u_{2}\cos(2t)+u_{1}'\cos(2t)+u_{2}'\sin(2t)
+        \end{equation}
+        Then, choosing a restriction and applying it yields
+        \begin{equation}
+            u_{1}'\cos(2t) + u_{2}'\sin(2t) = 0
+        \end{equation}
+        \begin{equation}
+            y' = -2u_{1}\sin(2t) + 2u_{2}\cos(2t)
+        \end{equation}
+        \begin{equation}
+            y'' = -4u_{1}\cos(2t)-4u_{2}\sin(2t)-2u_{1}'\sin(2t)+2u_{2}'\cos(2t)
+        \end{equation}
+        Substituting the values into the NSOLDE,
+        \begin{equation}
+            \begin{alignedat}{1}
+                y'' + 4y = &-4u_{1}\cos(2t) - 4u_{2}\sin(2t)-2u_{1}'\sin(2t)+2u_{2}'\cos(2t)\\
+                &+4u_{1}\cos(2t)+4u_{2}\sin(2t) = 8\tan(t)
+            \end{alignedat}
+        \end{equation}
+        Solving for $u_{2}'$
+        \begin{equation}
+            u_{2}' = -u_{1}'\cot(2t)
+        \end{equation}
+        Solving for $u_{1}'$
+        \begin{equation}
+            u_{1}' = -\frac{8\tan(t)\sin(2t)}{2} = -8\sin^{2}t
+        \end{equation}
+        Plugging in $u_{1,2}$
+        \begin{equation}
+            u_{2}' = 4\frac{\sin(t)(2\cos^{2}(t) - 1)}{\cos(t)} = 4\sin(t)\left(2\cos(t) - \frac{1}{\cos(t)}\right)
+        \end{equation}
+        Then,
+        \begin{equation}
+            u_{1} = 4\sin(t)\cos(t)-4t + c_{1}
+        \end{equation}
+        \begin{equation}
+            u_{2} = 4\ln(\cos(t)) - 4\cos^{2}t + c_{2}
+        \end{equation}
+        Finally, a solution can be written as
+        \begin{equation}
+            y = -2\sin(2t) - 4t\cos(2t) + 4\ln(\cos(2t))\sin(2t) + c_{1}\cos(2t) + c_{2}\sin(2t)
+        \end{equation}
+    \end{example}
+    \begin{btheorem}
+        \begin{equation}
+            L[y] = y'' + p(t)y' + q(t)y = g(t)
+        \end{equation}
+        If $p, q, g$ are continuous on the open interval $I$; and the solutions to the corresponding HSOLDE satisfy $W[y_{1}, y_{2}] \nequiv 0$. Then, a particular solution is given by
+        \begin{equation}
+            Y = y_{2}\int_{t_{0}}^{t}\frac{y_{1}(s)g(s)}{W[y_{1},y_{2}](s)}\,ds -y_{1}\int_{t_{0}}^{t}\frac{y_{2}(s)g(s)}{W[y_{1},y_{2}](s)}\,ds
+        \end{equation}
+        $\forall t_{0} \in I$ the general solution is
+        \begin{equation}
+            y = c_{1}y_{1} + c_{2}y_{2} + Y
+        \end{equation}
+    \end{btheorem}
+    \begin{bproof}
+        Given
+        \begin{equation}
+            L[y] = y'' + py' + qy = g
+        \end{equation}
+        Where $p,q,g$ are continuous functions, in the case that $g = 0$, gives us a HSOLDE which has a general solution
+        \begin{equation}
+            y_{c} = c_{1}y_{1} + c_{2}y_{2}
+        \end{equation}
+        (Keep in mind that only CHSOLDEs, or cases where $p, q$ are constants have been discussed.)
+        Substituting $c_{1,2}$ for $u_{1,2}$
+        \begin{equation}
+            y = u_{1}y_{1} + u_{2}y_{2}
+        \end{equation}
+    \end{bproof}
+    \begin{bproof*}[14.1]
+        To ensure that the solution is one of the NSOLDE and not the HSOLDE, we take the derivative
+        \begin{equation}
+            y' = u_{1}'y_{1} + u_{1}y_{1}' + u_{2}'y_{2} + u_{2}y_{2}'
+        \end{equation}
+        Setting a restriction
+        \begin{equation}
+            u_{1}'y_{1} + u_{2}'y_{2} = 0
+        \end{equation}
+        Then, $y'$ can be simplified and be differentiated once more,
+        \begin{equation}
+            y' = u_{1}y_{1}' + u_{2}y_{2}'
+        \end{equation}
+        \begin{equation}
+            y'' = u_{1}'y_{1}' + u_{1}y_{1}'' + u_{2}'y_{2}' + u_{2}y_{2}''
+        \end{equation}
+        Then substituting for $y, y', y''$ yields
+        \begin{equation}
+            \begin{alignedat}{1}
+                g =\ &u_{1}\left(y_{1}'' + py_{1}' + qy_{1}\right)\\
+                &+u_{2}\left(y_{2}'' + py_{2}' + qy_{2}\right)\\
+                &+u_{1}'y_{1}' + u_{2}'y_{2}'
+            \end{alignedat}
+        \end{equation}
+        In the above equation, the lines with coefficients $u_{1,2}$ are equal to zero, as $y_{1,2}$ are solutions to the HSOLDE, giving
+        \begin{equation}
+            u_{1}'y_{1}' + u_{2}'y_{2}' = g
+        \end{equation}
+        Then, solving the system gives
+        \begin{equation}
+            u_{1}' = -\frac{y_{2}g}{W[y_{1}, y_{2}]};\quad u_{2}' = \frac{y_{1}g}{W[y_{1}, y_{2}]}
+        \end{equation}
+        Note that because $y_{1,2}$ form a FSS, $W[y_{1}, y_{2}] \nequiv 0$. Now to solve for $u_{1,2}$
+        \begin{equation}
+            u_{1} = -\int \frac{y_{2}g}{W[y_{1},y_{2}]}\,dt + c_{1};\quad u_{2} = \int \frac{y_{1}g}{W[y_{1},y_{2}]}\,dt + c_{2}
+        \end{equation}
+    \end{bproof*}
+\end{document}

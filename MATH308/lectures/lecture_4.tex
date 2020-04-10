@@ -1,0 +1,91 @@
+% !TeX root = ../diffeq.tex
+\documentclass[diffeq.tex]{subfiles}
+
+\begin{document}
+\chapter{23 January 2020}
+    \section{Separable Equations (cont.)}
+    \begin{example}
+        From the textbook, 2.2, ex. 2.
+        \begin{alignat}{2}
+            \frac{dy}{dx}&=\frac{3x^2+4x+2}{2(y-1)} &\quad y(0) = -1
+        \end{alignat}
+        Given the above, determine the interval in which the solution exists.
+        \begin{align}
+            \int 2(y-1)\,dy&=\int (3x^{2} + 4x + 2)\,dx\\
+            \implies y^2 - 2y + C_{1} &= x^3 + 2x^{2}+2x+C_2
+        \end{align}
+        The solution above is the \textbf{general implicit solution}. The constants, $C_{1}$ and $C_2$ can be combined into one constant, $C$, because they are independent.\\
+        Next, use the initial value to solve for C
+        \begin{alignat}{3}
+            &&y(0) &= - 1\\
+            &\implies & (-1)^{2} - 2(-1) &= 0^{3} + 2(0)^{2}+ 2(0) + C\\
+            &\implies & C &= 3
+        \end{alignat}
+    \end{example}
+    \np
+    \begin{example*}[4.1 (cont.)]
+        Then complete the square on the left hand side to get the \textbf{explicit~solution}.
+        \begin{alignat}{3}
+            && (y^{2} - 2y + 1) - 1 &= x^{3} + 2x^{2} + 2x + 3\\
+            &\implies &(y - 1)^{2} &= x^{3} + 2x^{2} + 2x + 4\\
+            &\implies & y - 1 &= \pm \sqrt{x^{3}  + 2x^{2} + 2x + 4}\\
+            &\implies & y &= 1 \pm \sqrt{x^{3}  + 2x^{2} + 2x + 4}\\
+            &\implies & y &= 1 - \sqrt{x^{3}  + 2x^{2} + 2x + 4}\\
+            &\because & y(0) &= -1
+        \end{alignat}
+        \textbf{Note:} It is also possible to use the quadratic formula in order to convert this instance of an implicit into an explicit solution.\\
+        \textbf{Observation}: Because the unique solution involves a square root, a function defined for $x \in [0, \infty)$, it is possible to reduce the original question to findinding when the radicand is non-negative.
+        \begin{alignat}{3}
+            &&x^{3} + 2 x^{2} + 2x + 4\ &= 0\\
+            &&(x^{2} + 2)(x + 2) &= 0\\
+            &\implies&x &\geq -2
+        \end{alignat}
+        The factor $x^{2} + 2$ will always be positive, so now the question is further reduced to when $x + 2$ will be non-negative, which is $x \in [-2, \infty)$.\\
+        Therefore, the interval of which the solution exists is $(-2, \infty)$
+    \end{example*}
+    \begin{remark}[Solutions to Differential Equations]
+        In \textbf{Example 4.1}, notice the final answer was an open interval, $(-2, \infty)$, rather than a half closed interval, $[-2, \infty)$, even if the solution would be defined if $x = -2$. The reason for this is that \textbf{solutions to differential equations must also be differentiable}.\\
+        At point $x = -2$, the unique solution is defined, however, it is not differentiable as $\lim_{x \to -2^{-}}$ does not exist, because the function is not defined for $x < -2$.
+    \end{remark}
+    \np
+    \section{Mathematical Modelling}
+    \begin{example}[Modelling]
+        Consider a pond fille with 10 million gallons of fresh water. A flow of 5 million gallons per year with water that is contaminated wiht a chemical enters the pond. There is also an outflow of this mixture on the order of 5 million gallons per year.\bigskip
+
+        \noindent Let $\gamma(t)$ be the concentration of the fluid entering the pod at time $t$, and let $Q(t)$ be the quantity of chemicals in the pod at time $t$.\bigskip
+        
+        \noindent It is determined that
+        \[\gamma(t) = 2 + \sin(2t)\ \text{g}\cdot\text{gal}^{-1}\]
+
+        \noindent Find $Q(t)$ using the given information.\bigskip
+
+        \noindent We can infer that $Q(0) = 0$ because the water starts off fresh at $t = 0$.\\
+        We know that $\frac{dQ}{dt}$ is equal to the rate at which chemicals are entering minus the rate at which they leave, leading us to
+        \[\frac{dQ}{dt} = I(t)\gamma(t) - \frac{O(t)}{V(t)}\big[Q(t)\big]\]
+        Where $I(t)$ describes the rate at which the contaminated water enters, $O(t)$ describes the rate at which the water mixture leaves the pond, and $V(t)$ describes the total volume of the pond at any given time.\\
+        In this case,
+        \begin{alignat}{1}
+            I(t) &= 5\times 10^{6}\ \text{gal}\,\text{year}^{-1}\\
+            O(t) &= 5\times 10^{6}\ \text{gal}\,\text{year}^{-1}\\
+            V(t) &= 10^{7}\ \text{gal}\\
+        \end{alignat}
+        Plugging in the values yields the following,
+        \begin{alignat}{1}
+            \frac{dQ}{dt} &= 5\times 10^{6}\gamma(t) - \frac{1}{2}Q(t)\\
+        \end{alignat}
+        Solving the linear differential equation,
+        \begin{alignat}{3}
+            &&\frac{dQ}{dt} + \frac{1}{2}Q(t) &=  5\times 10^{6}\gamma(t)\\
+            &\implies&Q_{c}(t)&=5\times 10^{6}e^{-\frac{1}{2}t}\int e^{\frac{1}{2}t}(2 + \sin(2t))\,dt\\
+            &\implies&Q_{c}(t)&=2\times 10^{7} + \frac{2\times 10^{7}}{17}\sin(2t)-\frac{4\times 10^{7}}{17}cos(2t) + Ce^{-\frac{1}{2}t}\\
+            &&Q_{c}(0) &= 2\times 10^{7}-\frac{4\times 10^{7}}{17} + C = 0\\
+            &\implies&C&=\frac{-3\cdot10^{8}}{17}
+        \end{alignat}
+        \begin{equation}    
+            Q(t)=2\times 10^{7} + \frac{2\times 10^{7}}{17}\sin(2t)-\frac{4\times 10^{7}}{17}cos(2t) - \frac{3\cdot10^{8}}{17}e^{-\frac{1}{2}t}
+        \end{equation}
+    \end{example}
+    \begin{remark}[Behavior of Example 4.2]
+        When graphing this equation, it can be seen that in the long term the equation becomes periodic despite beginning with an irregular pattern. This is due to the fact that the term $- \frac{3\cdot10^{8}}{17}e^{-\frac{1}{2}t}$ is able to affect the behavior in the short term, however, it is decaying exponentially and tends towards $0$. The $\sin$ and $\cos$ functions are periodic which cause the sinusoidial shape of the graph as $t \to \infty$.
+    \end{remark}
+\end{document}

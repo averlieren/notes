@@ -1,0 +1,206 @@
+% !TeX root = ../diffeq.tex
+\documentclass[diffeq.tex]{subfiles}
+
+\begin{document}
+\chapter{13 February 2020}
+    \section{Applications of the Wronskian}
+    \begin{corollary}
+        Recall in the last lecture, \textbf{Theorem 9.3}.
+        Let
+        \begin{equation}
+            A = \begin{pmatrix}
+                a_{1} & b_{1}\\
+                a_{2} & b_{2}
+            \end{pmatrix}
+        \end{equation}
+        If $|A| = 0$, then for \textbf{some} values of $c_{1}$ and $c_{2}$ the linear system
+        \begin{equation}
+            \begin{cases}
+                a_{1}x + b_{1}y = c_{1}&\\
+                a_{2}x + b_{2}y = c_{2}&\\
+            \end{cases}
+        \end{equation}
+        does not have a solution (inconsistent).
+    \end{corollary}
+    \np
+    \begin{btheorem}
+        Assume that $y_{1}$ and $y_{2}$ are solutions to
+        \begin{equation}
+            L[y] = y'' + p(t)y' + q(t)y = 0
+        \end{equation}
+        where $p$ and $q$ are continuous, and $t_{0}$ is a fixed point.\\
+        Then, $\forall z_{0} \wedge \forall z_{1}$, it is possible to find $c_{1}$ and $c_{2}$ such that
+        \begin{equation}
+            y(t) = c_{1}y_{1}(t) + c_{2}y_{2}(t)
+        \end{equation}
+        satisfies the IVP
+        \begin{equation}
+            L[y],\quad  y(t_{0}) = z_{0},\quad y'(t_{0}) = z_{1}
+        \end{equation}
+        if and only if
+        \begin{equation}
+            W[y_{1}, y_{2}](t_{0}) \neq 0
+        \end{equation}
+    \end{btheorem}
+    \begin{bproof}
+        Suppose that $\forall z_{0}, z_{1} \implies \exists\, C_{1}, C_{2}$ such that
+        \begin{equation}
+            \begin{cases}
+                C_{1}y_{1}(t_{0}) + C_{2}y_{2(t_{0})} = z_{0}&\\
+                C_{1}y_{1}'(t_{0}) + C_{2}y_{2}'(t_{0}) = z_{1}&
+            \end{cases}
+        \end{equation}
+        then, $\exists!\,C_{1}, C_{2}$ iff $W[y_{1}, y_{2}](t_{0}) \neq 0$
+    \end{bproof}
+    \begin{btheorem}
+        Suppose that $y_{1}$ and $y_{2}$ are solutions to
+        \begin{equation}
+            L[y] = 0
+        \end{equation}
+        Then, the family of solutions
+        \begin{equation}
+            y=C_{1}y_{1} + C_{2}y_{2}
+        \end{equation}
+        includes all solutions of $L[y] = 0$ iff $\exists t_{0} \implies W[y_{1}, y_{2}](t_{0}) \neq 0$
+    \end{btheorem}
+    \np
+    \begin{example}[Application of 10.2]
+        The solutions to
+        \begin{equation}
+            y'' - 5y' + 6y = 0
+        \end{equation}
+        are
+        \begin{equation}
+            y_{1} = e^{2t},\quad y_{2} = e^{3t}
+        \end{equation}
+        \begin{equation}
+            y = C_{1}e^{2t} + C_{2}e^{3t}
+        \end{equation}
+        Calculating the Wronskian
+        \begin{alignat}{1}
+            W[y_{1}, y_{2}] &= \begin{vmatrix}
+                e^{2t} & e^{3t}\\
+                2e^{2t} & 3e^{3t}
+            \end{vmatrix}\\
+            &= e^{5t}
+        \end{alignat}
+        \begin{equation}
+            e^{5t} \neq 0
+        \end{equation}
+        Therefore, there does not exist other solutions to this CHSOLDE.
+    \end{example}
+    \begin{btheorem}[Abel's Theorem]
+        If $y_{1}, y_{2}$ are solutions to a SOLDE,
+        \begin{equation}
+            L[y] = y'' + p(t)y' + q(t)y = 0
+        \end{equation}
+        where $p, t$ are continuous over an open interval, $I$, then the Wronskian at point $t$ is given by Abel's Formula,
+        \begin{equation}
+            W[y_{1}, y_{2}](t) = c\exp\bbbp{-\int p(t)\,dt}
+        \end{equation}
+        where $c$ is some arbitrary constant dependent on $y_{1}, y_{2}$, but not on $t$.
+        \begin{alignat}{1}
+            \forall t\in I, W[y_{1}, y_{2}](t) &\equiv 0 \iff c = 0\\
+            \forall t\in I, W[y_{1}, y_{2}](t) &\nequiv 0 \iff c \neq 0
+        \end{alignat}
+    \end{btheorem}
+    \np
+    \begin{example}
+        Suppose that
+        \begin{equation}
+            y_{1}(t) = e^{r_{1}t},\quad y_{2}(t) = e^{r_{2}t}
+        \end{equation}
+        are solutions of
+        \begin{equation}
+            L[y] = y'' + p(t)y' + q(t)y = 0
+        \end{equation}
+        Show that if $r_{1} \neq r_{2}$, then $C_{1}y_{1} + C_{2}y_{2}$ includes all solutions of $L[y] = 0$.
+        \begin{alignat}{1}
+            W[e^{r_{1}t}, e^{r_{2}t}] &= \begin{vmatrix}
+                e^{r_{1}t} & e^{r_{2}t}\\
+                r_{1}e^{r_{1}t} & r_{2}e^{r_{2}t}
+            \end{vmatrix}\\
+            &= (r_{2} - r_{1})e^{(r_{1} + r_{2})t}\\
+            &\neq 0
+        \end{alignat}
+    \end{example}
+    \begin{definition}[Fundamental Set of Solutions]
+        If $y_{1}$ and $y_{2}$ are solutions of
+        \begin{equation}
+            L[y] = y'' + p(t)y' + q(t)y = 0
+        \end{equation}
+        such that $C_{1}y_{1} + C_{2}y_{2}$ includes all possible solutions of $L[y] = 0$, then $y_{1}$ and $y_{2}$ form a \textbf{fundamental set of solutions} (FSS).\\
+        Alternatively, if and only if
+        \begin{equation}
+            W[y_{1}, y_{2}] \neq 0
+        \end{equation}
+        then there exists fundamental set containing $y_{1}$ and $y_{2}$.
+    \end{definition}
+    \begin{example}
+        Show that $y_{1}(t) = t^{\frac{1}{2}}$, $y_{2}(t) = t^{-1}$ form a FSS of
+        \begin{equation}
+            2t^{2}y'' + 3ty'-y=0,\quad t > 0
+        \end{equation}
+        \begin{enumerate}
+            \item Ensure they are solutions of $L[y] = 0$\\
+            i.e. $L[t^{\frac{1}{2}}] = 0$, $L[t^{-1}] = 0$
+            \begin{alignat}{1}
+                L[t^{\frac{1}{2}}] &= 2t^{2}(-\frac{1}{4})t^{-\frac{3}{4}}+3t(\frac{1}{2})t^{-\frac{1}{2}} + t^{\frac{1}{2}}\\
+                &= -\frac{1}{2}t^{\frac{1}{2}} + \frac{3}{2}t^{\frac{1}{2}}-t^{\frac{1}{2}}\\
+                &\equiv 0
+            \end{alignat}
+            \begin{alignat}{1}
+                L[t^{-1}] &= (2t^{2})(2t^{-3}) + 3t(-1)t^{-2}-t^{-1}\\
+                &= 4t^{-1} - 3t^{-1} - t^{-1}\\
+                &\equiv 0
+            \end{alignat}
+            \item Ensure that the Wronskian is not constantly equal to 0
+            \begin{alignat}{1}
+                W[t^{\frac{1}{2}}, t^{-1}] &= \begin{vmatrix}
+                    t^{\frac{1}{2}} & t^{-1}\\
+                    \frac{1}{2}t^{-\frac{1}{2}} & -t^{-1}
+                \end{vmatrix}\\
+                &= -t^{-\frac{1}{2}} - -\frac{1}{2}t^{-\frac{3}{2}}\\
+                &\nequiv 0
+            \end{alignat}
+        \end{enumerate}
+        Then,
+        \begin{equation}
+            L[y] = y'' + ay' + by = 0;\quad f(r) = r^{2} + ar + b = 0
+        \end{equation}
+        has only one solution of degree 2.
+        \begin{equation}
+            r_{1,2} = \frac{-a\pm\sqrt{a^{2} - 4b}}{2},\quad r_{1} = r_{2} \iff \sqrt{a^{2} - 4b} \equiv 0
+        \end{equation}
+    \end{example}
+    \begin{example}
+        \begin{enumerate}
+            \item If $ar^{2} + br + c = 0$ has equal roots $r_{1}$, show that
+            \begin{equation}
+                L[e^{rt}] = a(e^{rt})'' + b(e^{rt})' + ce^{rt} = a(r - r_{1})^{2}e^{rt}
+            \end{equation}
+            When $r = r_{1}$, $L[e^{rt}] = 0$, therefore $e^{rt}$ is a solution to
+            \begin{equation}
+                L[y] = ay'' + by' + cy = 0
+            \end{equation}
+            \item  Then,
+            \begin{alignat}{1}
+                \frac{\partial}{\partial r}L[e^{rt}] &= L[\frac{\partial}{\partial r}e^{rt}]=L[te^{rt}]\\
+                &= ate^{rt}(r-r_{1})^{2} + 2ae^{rt}(r-r_{1})
+            \end{alignat}
+            Because $r = r_{1} \implies L[te^{rt}] = 0$, $te^{rt}$ is another solution to $L[y] = 0$.
+        \end{enumerate}
+        Show that $e^{rt}, te^{rt}$ form a FSS.
+        \begin{enumerate}[label=\alph*.]
+            \item $L[e^{rt}] = 0$
+            \item $L[te^{rt}] = 0$
+            \begin{alignat}{1}
+                (te^{rt})' &= e^{rt} + rte^{rt}\\
+                (te^{rt})'' &= 2re^{rt} + r^{2}te^{rt}\\
+                %&= 2re^{rt} + r^{2}te^{rt} + b(te^{rt})\\
+                L[te^{rt}] &= (2re^{rt} + r^{2}te^{rt}) + a(e^{rt} + rte^{rt}) + b\\
+                &= e^{rt}(2r + a) + te^{rt}(r^{2} + ar + b)
+            \end{alignat}
+        \end{enumerate}
+    \end{example}
+\end{document}

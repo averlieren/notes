@@ -131,7 +131,8 @@
 			"\\documentclass[diffeq.tex]{subfiles}",
 			"",
 			"\\begin{document}",
-			"$1",
+			"\\chapter{$1}",
+			"$2",
 			"\\end{document}"
 		]
 	}
