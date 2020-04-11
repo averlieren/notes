@@ -3,5 +3,279 @@
 
 \begin{document}
 \chapter{7 April 2020}
-
+    \section{Intro to Systems of Differential Equations}
+    \begin{definition}
+        A basic system of differential equations is
+        \begin{equation}
+            \begin{cases}
+                x_{1}' = F_{1}(t, x_{1}, x_{2}, \dots, x_{n})\\
+                x_{2}' = F_{1}(t, x_{1}, x_{2}, \dots, x_{n})\\
+                \vdots\\
+                x_{n}' = F_{n}(t, x_{1}, x_{2}, \dots, x_{n})\\
+            \end{cases}
+        \end{equation}
+    \end{definition}
+    \begin{example}
+        \begin{equation}
+            \begin{cases}
+                x_{1}' = 1
+                x_{2}' = x_{2}
+            \end{cases}
+        \end{equation}
+        This system of equations can be solved by solving each differential separately,
+        \begin{alignat}{1}
+            x_{1}' = 1 &\implies x_{1} = t + c_{1}\\
+            x_{2}' = x_{2} &\implies x_{2} = c_{2}e^{t}
+        \end{alignat}
+    \end{example}
+    \begin{example}
+        Not all systems can be solved in this way, take the following
+        \begin{equation}
+            \begin{cases}
+                x_{1}' = x_{1} + x_{2}\\
+                x_{2}' = x_{1} + 3x_{2}
+            \end{cases}
+        \end{equation}
+    \end{example}
+    \np
+    \section{Linear Algebra (again)}
+    \subsection{Matrices}
+    The content covered is similar to that we covered previously.
+    \subsubsection{Operations}
+    If $A$ and $B$ are $m$\,x$\,n$ matrices, i.e.
+    \begin{equation}
+        A = \begin{pmatrix}
+            a_{11} & a_{12} & \dots & a_{1n}\\
+            a_{21} & a_{22} & \dots & a_{2n}\\
+            \vdots & \vdots & \ddots & \vdots\\
+            a_{m1} & a_{m2} & \dots & a_{mn}
+        \end{pmatrix},\quad B = \begin{pmatrix}
+            b_{11} & b_{12} & \dots & b_{1n}\\
+            b_{21} & b_{22} & \dots & b_{2n}\\
+            \vdots & \vdots & \ddots & \vdots\\
+            b_{m1} & b_{m2} & \dots & b_{mn}
+        \end{pmatrix}
+    \end{equation}
+    \begin{definition}[Addition]
+        The addition of $A$ and $B$ can be written as
+        \begin{equation}
+            A + B = \begin{pmatrix}
+                a_{11} + b_{11} & a_{12} + b_{12} & \dots & a_{1n} + b_{1n}\\
+                a_{21} + b_{21} & a_{22} + b_{22} & \dots & a_{2n} + b_{2n}\\
+                \vdots & \vdots & \ddots & \vdots\\
+                a_{m1} + b_{m1} & a_{m2} + b_{m2} & \dots & a_{mn} + b_{mn}
+            \end{pmatrix}
+        \end{equation}
+    \end{definition}
+    \begin{definition}[Scalar Multiplication]
+        The multiplication of $A$ by a scalar $c$ (a number), results in
+        \begin{equation}
+            cA = \begin{pmatrix}
+                ca_{11} & ca_{12} & \dots & ca_{1n}\\
+                ca_{21} & ca_{22} & \dots & ca_{2n}\\
+                \vdots & \vdots & \ddots & \vdots\\
+                ca_{m1} & ca_{m2} & \dots & ca_{mn}
+            \end{pmatrix}
+        \end{equation}
+    \end{definition}
+    \begin{definition}[Subtraction]
+        Subtraction can be thought of as first multiplying the matrix by a scalar of $-1$, then adding, i.e.
+        \begin{equation}
+            A - A = A + (-1)A
+        \end{equation}
+    \end{definition}
+    \np
+    \begin{definition}[Zero Matrix]
+        In the previous example,
+        \begin{equation}
+            A + (-1)A = 0
+        \end{equation}
+        However, the $0$ is not the number $0$, it is the zero matrix, i.e.
+        \begin{equation}
+            A + (-1)A = 0 = \begin{pmatrix}
+                0 & 0 & \dots & 0\\
+                0 & 0 & \dots & 0\\
+                \vdots & \vdots & \ddots & \vdots\\
+                0 & 0 & \dots & 0
+            \end{pmatrix}
+        \end{equation}
+        Where the size of the zero matrix is $m$\,x\,$n$, or the same size as matrix $A$. The zero is used as a shorthand, and in some literature is denoted by a bolded zero, i.e. \textbf{0}.
+    \end{definition}
+    \begin{definition}[1x1 Matrices]
+        In general, most $1$\,x\,$1$ matrices are written as just the element, rather than being surrounded by the matrix symbol, i.e. given the following matrix
+        \begin{equation}
+            A = \begin{pmatrix}
+                23
+            \end{pmatrix}
+        \end{equation}
+        it is acceptable to write
+        \begin{equation}
+            A = 23
+        \end{equation}
+    \end{definition}
+    \begin{definition}[Vectors and Row Matrices]
+        A \textbf{vector} is defined as a matrix of size $m$\,x\,$1$, i.e.
+        \begin{equation}
+            \bar{v} = \begin{pmatrix}
+                v_{1}\\
+                v_{2}\\
+                \vdots\\
+                v_{m}
+            \end{pmatrix}
+        \end{equation}
+        Whilst a \textbf{row matrix} is defined as a matrix of size $1$\,x\,$n$, i.e.
+        \begin{equation}
+            r = \begin{pmatrix}
+                r_{1} & r_{2} & \dots & r_{n}
+            \end{pmatrix}
+        \end{equation}
+    \end{definition}
+    \np
+    \begin{definition}[Matrix Multiplication]
+        \begin{enumerate}
+            \item Matrix multiplication can only occur between two matrices of size $m$\,x\,$n$ and $n$\,x\,$k$. Or, the number of columns of the first matrix must equal the number of rows of the second.
+            \item It is non-commutive, i.e.
+            \begin{equation}
+                A\, B \neq B\, A
+            \end{equation}
+            \item The resulting matrix between the multiplication of $m$\,x\,$n$ and $n$\,x\,$k$ matrices is of size $m$\,x\,$k$.
+        \end{enumerate}
+        \noindent Therefore, the multiplication of matrices is written as
+        \begin{equation}
+            A\, B = \begin{pmatrix}
+                c_{11} & c_{12} & \dots & c_{1k}\\
+                c_{21} & c_{22} & \dots & c_{2k}\\
+                \vdots & \vdots & \ddots & \vdots\\
+                c_{m1} & c_{m2} & \dots & c_{mk}
+            \end{pmatrix}
+        \end{equation}
+        Let $c_{ij}$ be defined as the dot product of the $i$\textsuperscript{th} row of matrix $A$, and the $j$\textsuperscript{th} column of matrix $B$.
+        \begin{alignat}{1}
+            c_{ij} &= \begin{pmatrix}
+                a_{i1} & a_{i2} & \dots & a_{in}
+            \end{pmatrix}
+            \begin{pmatrix}
+                b_{1j} \\
+                b_{2j} \\
+                \vdots \\
+                b_{nj}
+            \end{pmatrix}\\
+            &= \sum_{k = 0}^{n}a_{ik}b_{kj}
+        \end{alignat}
+    \end{definition}
+    \np
+    \subsubsection{Matrix Multiplication Examples}
+    \begin{example}
+        This is a basic example of matrix multiplication.
+        \begin{equation}
+            A = \begin{pmatrix}
+                0\\1\\3\\2
+            \end{pmatrix},\quad B = \begin{pmatrix}
+                1 & -2
+            \end{pmatrix}
+        \end{equation}
+        \begin{equation}
+            A\,B = \begin{pmatrix}
+                0 & 0\\
+                1 & -2\\
+                3 & -6\\
+                2 & -4
+            \end{pmatrix}
+        \end{equation}
+    \end{example}
+    \begin{example}
+        In the event that the resulting matrix is a $1$\,x\,$1$, i.e.
+        \begin{equation}
+            A = \begin{pmatrix}
+                a_{1}\\
+                a_{2}\\
+                \vdots\\
+                a_{n}
+            \end{pmatrix},\quad
+            B = \begin{pmatrix}
+                b_{1} & b_{2} & \dots & b_{n}
+            \end{pmatrix}
+        \end{equation}
+        Then, $B\,A$ is a $1$\,x\,$1$ matrix, therefore it can be computed as the dot product between $B$ and $A$, i.e.
+        \begin{equation}
+            B \cdot A = \sum a_{n}b_{n}
+        \end{equation}
+    \end{example}
+    \begin{example}[Non-commutativity]
+        In the previous example,
+        \begin{equation}
+            A = \begin{pmatrix}
+                a_{1}\\
+                a_{2}\\
+                \vdots\\
+                a_{n}
+            \end{pmatrix},\quad
+            B = \begin{pmatrix}
+                b_{1} & b_{2} & \dots & b_{n}
+            \end{pmatrix}
+        \end{equation}
+        We found $B\, A$ equal to the dot product between the two matrices, however, it is not equal to $A\, B$:
+        \begin{equation}
+            A\, B = \begin{pmatrix}
+                c_{11} & c_{12} & \dots & c_{1k}\\
+                c_{21} & c_{22} & \dots & c_{2k}\\
+                \vdots & \vdots & \ddots & \vdots\\
+                c_{m1} & c_{m2} & \dots & c_{mk}
+            \end{pmatrix}
+        \end{equation}
+    \end{example}
+    \subsubsection{Determinants}
+    \begin{definition}
+        Determinants are a number associated with square matrices, i.e. matrices of size $n$\,x\,$n$. Given a matrix $A$, the determinant can be denoted as
+        \begin{equation}
+            \det(A) = |A|
+        \end{equation}
+        or by replacing the parentheses/brackets around a matrix with a straight line, i.e.
+        \begin{equation}
+            \det(A) = |A| = \begin{vmatrix}
+                a_{11} & a_{12} & \dots & a_{1n}\\
+                a_{21} & a_{22} & \dots & a_{2n}\\
+                \vdots & \vdots & \ddots & \vdots\\
+                a_{m1} & a_{m2} & \dots & a_{mn}
+            \end{vmatrix}
+        \end{equation}
+        While the true significance and the generalized method to compute determinants for any square matrix is outside of the scope of this class, determinants still prove useful in solving systems of differential equations.
+    \end{definition}
+    \begin{example}[Determinant of a 2\,x\,2 Matrix]
+        Given a matrix,
+        \begin{equation}
+            A = \begin{pmatrix}
+                a_{11} & a_{12}\\
+                a_{21} & a_{22}
+            \end{pmatrix}
+        \end{equation}
+        The determinant is computed as,
+        \begin{equation}
+            |A| = a{11}a_{22} - a_{21}a_{12}
+        \end{equation}
+    \end{example}
+    \begin{example}[Determinant of a 3\,x\,3 Matrix]
+        Given a matrix,
+        \begin{equation}
+            A = \begin{pmatrix}
+                a_{11} & a_{12} & a_{13}\\
+                a_{21} & a_{22} & a_{23}\\
+                a_{31} & a_{32} & a_{33}
+            \end{pmatrix}
+        \end{equation}
+        The determinant can be computed via the Laplace Formula, i.e.
+        \begin{equation}
+            |A| = a_{11}\begin{vmatrix}
+                a_{22} & a_{23}\\
+                a_{32} & a_{33}
+            \end{vmatrix} - a_{12}\begin{vmatrix}
+                a_{21} & a_{23}\\
+                a_{31} & a_{33}
+            \end{vmatrix} + a_{13}\begin{vmatrix}
+                a_{21} & a_{22}\\
+                a_{31} & a_{32}
+            \end{vmatrix}
+        \end{equation}
+        Also, you may encounter another method using the diagonals formed by the matrix, in that case see Sarus' rule or Sarus' Scheme.
+    \end{example}
 \end{document}

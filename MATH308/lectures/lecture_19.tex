@@ -3,5 +3,100 @@
 
 \begin{document}
 \chapter{2 April 2020}
-
+    \section{Laplacian Properties}
+    Given functions $f, g$, then the Laplacian of $f + g$ can be written as the linear combination of the Laplacian of $f$ and $g$, i.e.:
+    \begin{equation}
+        \lp{f + g} = \lp{f} + \lp{g}
+    \end{equation}
+    However, does the following hold?
+    \begin{equation}
+        \lp{f \cdot g} = \lp{f} \cdot \lp{g}
+    \end{equation}
+    \begin{example}[Counter Example]
+        Consider the case of
+        \begin{equation}
+            f = g = 1
+        \end{equation}
+        Then,
+        \begin{equation}
+            \lp{f \cdot g} = \lp{1} = \frac{1}{s}
+        \end{equation}
+        \begin{equation}
+            \lp{f}\lp{g} = \frac{1}{s^{2}}
+        \end{equation}
+        \begin{equation}
+            \frac{1}{s^{2}} \neq \frac{1}{s}
+        \end{equation}
+    \end{example}
+    \np
+    \section{Convolutions}
+    However, there does exist a function $h$ such that
+    \begin{equation}
+        \lp{h} = \lp{f}\lp{g}
+    \end{equation}
+    \begin{btheorem}
+        \begin{equation}
+            h(t) = \int_{0}^{t}f(\tau)g(t - \tau)d\tau
+        \end{equation}
+        Then,
+        \begin{equation}
+            \lp{h} = \lp{f}\lp{g}
+        \end{equation}
+        The function $h$ is defined to be the \textbf{convolution} of $f$ and $g$, denoted by $f * g$.
+    \end{btheorem}
+    \subsection{Convolution Properties}
+    \begin{alignat}{2}
+        f * g &= g * f & \quad\text{commutivity}\\
+        f * (g_{1} + g_{2}) &= f * g_{1} + f * g_{2} & \quad\text{distributivity}\\
+        (f * g) * h &= f * (g * h) & \quad\text{associativity}\\
+        0 * f &= f * 0 = 0&
+    \end{alignat}
+    \begin{example}
+        Compute
+        \begin{equation}
+            \lpinv{H(s)},\quad H(s) = \frac{a}{s^{2}(s^{2} + a^{2})}
+        \end{equation}
+        Solution
+        \begin{alignat}{1}
+            H(s) &= \underbrace{\frac{1}{s^{2}}}_{F(s)} \cdot \underbrace{\frac{a}{s^{2} + a^{2}}}_{G(s)}\\
+            \lpinv{H(s)} &= \lpinv{F(s)} * \lpinv{G(s)}\\
+            &= \lci\left\{\frac{1}{s^{2}}\right\}*\lci\left\{\frac{a}{s^{2} + a^{2}}\right\}\\
+            &= t * \sin(at)\\
+            &= \int_{0}^{t}(t-\tau)\sin(a\tau)d\tau\\
+            &= \frac{at-\sin(at)}{a^{2}}
+        \end{alignat}
+    \end{example}
+    \begin{example}
+        Solve
+        \begin{equation}
+            y'' + 4y = g(t),\quad y(0) = 3,\quad y'(0) = -1
+        \end{equation}
+        \begin{alignat}{1}
+            \lp{y'' + 4y} &= \lp{g}\\
+            s^{2}\lp{y} - sy(0) - y'(0) + 4\lp{y} &= \lp{g}
+        \end{alignat}
+        \begin{alignat}{1}
+            \lp{y} &= 3\frac{s}{s^{2} + 4} - \frac{1}{2}\cdot\frac{2}{s^{2} + 4} + \frac{1}{2} \cdot \frac{2}{s^{2} + 4} \cdot G(s)\\
+            y &= \lci\left\{3\frac{s}{s^{2} + 4} - \frac{1}{2}\cdot\frac{2}{s^{2} + 4}\right\} + \frac{1}{2}\lci\left\{\frac{2}{s^{2} + 4}G(s)\right\}\\
+            &= 3\cos(2t)-\frac{1}{2}\sin(2t)+\frac{1}{2}(f * g)\\
+            f(t) &= \lci\left\{\frac{2}{s^{2} + 4}\right\} = \sin(2t)
+        \end{alignat}
+        Then the final solution is,
+        \begin{equation}
+            y = 3\cos(2t) - \frac{1}{2}\sin(2t) + \frac{1}{2}\int_{0}^{t}\sin(2(t - \tau))g(\tau)\,d\tau
+        \end{equation}
+    \end{example}
+    \begin{example}
+        Find $\lp{f}$ given
+        \begin{equation}
+            f = \int_{0}^{t}\sin(t-\tau)\cos(\tau)\,d\tau
+        \end{equation}
+        Solution,
+        \begin{alignat}{1}
+            f &= \sin(t) * \cos(t)\\
+            \lp{f} &= \lp{\sin(t)}\lp{\cos(t)}\\
+            &= \frac{1}{s^{2} + 1}\cdot\frac{s}{s^{2} + 1}\\
+            &= \frac{s}{(s^{2} + 1)^{2}}
+        \end{alignat}
+    \end{example}
 \end{document}
