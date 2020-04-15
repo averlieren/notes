@@ -1,0 +1,493 @@
+% !TeX root = ../diffeq.tex
+\documentclass[diffeq.tex]{subfiles}
+
+\begin{document}
+\chapter{14 April 2020}
+No lecture was conducted. These are some homework practice questions that can be found in \textbook.
+
+\section{Method of Undetermined Coefficients}
+For the following problems:
+\begin{enumerate}
+    \item Find the general solution using the method of undetermined coefficients.
+    \item Let $L[\phi]$ be the linear differential operator ($L[\phi] = \phi'' + p(t)\phi' + q(t)\phi$)
+    \item Some computations such as derivatives may have steps skipped for the sake of brevity.
+\end{enumerate}
+\begin{homework*}[141.1]
+    Given:
+    \begin{equation}
+        y'' - 2y' - 3y = 3e^{2t}
+    \end{equation}
+    Solution:
+    \begin{alignat}{1}
+        &y'' - 2y' - 3y = 0\\
+        \implies& y_{1} = e^{3t},\quad y_{2} = e^{-t}
+    \end{alignat}
+    \begin{alignat}{2}
+        L[Ae^{2t}] = \left[4A - 4A - 3A\right] e^{2t} &= 3e^{2t}\\
+        \implies A &= -1
+    \end{alignat}
+    Therefore,
+    \begin{equation}
+        y = c_{1}e^{3t} + c_{2}e^{-t} - e^{2t}
+    \end{equation}
+\end{homework*}
+\np
+\begin{homework*}[141.3]
+    Given:
+    \begin{equation}
+        y'' + y' - 6y = 12e^{3t} + 12e^{-2t}
+    \end{equation}
+    Solution:
+    \begin{alignat}{1}
+        &y'' + y' - 6y = 0\\
+        \implies& y_{1} = e^{2t},\quad y_{2} = e^{-3t}
+    \end{alignat}
+    \begin{alignat}{1}
+        L[Ae^{3t}] = 9Ae^{3t} + 3Ae^{3t} - 6Ae^{3t} &= 12e^{3t}\\
+        6Ae^{3t} &= 12e^{3t}\\
+        \implies A &= 2
+    \end{alignat}
+    \begin{alignat}{1}
+        L{Be^{-2t}} = 4Be^{-2t} - 2Be^{-2t}-6Be^{-2t} &= 12e^{-2t}\\
+        -4Be^{-2t} &= 12e^{-2t}\\
+        \implies B &= -3
+    \end{alignat}
+    Therefore,
+    \begin{equation}
+        y = c_{1}e^{2t} + c_{2}e^{-3t} + 2e^{3t} - 3e^{-2t}
+    \end{equation}
+\end{homework*}
+\begin{homework*}[141.5]
+    Given:
+    \begin{equation}
+        y'' + 2y' = 3 + 4\sin(2t)
+    \end{equation}
+    Solution:
+    \begin{alignat}{1}
+        &y'' + 2y' = 0\\
+        \implies& y_{1} = 1,\quad y_{2} = e^{2t}
+    \end{alignat}
+    \begin{equation}
+        L[A\sin(2t) + B\cos(2t)] = (4A - 4B)\cos(2t) + (-4A-4B)\sin(2t)
+    \end{equation}
+    \begin{equation}
+        \begin{cases}
+            4A - 4B = 0\\
+            -4A - 4B = 4
+        \end{cases}
+        \implies
+        A = B = \frac{1}{2}
+    \end{equation}
+    \textbf{Remark:} I could have added the following C term in the previous, however, due to lack of space I decided to do it separately.
+    \begin{equation}
+        L[Ct] = 0 + 2C = 3 \implies C = \frac{3}{2}
+    \end{equation}
+    Therefore,
+    \begin{equation}
+        y = c_{1} + c_{2}e^{2t} + \frac{3}{2}t - \frac{1}{2}\cos(2t) - \frac{1}{2}\sin(2t)
+    \end{equation}
+\end{homework*}
+\np
+\begin{homework*}[141.7]
+    Given:
+    \begin{equation}
+        y'' + y = 3\sin(2t) + t\cos(2t)
+    \end{equation}
+    Solution:
+    \begin{alignat}{1}
+        &y'' + y = 0\\
+        \implies& y_{1} = \cos t,\quad y_{2} = \sin t
+    \end{alignat}
+    \textbf{Remark:} For the following guess I accidentally wrote an incorrect guess, however, it ended up working. For reference, a so called proper guess as defined in Table 3.5.1 in the text would be $Y = At\cos(2t) + Bt\sin(2t)$.
+    \begin{alignat}{1}
+        L[At\cos(2t) + B\sin(2t)] &= -4A\sin(2t)-4At\cos(2t)-4B\sin(2t)\\
+        &\quad + At\cos(2t) + B\sin(2t)\\
+        \implies  t\cos(2t)+3\sin(2t) &= (-4A-3B)\sin(2t) - 3At\cos(2t)
+    \end{alignat}
+    \begin{equation}
+        \begin{cases}
+            -4A - 3B &= 3\\
+            -3A &= 1
+        \end{cases}
+        \implies A = -\frac{1}{3},\quad B = -\frac{5}{9}
+    \end{equation}
+    Therefore,
+    \begin{equation}
+        y = c_{2}\cos t + c_{2}\sin t - \frac{1}{3}t\cos(2t) - \frac{5}{9}\sin(2t)
+    \end{equation}
+\end{homework*}
+\begin{homework*}[141.9]
+    Given:
+    \begin{equation}
+        u'' + \omega_{0}^{2}u = \cos(\omega_{0}t)
+    \end{equation}
+    Solution:
+    \begin{alignat}{1}
+        &u'' + \omega_{0}^{2} = 0\\
+        \implies& u_{1} = \cos(\omega_{0}t),\quad u_{2} = \sin(\omega_{0}t)
+    \end{alignat}
+    \begin{alignat}{1}
+        &L[At\cos(\omega_{0}t) + Bt\sin(\omega_{0}t)]\\
+        &= -A\sin(\omega_{0}t) + 2B\omega_{0}\cos(\omega_{0}t) = \cos(\omega_{0}t)
+    \end{alignat}
+    \begin{equation}
+        \begin{cases}
+            -2A\omega_{0} = 0\\
+            2B\omega_{0} = 1
+        \end{cases}
+        \implies B = \frac{1}{2\omega_{0}}
+    \end{equation}
+    Therefore,
+    \begin{equation}
+        y = c_{1}\cos(\omega_{0}t) + c_{2}\sin(\omega_{0}t) + \frac{1}{2\omega_{0}}t\sin(\omega_{0}t)
+    \end{equation}
+\end{homework*}
+\np
+\begin{homework*}[141.11]
+    Given:
+    \begin{equation}
+        y'' + y' - 2y = 2t,\quad y(0) = 0,\quad y'(0) = 1
+    \end{equation}
+    Solution:
+    \begin{alignat}{1}
+        &y'' + y' - 2y = 0\\
+        \implies&y_{1} = e^{t},\quad y_{2} = e^{-2t}
+    \end{alignat}
+    \begin{equation}
+        L[At + B] = 0 + A - 2At - 2B = 2t
+    \end{equation}
+    \begin{equation}
+        \begin{cases}
+            A - 2B &= 0\\
+            -2A &= 2
+        \end{cases}
+        \implies A = -1,\quad A = -\frac{1}{2}
+    \end{equation}
+    \begin{alignat}{1}
+        y(t) &= c_{1}e^{t} + c_{2}e^{-2t} - t - \frac{1}{2}\\
+        y(0) &= c_{2} + c_{2} - \frac{1}{2} = 0\\
+        y'(t) &= c_{1}e^{t} - 2c_{2}e^{-2t} - 1\\
+        y'(0) &= c_{1} - 2c_{2} - 1 = 1
+    \end{alignat}
+    \begin{equation}
+        \begin{cases}
+            c_{1} + c_{2} &= \frac{1}{2}\\
+            c_{1} - 2c_{2} &= 2
+        \end{cases}
+        \implies c_{1} = 1,\quad c_{2} = -\frac{1}{2}
+    \end{equation}
+    Therefore,
+    \begin{equation}
+        y = e^{t} - \frac{1}{2}e^{-2t} - t - \frac{1}{2}
+    \end{equation}
+\end{homework*}
+\np
+\begin{homework*}[141.13]
+    Given:
+    \begin{equation}
+        y'' - 2y' + y = te^{t} + 4,\quad y(0) = 1, y'(0) = 1
+    \end{equation}
+    Solution:
+    \begin{alignat}{1}
+        &y'' - 2y' + y = 0\\
+        \implies&y_{1} = e^{t},\quad y_{2} = te^{t}
+    \end{alignat}
+    \begin{alignat}{1}
+        L[At^{3}e^{t} + Bt^{2}e^{t} + C] &= At^{3}e^{t} + 3At^{2}e^{t} + 3At^{2}e^{t} + 6Ate^{t}\\
+        &\quad + Bt^{2}e^{t} + 2Bte^{t} + 2Bte^{t} + 2Be^{t}\\
+        &\quad -2At^{3}e^{t} - 6At^{2}e^{t} - 2Bt^{2}e^{t} - 4Bte^{t}\\
+        &\quad +At^{3}e^{t} + C\\
+        &= 6Ate^{t} - 2Be^{t} + C
+    \end{alignat}
+    \begin{equation}
+        \begin{cases}
+            6A &= 1\\
+            2B &= 0\\
+            C &= 4
+        \end{cases}
+    \end{equation}
+    \begin{alignat}{1}
+        y(t) &= c_{1}e^{t} + c_{2}te^{t} + \frac{1}{6}t^{3}e^{t} + 4\\
+        y(0) &= c_{1} + 4 = 1\\
+        y'(t) &= c_{1}e^{t} + c_{2}te^{t} + c_{2}e^{t} + \frac{1}{2}t^{2}e^{t}\\
+        y'(0) &= c_{1} + c_{2} = 1
+    \end{alignat}
+    \begin{equation}
+        \begin{cases}
+            c_{1} &= 3\\
+            c_{1} + c_{2} = 1
+        \end{cases}
+        \implies c_{1} = -3,\quad c_{2} = 4
+    \end{equation}
+    Therefore,
+    \begin{equation}
+        y = -3e^{t} + 4te^{t} + \frac{1}{6}t^{3}e^{t} + 4
+    \end{equation}
+\end{homework*}
+\np
+\section{Variation of Parameters}
+For this section, solve using variation of parameters. For problems of the form
+\begin{equation}
+    L[y] = y'' + p(t)y' + q(t)y = g(t)
+\end{equation}
+\begin{equation}
+    Y = -y_{1}\int^{t}_{t_{0}}\frac{y_{2}(s) g(s)}{W[y_{1}, y_{2}](s)}\,ds +y_{2}\int^{t}_{t_{0}}\frac{y_{1}(s) g(s)}{W[y_{1}, y_{2}](s)}\,ds
+\end{equation}
+Where $t_{0}$ is defined as any point conveniently inside the open interval $I$ where the solution exists.
+\begin{enumerate}
+    \item $y_{1}$ and $y_{2}$ are general solutions found by solving the corresponding CH\-SOLDE.
+    \item For the following examples, it is sufficient to only evaluate the upper bound $t$.
+    \item After finding a particular solution, confirm using method of undetermined coefficients.
+    \item If a particular solution has a term with a constant coefficient that is of the same form of either of the general solutions $y_{1}$ or $y_{2}$, it is sufficient to leave them out, as the coefficients $c_{1}$ and $c_{2}$ will take care of it. For example, $Y$ contains $e^{t}$, but $y_{1} = e^{t}$, it is fine to leave out the $e^{t}$ term from $Y$.
+\end{enumerate}
+\begin{homework*}[146.1]
+    Given:
+    \begin{equation}
+        y'' - 5y' + 6y = 2e^{t}
+    \end{equation}
+    Solution:
+    \begin{equation}
+        y_{1} = e^{2t},\quad y_{2} = e^{3t}
+    \end{equation}
+    \begin{equation}
+        W[e^{2t}, e^{3t}] = \begin{vmatrix}
+            e^{2t} & e^{3t} \\
+            2e^{2t} & 3e^{3t}
+        \end{vmatrix} = e^{5t}
+    \end{equation}
+    \begin{alignat}{1}
+        Y &= -e^{2t}\int^{t}\frac{2e^{3s}e^{s}}{e^{5s}}\,ds + e^{3t}\int^{t}\frac{2e^{2s}e^{s}}{e^{5s}}\,ds\\
+        &= -e^{2t}[-2e^{-s}]^{t} + e^{3t}[-e^{-2s}]^{t}\\
+        &= e^{t}
+    \end{alignat}
+    Checking,
+    \begin{equation}
+        L[Ae^{t}] = Ae^{t} - 5Ae^{t} + 6e^{t} = 2e^{t} \implies A = 1 \implies Y = e^{t}
+    \end{equation}
+    Therefore,
+    \begin{equation}
+        y = c_{1}e^{2t} + c_{2}e^{3t} + e^{t}
+    \end{equation}
+\end{homework*}
+\np
+\begin{homework*}[146.2]
+    Given:
+    \begin{equation}
+        y'' - y' - 2y = 2e^{-t}
+    \end{equation}
+    Solution:
+    \begin{equation}
+        y_{1} = e^{2t},\quad y_{2} = e^{-t}
+    \end{equation}
+    \begin{equation}
+        W[e^{2t}, e^{-t}] = \begin{vmatrix}
+            e^{2t} & e^{-t}\\
+            2e^{2t} & -e^{-t}
+        \end{vmatrix}
+        = -e^{t} - 2e^{t} = -3e^{t}
+    \end{equation}
+    \begin{alignat}{1}
+        Y &= -e^{2t}\int^{t}\frac{(2e^{-s})(e^{-s})}{-3e^{s}}\,ds + e^{-t}\int^{t}\frac{(2e^{-s})(e^{2s})}{-3e^{s}}\,ds\\
+        &= -e^{2t}\int^{t}-\frac{2}{3}e^{-3s}\,ds + e^{t}\int^{t}-\frac{2}{3}\,ds\\
+        &= -e^{2t}(-\frac{2}{9}e^{-3t}) + e^{-t}(-\frac{2}{3}t)\\
+        &= \frac{2}{9}e^{-t}-\frac{2}{3}te^{-t}\\
+        Y &= -\frac{2}{3}te^{-t}
+    \end{alignat}
+    \textbf{Remark:} As can be seen above, $\frac{2}{9}e^{-t}$ has a constant coefficient, and is of the form $y_{2}$, therefore, it is excluded from the final result of $Y$.
+    Checking:
+    \begin{alignat}{1}
+        L[Ate^{-t} + Be^{-t}] &= 2Ae^{-t} + Ate^{-t} + Be^{-t} - Ae^{-t}\\
+        &\quad +Ate^{-t}+Be^{-t} -2Ate^{-t} -2Be^{-t} = 2e^{-t}\\
+        \implies A &= -\frac{2}{3} \therefore Y = -\frac{2}{3}te^{-t}
+    \end{alignat}
+    Therefore,
+    \begin{equation}
+        y = c_{1}e^{2t} + c_{2}e^{-t} - \frac{2}{3}te^{-t}
+    \end{equation}
+\end{homework*}
+\begin{homework*}[146.3]
+    Given:
+    \begin{equation}
+        4y'' - 4y' + y = 16e^{t/2}
+    \end{equation}
+    Solution:
+    \begin{equation}
+        4y'' - 4y' + y = 16e^{t/2} \iff y'' - y' + \frac{1}{4} = 4e^{t/2}
+    \end{equation}
+    \begin{equation}
+        y_{1} = e^{t/2},\quad y_{2} = te^{t/2}
+    \end{equation}
+    \begin{equation}
+        W[e^{t/2}, te^{t/2}] = \begin{vmatrix}
+            e^{t/2} & te^{t/2} \\
+            \frac{1}{2}e^{t/2} & e^{t/2} + \frac{1}{2}te^{t/2}
+        \end{vmatrix} = e^{t} \begin{vmatrix}
+            1 & t \\
+            \frac{1}{2} & \left(1 + \frac{1}{2}t\right)
+        \end{vmatrix} = e^{t}
+    \end{equation}
+    \begin{alignat}{1}
+        Y &= -e^{t/2}\int^{t}\frac{(se^{s/2})(4e^{s/2})}{e^{s}}\,ds + te^{t/2}\int^{t}\frac{(4e^{s/2})(e^{s/2})}{e^{s}}\,ds\\
+        &= -e^{t/2}(2t^{2}) + te^{t/2}(4t)\\
+        &= -2t^{2}e^{t/2} + 4te^{t/2}\\
+        &= 2t^{2}e^{t/2}
+    \end{alignat}
+    Checking:
+    \begin{alignat}{1}
+        L[At^{2}e^{t/2}] &= 8Ae^{t/2} + 8Ate^{t/2} + At^{2}e^{t/2} - 8At^{t/2}\\
+        &\quad - 2At^{2}e^{t/2} + At^{2}e^{t/2} = 16e^{t/2}\\
+        \implies A &= 2 \implies Y = 2t^{2}e^{t/2}
+    \end{alignat}
+    Therefore,
+    \begin{equation}
+        y = c_{1}e^{t/2} + c_{2}te^{t/2} + 2t^{2}e^{t/2}
+    \end{equation}
+\end{homework*}
+\section{Laplacians}
+This section, compute the Laplace transform of the following.
+\begin{homework*}[247.16]
+    Given:
+    \begin{equation}
+        f(t) = \begin{cases}
+            1, &t\in[0, \pi)\\
+            0, &t\in[\pi, \infty)
+        \end{cases}
+    \end{equation}
+    Solution:
+    Rewrite piecewise as Heaviside step functions
+    \begin{equation}
+        f(t) = u_{0}(t) - u_{\pi}(t)
+    \end{equation}
+    \begin{alignat}{1}
+        \lp{f(t)} &= \lp{u_{0}(t)} - \lp{u_{\pi}(t)}\\
+        &= \frac{1 - e^{-\pi s}}{s}
+    \end{alignat}
+\end{homework*}
+\np
+\begin{homework*}[247.17]
+    Given:
+    \begin{equation}
+        f(t) = \begin{cases}
+            t, &t\in[0, 1)\\
+            1, &t\in[1, \infty)
+        \end{cases}
+    \end{equation}
+    Solution:
+    \begin{equation}
+        f(t) = tu_{0}(t) + (1 - t)u_{1}(t)
+    \end{equation}
+    \begin{alignat}{1}
+        \lp{f(t)} &= \lp{tu_{0}(t)} + \lp{(1 - t)u_{1}(t)}\\
+        &= \lp{tu_{0}(t)} - \lp{(t - 1)u_{1}(t)}\\
+        &= \frac{1}{s^{2}} - e^{-s}\cdot\frac{1}{s^{2}}\\
+        &= \frac{1-e^{-s}}{s^{2}}
+    \end{alignat}
+\end{homework*}
+\begin{homework*}[247.18]
+    Given:
+    \begin{equation}
+        f(t) = \begin{cases}
+            t, &t\in[0,1)\\
+            2-t, &t\in[1,2)\\
+            0, &t\in[2,\infty)
+        \end{cases}
+    \end{equation}
+    Solution:
+    \begin{alignat}{1}
+        \lp{f(t)} &= \lp{tu_{0}(t)} - 2\lp{(t - 1)u_{1}(t)} + \lp{(t-2)u_{2}(t)}\\
+        &= \frac{1}{s^{2}} - 2\left(e^{-s}\cdot\frac{1}{s^{2}}\right) + e^{-2s}\cdot\frac{1}{s^{2}}\\
+        &= \frac{1 - 2e^{-s} + e^{-2s}}{s^{2}}
+    \end{alignat}
+\end{homework*}
+\np
+\section{Inverse Laplacians}
+Find the inverse Laplace transform of the following.
+\begin{homework*}[255.1]
+    Given:
+    \begin{equation}
+        F(s) = \frac{3}{s^{2} + 4}
+    \end{equation}
+    Solution:
+    \begin{alignat}{1}
+        \lpinv{F(s)} &= \lci\left\{\frac{3}{s^{2} + 4}\right\}\\
+        &= \frac{3}{2}\lci\left\{\frac{2}{s^{2} + 4}\right\}\\
+        &= \frac{3}{2}\sin(2t)
+    \end{alignat}
+\end{homework*}
+\begin{homework*}[255.3]
+    Given:
+    \begin{equation}
+        F(s) = \frac{2}{s^{2} + 3s - 4}
+    \end{equation}
+    Solution:
+    \begin{alignat}{1}
+        \lpinv{F(s)} &= \lci\left\{\frac{2}{s^{2} + 3s - 4}\right\}\\
+        &= -\lci\left\{\frac{\frac{2}{5}}{s + 4}\right\} + \lci\left\{\frac{\frac{2}{5}}{s - 1}\right\}\\
+        &= \frac{2}{5}\left(e^{t}-e^{-4t}\right)
+    \end{alignat}
+\end{homework*}
+\begin{homework*}[255.5]
+    Given:
+    \begin{equation}
+        F(s) = \frac{2s-3}{s^{2} - 4}
+    \end{equation}
+    Solution:
+    \begin{alignat}{1}
+        \lpinv{F(s)} &= \lci\left\{\frac{2s}{s^{2}-4}\right\} - \lci\left\{\frac{3}{s^{2} - 4}\right\}\\
+        &= \lci\left\{\frac{2s}{s^{2}-4}\right\} - \frac{3}{2}\lci\left\{\frac{2}{s^{2} - 4}\right\}\\
+        &= 2\cosh(2t) - \frac{3}{2}\sinh(2t)
+    \end{alignat}
+\end{homework*}
+\begin{remark}
+    Notice in the previous example, if you plug it into some online solvers or look at other people's solutions, you may get solutions that do not involve hyperbolic trig. Therefore, it is necessary to keep the following in mind:
+    \begin{equation}
+        \sinh(x) = \frac{e^{x} - e^{-x}}{2}
+    \end{equation}
+    \begin{equation}
+        \cosh(x) = \frac{e^{x} + e^{-x}}{2}
+    \end{equation}
+\end{remark}
+\begin{homework*}[255.7]
+    Given:
+    \begin{equation}
+        F(s) = \frac{1 - 2s}{s^{2} + 4s + 5}
+    \end{equation}
+    Solution:
+    Hint: complete the square in the denominator
+    \begin{alignat}{1}
+        F(s) &= F(s) = \frac{1 - 2s}{(s^{2} + 4s + 4) - 4 + 5}\\
+        &= \frac{1 - 2s}{(s + 2)^{2} + 1}\\
+        &= \frac{5}{(s + 2)^{2} + 1} - 2 \frac{s + 2}{(s + 2)^{2} + 1}\\
+        \lpinv{F(s)} &= \lci\left\{\frac{5}{(s + 2)^{2} + 1}\right\} - 2\lci\left\{\frac{s + 2}{(s + 2)^{2} + 1}\right\}\\
+        &= 5e^{-2t}\sin t - 2e^{-2t}\cos t
+    \end{alignat}
+\end{homework*}
+\np
+\section{Solving ODEs with Laplacians}
+For the following, solve the given ODE via Laplacians.
+\begin{homework}[255.9]
+    Given:
+    \begin{equation}
+        y'' + 3y' + 2y = 0,\quad y(0) = 1, y'(0) = 0
+    \end{equation}
+    Solution:
+    \begin{alignat}{1}
+        \lp{y'' + 3y' + 2y} &= \lp{0}\\
+        s^{2}\lp{y} - sy(0) - y'(0) + 3\left(s\lp{y} - y(0)\right) + 2\lp{y} &= 0\\
+        (s^{2} + 3s + 2)\lp{y} - s - 3 &= 0\\
+    \end{alignat}
+    \begin{alignat}{1}
+        \lp{y} &= \frac{s + 3}{s^{2} + 3s + 2}\\
+        &= \frac{s + 3}{(s + 2)(s + 2)} = \frac{A}{s + 2} + \frac{B}{s + 1}\\
+        y &= \lci\left\{\frac{-1}{s+2}\right\} + 2 \lci\left\{\frac{1}{s + 1}\right\}\\
+        &= -e^{-2t} + 2e^{-t}
+    \end{alignat}
+\end{homework}
+\iffalse
+TODO: Finish digitizing the following homework problems:
+- 255: 11, 13, 15
+- 263: 5, 7, 13
+- 268: 4, 6
+- 279: 5, 7, 8
+\fi
+\end{document}
