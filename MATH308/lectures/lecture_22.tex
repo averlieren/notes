@@ -465,7 +465,7 @@ Find the inverse Laplace transform of the following.
 \np
 \section{Solving ODEs with Laplacians}
 For the following, solve the given ODE via Laplacians.
-\begin{homework}[255.9]
+\begin{homework*}[255.9]
     Given:
     \begin{equation}
         y'' + 3y' + 2y = 0,\quad y(0) = 1, y'(0) = 0
@@ -482,12 +482,276 @@ For the following, solve the given ODE via Laplacians.
         y &= \lci\left\{\frac{-1}{s+2}\right\} + 2 \lci\left\{\frac{1}{s + 1}\right\}\\
         &= -e^{-2t} + 2e^{-t}
     \end{alignat}
-\end{homework}
-\iffalse
-TODO: Finish digitizing the following homework problems:
-- 255: 11, 13, 15
-- 263: 5, 7, 13
-- 268: 4, 6
-- 279: 5, 7, 8
-\fi
+\end{homework*}
+\begin{homework*}[255.11]
+    Given:
+    \begin{equation}
+        y'' - 2y' + 4y = 0,\quad y(0) = 2,\quad y'(0) = 0
+    \end{equation}
+    Solution:
+    \begin{alignat}{1}
+        \lp{y'' - 2y' + 4y} &= \lp{0}\\
+        s^{2}\lp{y} - sy(0) - y'(0) - 2s\lp{y} - 2y(0) + 4\lp{y} &= 0\\
+        (s^{2} - 2s + 4)\lp{y} - 2s + 4 &= 0
+    \end{alignat}
+    \begin{alignat}{1}
+        \lp{y} &= \frac{2s - 4}{s^{2} - 2s + 4}\\
+        &= \frac{2s - 4}{s^{2} -2s + 1 - 1 + 4}\\
+        &= \frac{2s - 4}{(s - 1)^{2} + 3}\\
+        &= \frac{2s + 2}{(s - 1)^{2} + 3} - \frac{2}{(s - 1)^{2} + 3}\\
+        y &= \lci\left\{\frac{2s + 2}{(s - 1)^{2} + 3}\right\} - \frac{2}{\sqrt{3}}\lci\left\{\frac{\sqrt{3}}{(s - 1)^{2} + 3}\right\}\\
+        &= 2e^{t}\cos(\sqrt{3}t) - \frac{2}{\sqrt{3}}\sin(\sqrt{3}t)e^{t}
+    \end{alignat}
+\end{homework*}
+\begin{homework*}[255.13]
+    Given:
+    \begin{equation}
+        y^{(4)} - 4y''' + 6y'' - 4y' + y = 0; y(0) = 0, y'(0) = 1, y''(0) = 0, y'''(0) = 1
+    \end{equation}
+    Solution:
+    \begin{equation}
+        \lci\left\{f^{(n)}(t)\right\} = s^{n}\lp{f(t)} - s^{n-1}f(0) - \dots - sf^{(n - 2)}(0)-f^{(n-1)}(0)
+    \end{equation}
+    \begin{alignat}{1}
+        &\lci\left\{y^{(4)} - 4y''' + 6y'' - 4y' + y\right\}\\
+        &= s^{4}\lp{y} - s^{3}y(0) - s^{2}y'(0) - sy''(0) - y'''(0)\nonumber\\
+        &\quad -4\left[s^{3}\lp{y} - s^{2}y(0) - sy'(0) -y''(0)\right]\nonumber\\
+        &\quad +6\left[s^{2}\lp{y} - sy(0) - y'(0)\right]\nonumber\\
+        &\quad -4\left[s\lp{y}-y(0)\right]\nonumber\\
+        &\quad + \lp{y}\\
+        &(s^{4}-4s^{3}+6s^{2}-4s+1)\lp{y} - s^{2} - 1 + 4s - 6 = 0
+    \end{alignat}
+    \begin{alignat}{1}
+        L[y] &= \frac{s^{2} - 4s + 7}{s^{4} - 4s^{3}+ 6s^{2} - 4s + 1}\\
+        &= \frac{s^{2} - 4s + 7}{(s - 1)^{4}}\\
+        &= \frac{A}{(s-1)^{4}} + \frac{B}{(s-1)^{3}} + \frac{C}{(s-1)^{2}} + \frac{D}{(s-1)}
+    \end{alignat}
+    \begin{equation}
+        \begin{cases}
+            -B + C + A &= 7\\
+            B - 2C &= -4\\
+            C &= 1\\
+            D &= 0
+        \end{cases}
+        \implies A = 4, B = -2, C = 1, D = 0
+    \end{equation}
+    \begin{equation}
+        \lp{y} = \frac{4}{6}\frac{6}{(s - 1)^{4}}-\frac{2}{(s-1)^{3}}+\frac{1}{(s-1)^{2}}
+    \end{equation}
+    Therefore,
+    \begin{equation}
+        y = \frac{4}{6}e^{t}t^{3} - e^{t}t^{2} + e^{t}t
+    \end{equation}
+\end{homework*}
+\begin{homework*}[255.15]
+    Given:
+    \begin{equation}
+        y'' + \omega^{2}y = \cos(2t),\quad \omega^{2} \neq 4,\quad y(0) = 1,\quad y'(0) = 0
+    \end{equation}
+    Solution:
+    \begin{alignat}{1}
+        \lp{y'' + \omega^{2}y} &= \lp{\cos(2t)}\\
+        s^{2}\lp{y} - sy(0) - y'(0) + \omega^{2}\lp{y} &= \frac{s}{s^{2} + 4}\\
+        (s^{2} + \omega^{2})\lp{y} &= \frac{s}{s^{2} + 4}\\
+        \lp{y} &= \frac{s}{(s^{2} + 4)(s^{2} + \omega^{2})} + \frac{s}{(s^{2} + \omega^{2})}
+    \end{alignat}
+    \begin{equation}
+        y_{1} = \lci\left\{\frac{s}{s^{2} + \omega^{2}}\right\} = \cos(\omega t)
+    \end{equation}
+    \begin{alignat}{1}
+        \frac{s}{(s^{2} + 4)(s^{2} + \omega^{2})} &= \frac{As + B}{s^{2} + 4} + \frac{Cs + D}{s^{2} + \omega^{2}}\\
+        s &= A(s^{3} - \omega^{2}s) + B(s^{2} + \omega^{2}) + C(s^{3} + 4s) + D(s^{2} + 4)
+    \end{alignat}
+    \begin{equation}
+        \begin{cases}
+            A + C &= 0\\
+            B + D &= 0\\
+            4C - A\omega^{2} &= 1\\
+            \omega^{2}B + 4D &= 0
+        \end{cases}
+        \implies A = \frac{1}{4 + \omega^{2}}, B = 0, C = -\frac{1}{4 + \omega^{2}}, D = 0
+    \end{equation}
+    \begin{alignat}{1}
+        y_{2} &= \lci\left\{\frac{-s}{(4 + \omega^{2}}\right\} + \lci\left\{\frac{s}{(4 + \omega^{2}}\right\}\\
+        &= \frac{1}{4 + \omega^{2}}\left(\lci\left\{\frac{s}{s^{2} + 4}\right\} + \lci\left\{\frac{-s}{s^{2} + \omega^{2}}\right\}\right)\\
+        &= \frac{1}{4 + \omega^{2}}\left(\cos(2t) - \cos(\omega t)\right)\\
+    \end{alignat}
+    Therefore,
+    \begin{equation}
+        y = \frac{1}{4 + \omega^{2}}\left(\cos(2t) - \cos(\omega t)\right) + \cos(\omega t)
+    \end{equation}
+\end{homework*}
+\section{Heaviside Function}
+Rewrite the following as a combination of Heaviside functions.
+% TODO: Add graphs of the function
+\begin{homework*}[263.5]
+    Given:
+    \begin{equation}
+        f(t) = \begin{cases}
+            0, &t\in[0,3)\\
+            -2, &t\in[3,5)\\
+            2, &t\in[5,7)\\
+            1, &t\in[7,\infty)
+        \end{cases}
+    \end{equation}
+    Solution:
+    \begin{equation}
+        f(t) = -2u_{3}(t) + 4u_{5}(t) - u_{7}(t)
+    \end{equation}
+\end{homework*}
+\begin{homework*}[263.7]
+    Given:
+    \begin{equation}
+        f(t) = \begin{cases}
+            1, &t\in[0,2)\\
+            e^{-(t-2)}, &t\in[2,\infty)
+        \end{cases}
+    \end{equation}
+    Solution:
+    \begin{equation}
+        f(t) = u_{0}(t) + (e^{-t+2} - 1)u_{2}(t)
+    \end{equation}
+\end{homework*}
+\begin{homework*}[263.13]
+    Given:
+    \begin{equation}
+        \lci\left\{\frac{3!}{(s-2)^{4}}\right\}
+    \end{equation}
+    Solution:
+    \begin{equation}
+        e^{2t}t^{3}
+    \end{equation}
+\end{homework*}
+\section{Solving Nonhomogeneous ODEs with Heavisides}
+\begin{homework*}[268.4]
+    Given:
+    \begin{equation}
+        y'' + 3y' + 2y = \begin{cases}
+            1, &t\in[0, 10)\\
+            0, &t\in[10,\infty)
+        \end{cases}, y(0) = 0, y'(0) = 0
+    \end{equation}
+    Solution:
+    \begin{equation}
+        g(t) = u_{0}(t) - u_{10}(t)
+    \end{equation}
+    \begin{equation}
+        \lp{y'' + 3y' + 2y} = \lp{u_{0}(t) - u_{10}(t)}
+    \end{equation}
+    \begin{alignat}{1}
+        s^{2}\lp{y}+sy(0)+y'(0)+3\left(s\lp{y}+y(0)\right) + 2\lp{y} &= \frac{1}{s} - \frac{e^{-10s}}{s}\\
+        (s^{2} + 3s + 2)\lp{y} &= \frac{1 - e^{-10s}}{s}
+    \end{alignat}
+    \begin{alignat}{1}
+        \frac{1}{s(s + 1)(s + 2)} &= \frac{A}{s} + \frac{B}{s + 1} + \frac{C}{s + 2}\\
+        &= A(s^{2} + 3s + 2) + B(s^{2} + 2s) + C(s^{2} + s)
+    \end{alignat}
+    \begin{equation}
+        \begin{cases}
+            A + B + C &= 0\\
+            3A + 2B + C &= 0\\
+            2A &= 1
+        \end{cases}
+        \implies
+        \begin{cases}
+            B + C &= -\frac{1}{2}\\
+            2B + C &= -\frac{3}{2}\\
+            A &= \frac{1}{2}
+        \end{cases}
+        \implies
+        A = C = \frac{1}{2}, B = -1
+    \end{equation}
+    \begin{equation}
+        \lp{y} = \frac{1}{2}\left(\left(\frac{1}{s} + \frac{-2}{s + 1} + \frac{1}{s + 2}\right) - e^{-10s}\left(\frac{1}{s} + \frac{-2}{s + 1} + \frac{1}{s + 2}\right)\right)
+    \end{equation}
+    \begin{equation}
+        y = \frac{1}{2}\left(1 - 2e^{-t} + e^{-2t}\right) - \frac{1}{2}u_{0}(t)\left(1 - 2e^{-t} + e^{-2t}\right)
+    \end{equation}
+\end{homework*}
+\np
+\begin{homework*}[268.6]
+    Given:
+    \begin{equation}
+        y'' + y' + \frac{5}{4}y = \begin{cases}
+            \sin(t), &t\in[0,\pi)\\
+            0, &t\in[\pi,\infty)
+        \end{cases}, y(0) = 0, y'(0) = 0
+    \end{equation}
+    Solution:
+    \begin{equation}
+        \lp{y'' + y' + \frac{5}{4}y} = \lci\left\{\sin(t)u_{0}(t) - \sin(t)u_{\pi}(t)\right\}
+    \end{equation}
+    \begin{equation}
+        s^{2}\lp{y} - sy(0) - y'(0) + s\lp{y} - y(0) + \frac{5}{4}\lp{y} = \frac{1}{s^{2} + 1} - e^{-\pi s}\left(\frac{1}{s^{2} + 1}\right)
+    \end{equation}
+    \begin{equation}
+        \left(s^{2} + s + \frac{5}{4}\right)\lp{y} = \frac{1}{s^{2} + 1} - \frac{e^{-\pi s}}{s^{2} + 1}
+    \end{equation}
+    \begin{equation}
+        \lp{y} = \frac{1}{(s^{2} + 1)\left(s^{2} + s + \frac{5}{4}\right)} - \frac{e^{-\pi s}}{(s^{2} + 1)\left(s^{2} + s + \frac{5}{4}\right)}
+    \end{equation}
+    \begin{equation}
+        \frac{1}{(s^{2} + 1)\left(s^{2} + s + \frac{5}{4}\right)} = \frac{As + B}{(s^{2} + 1)} + \frac{Cs + D}{\left(s^{2} + s + \frac{5}{4}\right)}
+    \end{equation}
+    \begin{equation}
+        1 = (As + B)\left(s^{2} + s + \frac{5}{4}\right) + (Cs + D)(s^{2} + 1)
+    \end{equation}
+    \begin{equation}
+        \begin{cases}
+            A + C &= 0\\
+            A + B + D &= 0\\
+            \frac{5}{4}A + B + C &= 0\\
+            \frac{5}{4}B + D &= 1
+        \end{cases}
+        \implies A = -\frac{16}{17}, B = \frac{4}{17}, C = \frac{16}{17}, D = \frac{12}{17}
+    \end{equation}
+    \begin{equation}
+        y_{1} = \lci\left\{\frac{-\frac{16}{17}s + \frac{4}{17}}{s^{2} + 1}\right\} + \lci\left\{\frac{\frac{16}{17}s + \frac{12}{17}}{s^{2} + s + \frac{5}{4}}\right\}
+    \end{equation}
+    \begin{equation}
+        y_{2} = -e^{-\pi s}\left(\lci\left\{\frac{-\frac{16}{17}s + \frac{4}{17}}{s^{2} + 1}\right\} + \lci\left\{\frac{\frac{16}{17}s + \frac{12}{17}}{s^{2} + s + \frac{5}{4}}\right\}\right)
+    \end{equation}
+\end{homework*}
+\np
+\section{Convolutions}
+\begin{homework*}[278.5]
+    Find the Laplace transform of the following,
+    \begin{equation}
+        f(t) = \int_{0}^{t}e^{-(t-\tau)}\sin\tau\,d\tau
+    \end{equation}
+    Solution:
+    \begin{alignat}{1}
+        F(s) &= \lci\left\{e^{-t}\right\}\lci\left\{\sin t\right\}\\
+        &= \frac{1}{s - 1}\frac{1}{s^{2} + 1}\\
+        &= \frac{1}{(s - 1)(s^{2} + 1)}
+    \end{alignat}
+\end{homework*}
+\begin{homework*}[278.7]
+    Find the inverse Laplace transform of
+    \begin{equation}
+        F(s) = \frac{1}{s^{4}(s^{2} + 1)}
+    \end{equation}
+    Solution:
+    \begin{alignat}{1}
+        \lpinv{F(s)} &= \frac{1}{6}\frac{6}{s^{4}}\frac{1}{s^{2} + 1}\\
+        &= \frac{1}{6}\lci\left\{\frac{6}{s^{4}}\right\}*\lci\left\{\frac{1}{s^{2} + 1}\right\}\\
+        &= \frac{1}{6}t^{3}*\sin(t)\\
+        &= \int_{0}^{t}\tau^{3}\sin(t - \tau)\,d\tau\\
+        &= t^{3} - 6t + 6\sin(t)
+    \end{alignat}
+\end{homework*}
+\np
+\begin{homework*}[278.8]
+    Find the inverse Laplace transform of
+    \begin{equation}
+        F(s) = \frac{s}{(s + 1)(s^{2} + 4)}
+    \end{equation}
+    Solution:
+    \begin{alignat}{1}
+        \lpinv{F(s)} &= \frac{1}{s + 1}\cdot\frac{1}{s^{2} + 4}\\
+        &= \lci\left\{\frac{1}{s + 1}\right\}*\lci\left\{\frac{s}{s^{2} + 4}\right\}\\
+        &= e^{-t}*\cos(2t)\\
+        &= \int_{0}^{t}e^{-\tau}\cos(2t-2\tau)\,d\tau
+    \end{alignat}
+\end{homework*}
 \end{document}

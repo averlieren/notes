@@ -6,7 +6,7 @@ My notes as a student at Texas A&M
 #### Spring 2020
 |Course||Available|Digitization|Last Updated|
 |-|-|-|-|-|
-|MATH 308| Differential Equations | Yes | 22/22 | 14/04/2020 |
+|MATH 308| Differential Equations | Yes | 22/22 | 15/04/2020 |
 |MATH 251| Engineering Calculus III | Yes | 2/22 | 22/02/2020 |
 |MUSC 226| History of Rock | n/a | | |
 |POLS 207| State and Local Government | n/a | | |
