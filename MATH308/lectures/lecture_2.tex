@@ -4,86 +4,158 @@
 \begin{document}
 \chapter{16 January 2020}
     \section{Linear Differential Equations}
-    \begin{definition}[First Order Linear Differential Equations]
+    \begin{definition}[(Non-)Linear DEs]
+        A \textbf{linear DE} (Linear ODE) is called linear as it can be written without products of $y$, all derivatives of $y$ are to the first power and are not within a function. If an ODE does not fit into this discription, it is therefore called \textbf{non-linear} (Non-linear ODE).
+    \end{definition}
+    A linear ODE is going to be the most common type of differential equation we deal with in this course. It has the following form
+    \begin{equation}
+        \underbrace{y' + p(t)y = g(t)}_\text{\tiny Usual form}\iff y' = g(t) - p(t)y
+    \end{equation}
+    Please note that functions $p(t)$ and $g(t)$ need not be linear, it could be a trignometric or other non-linear function, the linearity of a DE is dependent on $y$ and its derivatives.
+    \begin{example}[(Non-)linear DEs]
+        The following is an example of a \textbf{first order linear ODE}
         \begin{equation}
-            \underbrace{y' + p(t)y = g(t)}_\text{\tiny Usual form}\iff y' = g(t) - p(t)y
+            y' + \left(t^{3}\right)y = cos(t)
         \end{equation}
-        A \textbf{first order linear differential equation} (LDE) is linear due to $y$ being dependent on only one variable, $t$.
-    \end{definition}
-    Notice that $t$ is typically used in place of $x$ as most differential equations are used in models dependent on time; as such, most differential equations are in the form $y' = f(t, y)$ as opposed to $y' = f(x, y)$.
-    \begin{example}
-        \begin{alignat}{3}
-            &\text{Solve } &(4 + t^{2})y' + 2ty &= 4t\\
-            &\text{Notice: }&(4y + t^{2}y)' &= \frac{d}{dt}(4y + t^{2}y) = 4t\\
-            &&&= 4y' + (t^{2}y)^{2}\\
-            &&&= 4y' + (2ty + t^{2}y')\\
-            &&&= (4 + t^2)y' + 2ty
-        \end{alignat}
-        The original problem can now be reduced to:
-        \begin{alignat}{3}
-            &&\frac{d}{dt}(4y + t^2y)&= 4t\\
-            &&\text{let\quad}z(t) &= 4y + t^{2}y\\
-            &&&= 2 t^{2} + c\\
-            &\implies& 4y + t^{2}y &= 2 t^{2}+c\\
-            &\therefore& y &= \frac{1}{4+t^{2}}(2 t^{2}+c)
-        \end{alignat}
+        The following is an example of a \textbf{non-linear ODE}
+        \begin{equation}
+            \sqrt{y'} + p(t)y = g(t)
+        \end{equation}
     \end{example}
-    \begin{remark}[Constants]
-        Notice in the above example that the constant, $c$, is being multiplied by $\frac{1}{4 + t^{2}}$. When expanding the answer, it now becomes $y = \frac{2t^{2}}{4+t^{2}} + \frac{c}{4+t^{2}}$. Notice how the constant is dependent on the variable $t$, and is therefore not the same as just $c$.
+    \np
+    \begin{example}[Linear ODE]
+        \label{ex2-2}
+        Solve the following linear ODE
+        \begin{equation}
+            \left(4 + t^{2}\right)y' + \underbrace{2t}_{p(t)}y = \underbrace{4t}_{g(t)}
+        \end{equation}
+        \textbf{Solution:}\\[1em]
+        As we have yet gone over the method of solving a first order linear ODE, notice the following relationship when we distribute $y'$
+        \begin{alignat}{1}
+            (4 + t^{2}) y' &= (4y + t^{2}y)'\\
+            &= 4y' + (t^{2}y)'\\
+            &= 4y' + (2ty + t^{2}y')\\
+            &= (4 + t^2)y' + 2ty
+        \end{alignat}
+        See that $(4 + t^{2})y'$ has expanded into the left hand side of the equation.\\[1em]
+        Now, we using this observation, we can reduce the original equation to the following
+        \begin{equation}
+            \frac{d}{dt}(4y + t^{2}y) = 4t
+        \end{equation}
+        Note that because the left hand side is a derivative of a product of $y$, we can integrate both sides
+        \begin{equation}
+            4y + t^{2}y = 2t^{2} + c
+        \end{equation}
+        Rearranging for $y$ gives us a general solution
+        \begin{equation}
+            y_c = \frac{1}{4 + t^{2}}(2t^{2} + c)
+        \end{equation}
+    \end{example}
+    \begin{remark}[About Example \ref{ex2-2}]
+        \begin{enumerate}
+            \item The above method does not work for all linear ODEs as we cannot rewrite them to be a product of a derivative $y$. However, $\exists \mu(t)$ s.t. $\mu(t)L[y]$ can be solved via the above method. Then, $\mu(t)$ is called the integrating factor.
+            \item Notice that the constant $c$ is inside the parenthesis, it is a constant function just not a constant number, i.e. $\frac{c}{4 + t^{2}} \neq c$
+        \end{enumerate}
     \end{remark}
-    \begin{definition}[Integrating Factors with LDEs]
-        An \textbf{integrating factor}, $\mu(t)$ is a function $\mu(t): \RR \to \RR$, that satisfies $\frac{d}{dt}\mu(t) = \mu(t)y'+\mu(t)p(t)y$.
+    \begin{definition}[Integrating Factor]
+        An \textbf{integrating factor}, $\mu(t)$ is a defined as a function that satisfies the following differential equation
+        \begin{equation}
+            \frac{d}{dt}\mu(t) = \mu(t)y' + \mu(t)p(t)y
+        \end{equation}
+        Note that there are infinitely many integrating factors as it encompasses an entire class of functions due to the existance of an arbitrary constant.
     \end{definition}
-    \begin{remark}
-        There are infinitely many integrating factors due to the arbitrary constant $c$ from indefinite integration, see \textbf{Method 2.1} and \textbf{Example 2.2} on the following page.
+    \np
+    \begin{method}[Solving First Order Linear ODEs with Integrating Factors]
+        \label{method-2-1}
+        Solve an ODE of the form
+        \begin{equation}
+            \label{method-2-1-1}
+            y' + p(t)y = g(t)
+        \end{equation}
+        First, we must find an integrating factor, $\mu(t)$, that satisfies
+        \begin{equation}
+            \mu(t)' = p(t)\mu(t)
+        \end{equation}
+        We can quickly see
+        \begin{equation}
+            \mu(t) = e^{\int p(t)\,dt}
+        \end{equation}
+        Then, multiplying \textbf{Equation \ref{method-2-1-1}} by $\mu(t)$ yields
+        \begin{equation}
+            \mu(t)y' + \mu(t)p(t)y = \mu(t)g(t)
+        \end{equation}
+        Due to the definition of $\mu(t)$, we can rewrite it as
+        \begin{equation}
+            (\mu(t)y)' = \mu(t)g(t)
+        \end{equation}
+        Then by integrating both sides,
+        \begin{equation}
+            \mu(t)y = \int \mu(t)g(t)\,dt + c
+        \end{equation}
+        We moved the constant $c$ from the indefinite integral on the left hand side to the right hand side.\\[1em]
+        We can now solve for $y$
+        \begin{equation}
+            y_{c} = \frac{1}{\mu(t)}\int \mu(t)g(t)\,dt + \frac{c}{\mu(t)}
+        \end{equation}
+        Notice that we will get another $\frac{c}{\mu(t)}$ once we complete the indefinite integral, and because $c$ is an arbitrary constant, we can say that $2c = c$, therefore, we can just leave it off, giving using
+        \begin{equation}
+            y_{c} = \frac{1}{\mu(t)}\int \mu(t)g(t)\,dt
+        \end{equation}
+    \end{method}
+    \begin{remark}[About Method \ref{method-2-1}]
+        Notice
+        \begin{equation}
+            \mu(t) = e^{\int p(t)\,dt}
+        \end{equation}
+        Then, because it is an indefinite integral it would imply
+        \begin{equation}
+            \mu(t) = e^{P(t) + c}
+        \end{equation}
+        where $P(t)$ is the antiderivative of $p(t)$. This leads to the fact there are infinitely many integrating factors because of this constant. However, for our purposes we can choose to ignore the constant as it can be trivially shown that it cancels out in the following steps.
     \end{remark}
     \np
-    \begin{method}[Solution of the General LDE Case]
-        Solve $y' + p(t)y = g(t)$.
-        \begin{enumerate}
-            \item Multiply the LDE by $\mu(t)$ results in:
-                \begin{equation}
-                    \mu(t)(y' + p(t)y) = \mu(t)g(t)
-                \end{equation}
-            \item Letting $z(t) = \mu(t)y$, and $z' = \mu(t)g(t)$ yields:
-                \begin{align}
-                    z(t) &= \int \mu(t)g(t)\,dt\\
-                    \implies y(t) &= \frac{1}{\mu(t)}\int \mu(t)g(t)\,dt\\
-                    \implies \mu(t) &= \exp\left(\int p(t)\,dt\right)
-                \end{align}
-            \item Therefore the solution of the general case is
-                \begin{equation}
-                    y(t) = \left(\exp\left(\int p(t)\,dt\right)\right)^{-1}\cdot \int \exp\left(\int p(t)\,dt\right)g(t)\,dt
-                \end{equation}
-        \end{enumerate}
-    \end{method}
-    \begin{example}[Solving an IVP involving LDEs]
-        Working with example 2.1.4 from the textbook:
+    \begin{example}[Linear ODE IVP]
+        \label{ex2-3}
+        Solve the following IVP
         \begin{equation}
-            ty' +4 2y = 4 t^{2},\ y(1) = 2
+            ty' + 2y = 4t^{2},\ y(1) = 2
         \end{equation}
-        \begin{enumerate}
-            \item Compute the integrating factor ($\mu(t)$)
-                \begin{alignat}{1}
-                    \mu(t) &= \exp\left(\int p(t)\,dt\right)\\
-                    &= \exp\left(\int 2 t^{-1}\,dt\right)\\
-                    &= \exp\left(2\ln(t) + c\right) \Leftrightarrow e^{2\ln(t) + c}
-                \end{alignat}
-            \item Find the general case\\
-                When solving, $0$ can be subsituted in for $c$ to simplify calculations; for $c \neq 0$ it is trivially shown that the constant will cancel out in computing the solution.
-                \begin{align}
-                    y_c(t) &= \frac{1}{\mu(t)}\int \mu(t)g(t)\,dt\\
-                    &= \frac{1}{t^{2}}\left(\int t^{2}\cdot 4t\,dt\right)\\
-                    &= \frac{1}{t^{2}}(t^{4} + c)
-                \end{align}
-                \textbf{Note:} $y_c(t)$ is used to denote the general case.
-            \item Find formula w.r.t. intial value
-                \begin{alignat}{3}
-                    &&y(1) &= 2\\
-                    &\implies &y(1) &= (1)^{2} + \frac{c}{(1)^{2}}\\
-                    &\implies &c &= 1\\
-                    &\therefore &y(t) &= t^{2} + t^{-2}
-                \end{alignat}
-        \end{enumerate}
+        \textbf{Solution:}\\
+        First, divide the equation by $t$
+        \begin{equation}
+            y' + 2t^{-1}y = 4t
+        \end{equation}
+        Then, find the integrating factor
+        \begin{alignat}{1}
+            \mu(t) &= e^{\int p(t)\,dt}\\
+            &= e^{\int 2t^{-1}\,dt}\\
+            &= e^{2\ln(t) + c}\\
+            &= e^{c}t^{2}, t \geq 0
+        \end{alignat}
+        Again, we can ignore the $c$ in $\mu(t)$ by letting $c = 0$, if we chose $c \neq 0$ it is trivial to show that it cancels out. We are left with
+        \begin{equation}
+            \mu(t) = t^{2}, t \geq 0
+        \end{equation}
+        From \textbf{Method \ref{method-2-1}}, we can now plug in our values for $\mu(t)$ and $g(t)$ into the $y_{c}$ equation. Please note that the $c$ in the $y_{c}$ is not the same $c$ from the integration of $\mu(t)$.
+        \begin{alignat}{1}
+            y_{c} &= \frac{1}{\mu(t)}\int \mu(t)g(t)\,dt\\
+            &= t^{-2} \int (t^{2})(4t)\,dt\\
+            &= t^{-2}(t^{4} + c)\\
+            &= t^{2} + ct^{-2}
+        \end{alignat}
+        From the IVP, we can solve for $c$
+        \begin{alignat}{1}
+            y(1) &= t^{2} + ct^{-2} = 2\\
+            2 &= 1 + c\\
+            c &= 1
+        \end{alignat}
+        Therefore, the unique solution to this IVP is
+        \begin{equation}
+            y = t^{2} + t^{-2}, t > 0
+        \end{equation}
     \end{example}
+    \begin{remark}[About Example \ref{ex2-3}]
+        Notice the final solution has $t > 0$, however, we know that everything has been defined for $t \geq 0$. Why is this the case?\\[1em]
+        This is due to the fact that all answers to DEs must also be differentiable. At $t = 0$, the derivative does not exist, because $\lim_{t\to0}y(t)$ does not exist.
+    \end{remark}
 \end{document}
