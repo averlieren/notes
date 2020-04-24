@@ -82,7 +82,7 @@
             \lp\left\{e^{ct}f(t)\right\} = F(s - c)
         \end{equation}
         \begin{equation}
-            \lpinv\{F(s)\} = e^{ct}\lpinv{F(s + c)}
+            \lpinv\{F(s)\} = e^{ct}\lpinv\{F(s + c)\}
         \end{equation}
     \end{btheorem}\np
     Also, in the last lecture
@@ -109,7 +109,7 @@
     \begin{equation}
         y = \frac{1}{3}e^{2t}\lpinv\{F(s + 2)\} + \frac{2}{3}e^{t}\lpinv\{F(s + 1)\}
     \end{equation}
-    Now, notice that $\lpinv{F(s)} = 1$, and rearranging \textbf{Theorem 17.2}, we find that $\lpinv{F(s + c)} = e^{-ct}\lpinv{F(s)}$. If we apply this to our solution, we get the final solution:
+    Now, notice that $\lpinv\{F(s)\} = 1$, and rearranging \textbf{Theorem 17.2}, we find that $\lpinv\{F(s + c)\} = e^{-ct}\lpinv\{F(s)\}$. If we apply this to our solution, we get the final solution:
     \begin{equation}
         y = \frac{1}{3}e^{-2t}+\frac{2}{3}e^{-t}
     \end{equation}

@@ -10,9 +10,9 @@
             F(s) = \frac{3}{s^{2} + 4}
         \end{equation}
         \begin{alignat}{1}
-            \lpinv{\frac{a}{s^{2} + a^{2}}} &= \sin(at)\\
+            \lpinv\left\{\frac{a}{s^{2} + a^{2}}\right\} &= \sin(at)\\
             F(s) &= \frac{3}{2} \cdot \frac{2}{s^{2} + 2^{2}}\\
-            \lpinv{F(s)} &= \frac{3}{2}\lpinv{\frac{2}{s^{2} + 2^{2}}}\\
+            \lpinv\{F(s)\} &= \frac{3}{2}\lpinv\left\{\frac{2}{s^{2} + 2^{2}}\right\}\\
             f(t) &= \frac{3}{2}\sin(2t)
         \end{alignat}
     \end{example}
@@ -26,11 +26,11 @@
             &= \frac{2}{\left(s + \frac{3}{2}\right)^{2} - \frac{25}{4}}
         \end{alignat}
         \begin{equation}
-            \lpinv{F(s)} = e^{-\frac{3}{2}t}\lpinv{\underbrace{\frac{2}{s^{2} - \frac{25}{4}}}_{E(s)}}
+            \lpinv\{F(s)\} = e^{-\frac{3}{2}t}\lpinv\left\{\frac{2}{s^{2} - \frac{25}{4}}\right\}
         \end{equation}
         We obtained the above from \textbf{Theorem 17.1}:
         \begin{equation}
-            \lpinv{E(s + c)} = e^{-ct}\lpinv{E(s)}
+            \lpinv\{E(s + c)\} = e^{-ct}\lpinv\{E(s)\}
         \end{equation}
         \begin{alignat}{1}
             f(t) = e^{-\frac{3}{2}t}\cdot 2\cdot \frac{2}{5}\cdot \lpinv\left\{\frac{\frac{5}{2}}{s^{2} - \left(\frac{5}{2}\right)^{2}}\right\}
@@ -41,7 +41,7 @@
         \end{equation}
         Therefore, the inverse Laplacian
         \begin{equation}
-            \lpinv{F(s)} = f(t) = \frac{4}{5}e^{-\frac{3}{2}t}\sinh(\frac{5}{2}t)
+            \lpinv\{F(s)\} = f(t) = \frac{4}{5}e^{-\frac{3}{2}t}\sinh\left(\frac{5}{2}t\right)
         \end{equation}
     \end{example}
     \begin{example}
@@ -58,7 +58,7 @@
         \end{alignat}
         Then, the inverse Laplacian
         \begin{alignat}{1}
-            \lpinv{F(s)} &= \lpinv\left\{\frac{3}{s}\right\} + \lpinv\left\{\frac{5s}{s^{2} + 4}\right\} + \lpinv\left\{\frac{-4}{s^{2} + 4}\right\}\\
+            \lpinv\{F(s)\} &= \lpinv\left\{\frac{3}{s}\right\} + \lpinv\left\{\frac{5s}{s^{2} + 4}\right\} + \lpinv\left\{\frac{-4}{s^{2} + 4}\right\}\\
             &= 3 + \frac{5}{2}\cos(2t) - 2\sin(2t)
         \end{alignat}
     \end{example}
@@ -74,7 +74,7 @@
         \end{alignat}
         Then, the inverse Laplacian
         \begin{alignat}{2}
-            \lpinv{F(s)} &= \lpinv\left\{\frac{1}{(s + 2)^{2} + 1}\right\} &- \lpinv\left\{\frac{2s}{(s + 2)^{2} + 1}\right\}\\
+            \lpinv\{F(s)\} &= \lpinv\left\{\frac{1}{(s + 2)^{2} + 1}\right\} &- \lpinv\left\{\frac{2s}{(s + 2)^{2} + 1}\right\}\\
             &= e^{-2t}\sin t &- 2e^{-2t}\left(\cos t - 2\sin t\right)
         \end{alignat}
     \end{example}
@@ -89,10 +89,10 @@
             \lp{y'' - 2y' + 2y} = \lp{e^{-t}}
         \end{equation}
         \begin{alignat}{1}
-            \lp{y'' - 2y' + 2y} &= \lp{y''} - 2\lpinv{y'} + 2\lpinv{y}\\
-            &= (s^{2}\lpinv{y} - sy(0) - y'(0))\\
-            &\quad- 2s\lpinv{y} - 2y(0)) + 2\lpinv{y}\nonumber\\
-            &= (s^{2} - 2s + 2)\lpinv{y} - 1
+            \lp{y'' - 2y' + 2y} &= \lp{y''} - 2\lpinv\{y'\} + 2\lpinv\{y\}\\
+            &= (s^{2}\lpinv\{y\} - sy(0) - y'(0))\\
+            &\quad- 2s\lpinv\{y\} - 2y(0)) + 2\lpinv\{y\}\nonumber\\
+            &= (s^{2} - 2s + 2)\lpinv\{y\} - 1
         \end{alignat}
         \begin{equation}
             \lp{e^{-t}} = \frac{1}{s + 1}
