@@ -23,19 +23,19 @@
         \begin{alignat}{3}
             &&\frac{d}{dt}(4y + t^2y)&= 4t\\
             &&\text{let\quad}z(t) &= 4y + t^{2}y\\
-            &&&= 2 t^{2} + C\\
-            &\implies& 4y + t^{2}y &= 2 t^{2}+C\\
-            &\therefore& y &= \frac{1}{4+t^{2}}(2 t^{2}+C)
+            &&&= 2 t^{2} + c\\
+            &\implies& 4y + t^{2}y &= 2 t^{2}+c\\
+            &\therefore& y &= \frac{1}{4+t^{2}}(2 t^{2}+c)
         \end{alignat}
     \end{example}
     \begin{remark}[Constants]
-        Notice in the above example that the constant, $C$, is being multiplied by $\frac{1}{4 + t^{2}}$. When expanding the answer, it now becomes $y = \frac{2t^{2}}{4+t^{2}} + \frac{C}{4+t^{2}}$. Notice how the constant is dependent on the variable $t$, and is therefore not the same as just $C$.
+        Notice in the above example that the constant, $c$, is being multiplied by $\frac{1}{4 + t^{2}}$. When expanding the answer, it now becomes $y = \frac{2t^{2}}{4+t^{2}} + \frac{c}{4+t^{2}}$. Notice how the constant is dependent on the variable $t$, and is therefore not the same as just $c$.
     \end{remark}
     \begin{definition}[Integrating Factors with LDEs]
         An \textbf{integrating factor}, $\mu(t)$ is a function $\mu(t): \RR \to \RR$, that satisfies $\frac{d}{dt}\mu(t) = \mu(t)y'+\mu(t)p(t)y$.
     \end{definition}
     \begin{remark}
-        There are infinitely many integrating factors due to the arbitrary constant $C$ from indefinite integration, see \textbf{Method 2.1} and \textbf{Example 2.2} on the following page.
+        There are infinitely many integrating factors due to the arbitrary constant $c$ from indefinite integration, see \textbf{Method 2.1} and \textbf{Example 2.2} on the following page.
     \end{remark}
     \np
     \begin{method}[Solution of the General LDE Case]
@@ -49,11 +49,11 @@
                 \begin{align}
                     z(t) &= \int \mu(t)g(t)\,dt\\
                     \implies y(t) &= \frac{1}{\mu(t)}\int \mu(t)g(t)\,dt\\
-                    \implies \mu(t) &= \exp\BBp{\int p(t)\,dt}
+                    \implies \mu(t) &= \exp\left(\int p(t)\,dt\right)
                 \end{align}
             \item Therefore the solution of the general case is
                 \begin{equation}
-                    y(t) = \BBp{\exp\Bp{\int p(t)\,dt}}^{-1}\cdot \int \exp\Bp{\int p(t)\,dt}g(t)\,dt
+                    y(t) = \left(\exp\left(\int p(t)\,dt\right)\right)^{-1}\cdot \int \exp\left(\int p(t)\,dt\right)g(t)\,dt
                 \end{equation}
         \end{enumerate}
     \end{method}
@@ -64,24 +64,24 @@
         \end{equation}
         \begin{enumerate}
             \item Compute the integrating factor ($\mu(t)$)
-                \begin{align}
-                    \mu(t) &= \exp\bbbp{\int p(t)\,dt}\\
-                    &= \exp\bbbp{\int 2 t^{-1}\,dt}\\
-                    &= \exp\bp{2\ln(t) + C} \Leftrightarrow e^{2\ln(t) + C}
-                \end{align}
+                \begin{alignat}{1}
+                    \mu(t) &= \exp\left(\int p(t)\,dt\right)\\
+                    &= \exp\left(\int 2 t^{-1}\,dt\right)\\
+                    &= \exp\left(2\ln(t) + c\right) \Leftrightarrow e^{2\ln(t) + c}
+                \end{alignat}
             \item Find the general case\\
-                When solving, $0$ can be subsituted in for $C$ to simplify calculations; for $C \neq 0$ it is trivially shown that the constant will cancel out in computing the solution.
+                When solving, $0$ can be subsituted in for $c$ to simplify calculations; for $c \neq 0$ it is trivially shown that the constant will cancel out in computing the solution.
                 \begin{align}
                     y_c(t) &= \frac{1}{\mu(t)}\int \mu(t)g(t)\,dt\\
-                    &= \frac{1}{t^{2}}\bbbp{\int t^{2}\cdot 4t\,dt}\\
-                    &= \frac{1}{t^{2}}(t^{4} + C)
+                    &= \frac{1}{t^{2}}\left(\int t^{2}\cdot 4t\,dt\right)\\
+                    &= \frac{1}{t^{2}}(t^{4} + c)
                 \end{align}
                 \textbf{Note:} $y_c(t)$ is used to denote the general case.
             \item Find formula w.r.t. intial value
                 \begin{alignat}{3}
                     &&y(1) &= 2\\
-                    &\implies &y(1) &= (1)^{2} + \frac{C}{(1)^{2}}\\
-                    &\implies &C &= 1\\
+                    &\implies &y(1) &= (1)^{2} + \frac{c}{(1)^{2}}\\
+                    &\implies &c &= 1\\
                     &\therefore &y(t) &= t^{2} + t^{-2}
                 \end{alignat}
         \end{enumerate}

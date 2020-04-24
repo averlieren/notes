@@ -43,14 +43,14 @@
         \end{equation}
     \end{btheorem}
     \begin{bproof}
-        Suppose that $\forall z_{0}, z_{1} \implies \exists\, C_{1}, C_{2}$ such that
+        Suppose that $\forall z_{0}, z_{1} \implies \exists\, c_{1}, c_{2}$ such that
         \begin{equation}
             \begin{cases}
-                C_{1}y_{1}(t_{0}) + C_{2}y_{2(t_{0})} = z_{0}&\\
-                C_{1}y_{1}'(t_{0}) + C_{2}y_{2}'(t_{0}) = z_{1}&
+                c_{1}y_{1}(t_{0}) + c_{2}y_{2(t_{0})} = z_{0}&\\
+                c_{1}y_{1}'(t_{0}) + c_{2}y_{2}'(t_{0}) = z_{1}&
             \end{cases}
         \end{equation}
-        then, $\exists!\,C_{1}, C_{2}$ iff $W[y_{1}, y_{2}](t_{0}) \neq 0$
+        then, $\exists!\,c_{1}, c_{2}$ iff $W[y_{1}, y_{2}](t_{0}) \neq 0$
     \end{bproof}
     \begin{btheorem}
         Suppose that $y_{1}$ and $y_{2}$ are solutions to
@@ -59,7 +59,7 @@
         \end{equation}
         Then, the family of solutions
         \begin{equation}
-            y=C_{1}y_{1} + C_{2}y_{2}
+            y=c_{1}y_{1} + c_{2}y_{2}
         \end{equation}
         includes all solutions of $L[y] = 0$ iff $\exists t_{0} \implies W[y_{1}, y_{2}](t_{0}) \neq 0$
     \end{btheorem}
@@ -74,7 +74,7 @@
             y_{1} = e^{2t},\quad y_{2} = e^{3t}
         \end{equation}
         \begin{equation}
-            y = C_{1}e^{2t} + C_{2}e^{3t}
+            y = c_{1}e^{2t} + c_{2}e^{3t}
         \end{equation}
         Calculating the Wronskian
         \begin{alignat}{1}
@@ -96,7 +96,7 @@
         \end{equation}
         where $p, t$ are continuous over an open interval, $I$, then the Wronskian at point $t$ is given by Abel's Formula,
         \begin{equation}
-            W[y_{1}, y_{2}](t) = c\exp\bbbp{-\int p(t)\,dt}
+            W[y_{1}, y_{2}](t) = c\exp\left(-\int p(t)\,dt\right)
         \end{equation}
         where $c$ is some arbitrary constant dependent on $y_{1}, y_{2}$, but not on $t$.
         \begin{alignat}{1}
@@ -114,7 +114,7 @@
         \begin{equation}
             L[y] = y'' + p(t)y' + q(t)y = 0
         \end{equation}
-        Show that if $r_{1} \neq r_{2}$, then $C_{1}y_{1} + C_{2}y_{2}$ includes all solutions of $L[y] = 0$.
+        Show that if $r_{1} \neq r_{2}$, then $c_{1}y_{1} + c_{2}y_{2}$ includes all solutions of $L[y] = 0$.
         \begin{alignat}{1}
             W[e^{r_{1}t}, e^{r_{2}t}] &= \begin{vmatrix}
                 e^{r_{1}t} & e^{r_{2}t}\\
@@ -129,7 +129,7 @@
         \begin{equation}
             L[y] = y'' + p(t)y' + q(t)y = 0
         \end{equation}
-        such that $C_{1}y_{1} + C_{2}y_{2}$ includes all possible solutions of $L[y] = 0$, then $y_{1}$ and $y_{2}$ form a \textbf{fundamental set of solutions} (FSS).\\
+        such that $c_{1}y_{1} + c_{2}y_{2}$ includes all possible solutions of $L[y] = 0$, then $y_{1}$ and $y_{2}$ form a \textbf{fundamental set of solutions} (FSS).\\
         Alternatively, if and only if
         \begin{equation}
             W[y_{1}, y_{2}] \neq 0

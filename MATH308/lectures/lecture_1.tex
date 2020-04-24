@@ -4,76 +4,114 @@
 \begin{document}
 \chapter{14 January 2020}
     \section{First Order Differential Equations}
-    \begin{definition}[First Order Differential Equation]
-        The generic form of a \textbf{first order differential equation} is \begin{equation}
-            y' = f(x, y)
+    \begin{definition}[Differential Equation]
+        A \textbf{differential equation} (DE) is an equation that relates a function to its derivative, for example
+        \begin{equation}
+            \frac{dy}{dx} = f(x)
         \end{equation}
-        Sometimes, $t$ is substituted for $x$, especially if the function relates to time.
+        For our class, we will only consider \textbf{ordinary differential equations} (ODE). An ODE relates one independent variable to its derivatives, where as something like \textbf{partial differential equations} relates multiple independent varibles to their derivatives.
     \end{definition}
-    \begin{definition}[General Solution]
-        A solution to a differential equation is considered to be \textbf{general} if there is an arbitrary constant present in the final answer, i.e. a problem without initial values.
+    \begin{definition}[First Order Differential Equation]
+        \textbf{First order differential equations} are a class of differential equations and are of the form
+        \begin{equation}
+            \frac{dy}{dt} = f(t, y)
+        \end{equation}
+        A function $y = \phi(t)$ is considered to be the solution to the differential equation iff $y$ is differentiable for all $t$ in some interval.
+        For this class we will generally use $t$ as opposed to $x$ as the independent variable, as most differential equations model changes with respect to time.
     \end{definition}
+    \begin{definition}[General Solutions]
+        A solution to a differential equation is considered \textbf{general} if there exists arbitrary constants in the answer. It is usually denoted as $y_{c}$
+        \begin{equation}
+            y_{c} = c_1f_{1}(t) + c_2f_{2}(t) + \dots + c_nf_{n}(t)
+        \end{equation}
+    \end{definition}
+    \np
     \begin{example}
+        \label{ex1-1}
+        Find the general solution to the following
+        \begin{equation}
+            y' = 1
+        \end{equation}
+        Remember, the solution to a differential equation when differentiated must satisfy the original equation.\\[1em]
+        \noindent
+        \textbf{Solution:}\\
+        First, we can integrate both sides and solve for $y_c$
         \begin{alignat}{1}
-            y' &= 1\\
-            y &= \int y'\,dx\\
-            &= 1\,dx\\
-            &= x + C
+            \int y'\,dt &= \int 1\,dt\\
+            \implies y_{c}(t) &= t + c
         \end{alignat}
     \end{example}
-    \np
     \begin{definition}[Open Differential Equations]
-        Equations without solutions are considered to be \textbf{open}. Many differential equations are without solutions.
+        There are many \textbf{open differential equations}, meaning that there do not exist a trivial solution to them.
     \end{definition}
     \begin{example}[Open Differential Equation]
+        Given the following, solve for the general solution.
         \begin{equation}
             y' = x'y - x^{3}
         \end{equation}
-        This differential equation does not have a solution; thusly open.
+        \textbf{Solution:}\\
+        This is an \textbf{open} differential equation. There is not a method which solves this easily.
     \end{example}
     \begin{example}
+        \label{ex1-3}
+        Given the following, solve for the general solution.
         \begin{equation}
             y' = y
         \end{equation}
+        \textbf{Solution:}\\
+        Recall back to previous experience in calculus,
         \begin{equation}
-            \int y'\,dy = \int y\,dy \notLeftrightarrow y' = y
+            \int e^{t}\,dt = e^{t}
         \end{equation}
-        Notice above that the integration of both sides is not the same as the differential equation.
+        Then it becomes trivial to solve this differential equation,
         \begin{equation}
-            y' = e^x \implies y \int y'\,dx = \int e^x\,dx
+            y' = e^t \implies y \int y'\,dt = \int e^t\,dt
         \end{equation}
         Using the above, the general solution can be found
         \begin{equation}
-            y = Ce^{x}
+            y_c(t) = ce^{x}
         \end{equation}
     \end{example}
-    \begin{remark}[Regarding Example 1.3]
-        If both sides of a differential equation are dependent on the same variable --- i.e. the same variable appearing on both sides of the equation, then taking the intergal of both sides is not a valid method to solve the equation.
-    \end{remark}
-    \begin{definition}[Initial Value Problems]
-        An \textbf{initial value problem} (IVP), or \textbf{initial condition problem}, is a problem where an initial condition of the equation is defined which leads to a \textbf{unique solution} to the equation.
-    \end{definition}
     \np
+    \begin{remark}[Regarding Example \ref{ex1-3}]
+        If both sides of a differential equation are dependent ont he same variable --- i.e. the same variable appears on both sides of the equation --- then integrating both sides cannot be used to solve the equation as we did in \textbf{Example \ref{ex1-1}}.
+    \end{remark}
+    \begin{definition}[Initial Value Problem]
+        An \textbf{initial value problem} (IVP), otherwise known as an \textbf{initial condition problem}, is a problem where the solution of a differential equation is dependent on its initial conditions. This then leads to a \textbf{unique solution}.
+    \end{definition}
     \begin{example}[Initial Value Problem]
+        Solve
         \begin{equation}
             y' = x,\ y(0) = 1
         \end{equation}
-        Notice that this is an \textbf{initial value problem}, because $y(0) = 1$. Also notice that $y$ is an anti-derivative w.r.t. $x$; because each side of the equation is independent of one another (unlike \emph{Example 1.3}).
-        \begin{alignat}{3}
-            &&\int y'\,dx &= \int x\,dx\\
-            &\implies & y &= \frac{1}{2}x^{2} + C\\
-            &&y(0) &= 1\\
-            &\implies&=&\frac{1}{2}(0^2) + C\\
-            &\implies&C&=1\\
-            &\implies&y&=\frac{1}{2}x^{2} + 1
+        \textbf{Solution:}\\
+        Notice that this is an IVP as an initial condition, $y(0) = 1$, is given.\\
+        First, solve for the general solution
+        \begin{alignat}{1}
+            \int y'\,dx &= \int x\,dx\\
+            \implies y_c &= \frac{1}{2}x^{2} + c
         \end{alignat}
+        Then use the initial value to solve for $c$
+        \begin{alignat}{1}
+            y_c(0) &= 0 + c = 1\\
+            \implies c &= 1
+        \end{alignat}
+        Finally, plug in $c$ to $y_{c}$ to get the unique solution
+        \begin{equation}
+            y = \frac{1}{2}x^{2} + 1
+        \end{equation}
     \end{example}
+    \np
     \section{Differentiable Functions}
     \begin{definition}[Differentiability]
-        Given $f: \RR \to \RR$ and point $a$, $\exists f'(a) \iff \exists T_{1}(a)$, where $T_1$ is a tangent line (Taylor polynomial of degree one).
+        A function is \textbf{differentiable} for some value $t \in \RE$ iff
+        \begin{equation}
+            \exists f'(t) = \lim_{h\to0}\frac{f(t + h) - f(t)}{h}
+        \end{equation}
+        Or more graphically,
         \begin{center}
             \begin{tikzpicture}
-                \draw[<->] (-1,0) -- (5,0) node[right] {$x$};
+                \draw[<->] (-1,0) -- (5,0) node[right] {$t$};
                 \draw[<->] (0,-1) -- (0,5) node[above] {$y$};
                 \draw[red,<->] (-1,1.625) --(1,1.625);
                 \node[red,label={[xshift=5]A}] at (0,1.6) {\textbullet};
@@ -82,23 +120,43 @@
                 \draw[scale = .65, domain=4:8,smooth,variable=\x,blue] plot ({\x}, {-.1*(\x-14)*(\x-14)+10.9});
             \end{tikzpicture}
         \end{center}
-        In the example, point A has a singular tangent line and is therefore differentiable. Point B has infinitely many tangent lines, and is therefore both undefined and not differentiable.
+        A function is considered to be \textbf{differentiable} at some point $t$ if there exists only one tangent line at at $t$. In the picture at point A, there is only one tangent line, however, at point B there exists an infinite number of tangent lines.
     \end{definition}
     \np
-    \section{Kinematics}
-    \begin{example}[Kinematics with Differential Equations]
-        Given an object with a velocity $v_0$, and acceleration $a$, find the position $s$ at any time $t$.
-        \begin{alignat}{3}
-            &&\frac{d}{dt}v(t) &= a\\
-            &\implies &v(t) &= \int a\,dt\\
-            &&&= at + C\\
-            &\because & v(0) &= v_{0}\\
-            &&v_{0} &= a(0) + C\\
-            &&C &= v_{0}\\
-            &&\frac{d}{dt}s(t) &= \int v\,dt\\
-            &\implies& s(t) &= \int v\,dt\\
-            &&&= \int (at + v_{0})\,dt\\
-            &&&= \frac{1}{2}a t^{2} + v_{0}t
+    \section{Applications of Differential Equations}
+    ODEs and DEs in general have many real life applications, for instance they can be used to model predator-prey populations, or the filling of a tank (future lecture), even heat transfer (PDEs).
+    \begin{example}[Kinematics]
+        For our first application, we will consider the simple case of kinematics.\\
+        Given an object travelling at a velocity $v_{0}$ with constant acceleration of $a$, find the position $s$ at any time $t$.
+        \textbf{Solution:}
+        From prior calculus or physics knowledge, we know the rate of change of velocity is equal to acceleration
+        \begin{equation}
+            \frac{d}{dt}v = a
+        \end{equation}
+        Notice that this is a differential equation, and we can integrate both sides
+        \begin{alignat}{1}
+            \int \frac{d}{dt}v\,dt &= \int a\,dt\\
+            \implies v &= at + c
         \end{alignat}
+        Also notice that this is an IVP, so we can solve for the constant
+        \begin{equation}
+            v(0) = 0 + c = v_{0} \implies c = v_{0}
+        \end{equation}
+        Now, recall from prior knowledge the relationship between position and velocity
+        \begin{equation}
+            \frac{d}{dt}s = v\,dt
+        \end{equation}
+        Solving this differential equation yields
+        \begin{equation}
+            s = \int v\,dt
+        \end{equation}
+        Substituting in our solution to $v$ gives us
+        \begin{equation}
+            s = \int(at + v_{0})\,dt
+        \end{equation}
+        If we also assume that $s(0) = 0$, we can reach the following solution
+        \begin{equation}
+            s = \frac{1}{2}at^{2} + v_{0}t
+        \end{equation}
     \end{example}
 \end{document}

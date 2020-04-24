@@ -12,14 +12,14 @@
         Given the above, determine the interval in which the solution exists.
         \begin{align}
             \int 2(y-1)\,dy&=\int (3x^{2} + 4x + 2)\,dx\\
-            \implies y^2 - 2y + C_{1} &= x^3 + 2x^{2}+2x+C_2
+            \implies y^2 - 2y + c_{1} &= x^3 + 2x^{2}+2x+c_2
         \end{align}
-        The solution above is the \textbf{general implicit solution}. The constants, $C_{1}$ and $C_2$ can be combined into one constant, $C$, because they are independent.\\
-        Next, use the initial value to solve for C
+        The solution above is the \textbf{general implicit solution}. The constants, $c_{1}$ and $c_2$ can be combined into one constant, $c$, because they are independent.\\
+        Next, use the initial value to solve for $c$
         \begin{alignat}{3}
             &&y(0) &= - 1\\
-            &\implies & (-1)^{2} - 2(-1) &= 0^{3} + 2(0)^{2}+ 2(0) + C\\
-            &\implies & C &= 3
+            &\implies & (-1)^{2} - 2(-1) &= 0^{3} + 2(0)^{2}+ 2(0) + c\\
+            &\implies & c &= 3
         \end{alignat}
     \end{example}
     \np
@@ -77,9 +77,9 @@
         \begin{alignat}{3}
             &&\frac{dQ}{dt} + \frac{1}{2}Q(t) &=  5\times 10^{6}\gamma(t)\\
             &\implies&Q_{c}(t)&=5\times 10^{6}e^{-\frac{1}{2}t}\int e^{\frac{1}{2}t}(2 + \sin(2t))\,dt\\
-            &\implies&Q_{c}(t)&=2\times 10^{7} + \frac{2\times 10^{7}}{17}\sin(2t)-\frac{4\times 10^{7}}{17}cos(2t) + Ce^{-\frac{1}{2}t}\\
-            &&Q_{c}(0) &= 2\times 10^{7}-\frac{4\times 10^{7}}{17} + C = 0\\
-            &\implies&C&=\frac{-3\cdot10^{8}}{17}
+            &\implies&Q_{c}(t)&=2\times 10^{7} + \frac{2\times 10^{7}}{17}\sin(2t)-\frac{4\times 10^{7}}{17}cos(2t) + ce^{-\frac{1}{2}t}\\
+            &&Q_{c}(0) &= 2\times 10^{7}-\frac{4\times 10^{7}}{17} + c = 0\\
+            &\implies&c&=\frac{-3\cdot10^{8}}{17}
         \end{alignat}
         \begin{equation}    
             Q(t)=2\times 10^{7} + \frac{2\times 10^{7}}{17}\sin(2t)-\frac{4\times 10^{7}}{17}cos(2t) - \frac{3\cdot10^{8}}{17}e^{-\frac{1}{2}t}

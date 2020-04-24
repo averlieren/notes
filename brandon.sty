@@ -1,90 +1,81 @@
-\ProvidesPackage{brandon}[20/02/2020 0.1.0]
-\RequirePackage{fancyhdr, amsfonts, amsmath, amssymb, mathtools, xparse, enumitem, multicol, tikz, mathtools, empheq, xcolor, mdframed, hyperref,
-subfiles, pgffor}
+\ProvidesPackage{brandon2}[23/04/2020 0.2.0]
+\RequirePackage{fancyhdr, amsfonts, amsmath, amssymb, mathtools, xparse, enumitem, multicol, tikz, mathtools, empheq, xcolor, mdframed, hyperref, subfiles, pgffor}
+\RequirePackage[letterpaper,total={5.5in,8in}]{geometry}
 \RequirePackage[utf8]{inputenc}
 \RequirePackage[mathscr]{euscript}
 \let\euscr\mathscr \let\mathscr\relax
 \RequirePackage[scr]{rsfso}
 
-% ---- Config ---- %
-\newcommand{\course}[1]{\renewcommand{\course}{#1}}
-\newcommand{\sect}[1]{\renewcommand{\sect}{#1}}
-\newcommand{\class}[1]{\renewcommand{\class}{#1}}
-\newcommand{\textbook}[1]{\renewcommand{\textbook}{#1}}
-\newcommand{\name}[1]{\renewcommand{\name}{#1}}
-\date{Spring 2020}
-\renewcommand{\chaptername}{Lecture}
-% ---- Config ---- %
-
-\DeclareOption{notes}{
-    \fancyhead[RO]{\name}
-    \fancyhead[LE]{\leftmark}
-    \fancyfoot[LE,RO]{\thepage}
-    \author{\name}
-    
-    \title{
-        \Huge \class\\
-        \small \course\ at Texas A\&M\\
-        Using \emph{\textbook}
-    }
-}
-\DeclareOption{assignment}{
-    \renewcommand{\headrulewidth}{0pt}
-    \fancypagestyle{first}{
-        % First page header for assignments
-        \lhead{
-            \name\\
-            \today\\
-            \course-\sect
-        }
-    }
-}
-
-\pagestyle{fancy}
-\fancyhf{}
-
-\ExecuteOptions{notes}
-\ProcessOptions\relax
-
+% <---- Commands ----> %
 % Define set command
 % From https://tex.stackexchange.com/questions/209863/
-\DeclarePairedDelimiterX{\set}[1]{\{}{\}}{\setargs{#1}}
-\NewDocumentCommand{\setargs}{>{\SplitArgument{1}{;}}m}
-{\setargsaux#1}
-\NewDocumentCommand{\setargsaux}{mm}
-{\IfNoValueTF{#2}{#1} {#1\nonscript\:\delimsize\vert\allowbreak\nonscript\:\mathopen{}#2}}
+\DeclarePairedDelimiterX{\set}[1]{\{}{\}}{\setargs{#1}}%
+\NewDocumentCommand{\setargs}{>{\SplitArgument{1}{;}}m}%
+{\setargsaux#1}%
+\NewDocumentCommand{\setargsaux}{mm}%
+{\IfNoValueTF{#2}{#1} {#1\nonscript\:\delimsize\vert\allowbreak\nonscript\:\mathopen{}#2}}%
 \def\Set{\set*}
-
-% ---- Aliases ---- %
-\newcommand{\lc}{\mathcal{L}}
-\newcommand{\lci}{\mathcal{L}^{-1}}
-\newcommand{\lp}[1]{\mathcal{L}\{#1\}}
-\newcommand{\lpinv}[1]{\mathcal{L}^{-1}\{#1\}}
-\newcommand{\nequiv}{\not\equiv}
-\newcommand{\ipl}{\mathllap{\implies}}
-\DeclarePairedDelimiter\vecc{\langle}{\rangle}
-\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
-\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
-\DeclarePairedDelimiter\bp{(}{)}
-\DeclarePairedDelimiter\bbp{\big(}{\big)}
-\DeclarePairedDelimiter\bbbp{\bigg(}{\bigg)}
-\DeclarePairedDelimiter\Bp{\Big(}{\Big)}
-\DeclarePairedDelimiter\BBp{\Bigg(}{\Bigg)}
+\newcommand{\rmac}[1]{\newcommand{#1}[1]{\renewcommand{#1}{##1}}}
+\newcommand{\lp}{\mathcal{L}} % Laplace operator
+\newcommand{\lpinv}{\mathcal{L}^{-1}} % Inverse Laplace operator
+\DeclarePairedDelimiter\vecc{\langle}{\rangle} % Angle bracket vector notation
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor} % Floor
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil} % Ceiling
 \newcommand{\np}{%
     \raggedbottom%
     \pagebreak%
 }
-\newcommand{\notLeftrightarrow}{\mathrel{\ooalign{$\Leftrightarrow$\cr\hidewidth$/$\hidewidth}}}
-\newcommand{\sss}[1]{\subsubsection*{#1}}
-\newcommand{\RR}{\mathbb{R}}
-\newcommand{\RRR}{\RR^{3}}
-\newcommand{\CC}{\mathbb{C}}
-\newcommand{\xy}{$xy$-plane}
-\newcommand{\yz}{$yz$-plane}
-\newcommand{\xz}{$xz$-plane}
-% ---- Aliases ---- %
+\newcommand{\notLR}{\mathrel{\ooalign{$\Leftrightarrow$\cr\hidewidth$/
+$\hidewidth}}} % Not Leftright arrow
+\newcommand{\nequiv}{\not\equiv} % Not equivalent
+\newcommand{\RE}{\mathbb{R}} % Reals
+\newcommand{\RR}{\RE^{2}} % 2 space, reals
+\newcommand{\RRR}{\RE^{3}} % 3 space, reals
+\newcommand{\CC}{\mathbb{C}} % Complex numbers
+\newcommand{\CQ}{\mathbb{H}} % Quaternions
+\newcommand{\NO}{\textbf{No}} % Surreals
+\newcommand{\xy}{$xy$-plane} % xy-plane
+\newcommand{\yz}{$yz$-plane} % yz-plane
+\newcommand{\xz}{$xz$-plane} % xz-plane
+\newmdenv[% Create generic template
+    skipabove=3pt,%
+    skipbelow=3pt%
+]{mdgeneric}
+\newenvironment{generic*}[4]{% Create generic environment
+    \begin{mdgeneric}[%
+        frametitle={\textcolor{#2}{#3}},%
+        repeatframetitle=true,%
+        linecolor=#1,%
+        backgroundcolor=#1,%
+        linewidth=3pt,leftline=#4,%
+        topline=false,%
+        bottomline=false,%
+        rightline=false,%
+        linecolor=#2%
+    ]}%
+    {\end{mdgeneric}}
+\newcommand{\regenv}[5]{% Register new environment based on generic
+    \newcounter{#1}[chapter]% Reset counter with each lecture
+    \newenvironment{#1*}[1][\unskip]{%
+        \begin{generic*}{#2}{#3}{#4 ##1}{#5}}{\end{generic*}}%
+    \newenvironment{#1}[1][\unskip]{%
+        \begin{#1*}[\textbf{\the\value{chapter}.\the\value{#1}} \textmd{\textit{##1}}]%
+        \addtocounter{#1}{1}%
+    }{\end{#1*}}%
+}
 
-% ---- Colours ---- %
+\regenv{method}{C0}{C1}{Method}{true} % blue
+\regenv{homework}{C2}{C3}{Homework}{false} % beige
+\regenv{hwquestion}{C2}{C3}{Question}{false} % beige
+\regenv{definition}{C4}{C5}{Definition}{true} % green
+\regenv{example}{C6}{C7}{Example}{true} % red/pink
+\regenv{btheorem}{C8}{C9}{Theorem}{true} % purple
+\regenv{bproof}{C2}{C3}{Proof}{true} % beige
+\regenv{remark}{CA}{CB}{Remark}{true} % grey
+\regenv{corollary}{C8}{C9}{Corollary}{true} % blue
+% </--- Commands ----> %
+
+% <---- Colours ----> %
 \definecolor{C0}{HTML}{e8ecf1} % Light Blue
 \definecolor{C1}{HTML}{7393a7} % Dark Blue
 \definecolor{C2}{HTML}{f0ece2} % Light Beige
@@ -97,29 +88,54 @@ subfiles, pgffor}
 \definecolor{C9}{HTML}{1D1D6F} % Dark Purple
 \definecolor{CA}{HTML}{F2F2F2} % Light Grey
 \definecolor{CB}{HTML}{313131} % Dark Grey
-% ---- Colours ---- %
+% <!--- Colours ----> %
 
-\newmdenv[
-    skipabove=5pt,
-    skipbelow=5pt
-]{mdgeneric}
-\newenvironment{generic*}[4]{%
-    \begin{mdgeneric}[frametitle={\textcolor{#2}{#3}},repeatframetitle=true,linecolor=#1,backgroundcolor=#1,linewidth=3pt,leftline=#4,topline=false,bottomline=false,rightline=false,linecolor=#2]}{\end{mdgeneric}}
-\newcommand{\regenv}[5]{%
-    \newcounter{#1}[chapter]%
-    \newenvironment{#1*}[1][\unskip]{%
-        \begin{generic*}{#2}{#3}{#4 ##1}{#5}}{\end{generic*}}%
-    \newenvironment{#1}[1][\unskip]{%
-        \begin{#1*}[\the\value{chapter}.\the\value{#1} ##1]\addtocounter{#1}{1}}{\end{#1*}}%
+% <---- Aliases ---->
+\rmac{\course}
+\rmac{\sect}
+\rmac{\class}
+\rmac{\textbook}
+\rmac{\name}
+\rmac{\university}
+\rmac{\college}
+\rmac{\semester}
+\rmac{\instructor}
+\rmac{\major}
+% <!--- Aliases ---->
+
+\renewcommand{\chaptername}{Lecture}
+\definecolor{background}{cmyk}{.3800,.1000,0,.8039}
+\DeclareOption{notes}{
+    \fancyhead[L]{\leftmark}
+    \fancyfoot[R]{\thepage}
+    \author{\name}
+    \renewcommand{\maketitle}{
+        \begin{titlepage}
+            \newgeometry{left=6.34cm}
+            \pagecolor{background}
+            \noindent
+            \color{white}\\[5em]
+            \makebox[0pt][l]{\rule{1.3\textwidth}{1.34pt}}\\[1.67em]
+            \color{white}{%
+                \course\ - \sect\\[1em]%
+                {\Huge{\class}}\\[.67em]%
+                \textit{\university\ ---\ \college}\\[.34em]%
+                Instructor:\ \instructor\\[.34em]%
+                Using \textbook%
+            }\\[30em]
+            \noindent
+            {\Huge{\semester}}\\[1.33em]
+            {\large{\name}}\\[-0.25em]
+            {\scriptsize{\major}}
+        \end{titlepage}
+        \restoregeometry
+        \nopagecolor
+    }
 }
-\regenv{method}{C0}{C1}{Method}{true} % blue
-\regenv{homework}{C2}{C3}{Homework}{false} % beige
-\regenv{hwquestion}{C2}{C3}{Question}{false} % beige
-\regenv{definition}{C4}{C5}{Definition}{true} % green
-\regenv{example}{C6}{C7}{Example}{true} % red/pink
-\regenv{btheorem}{C8}{C9}{Theorem}{true} % purple
-\regenv{bproof}{C2}{C3}{Proof}{true} % beige
-\regenv{remark}{CA}{CB}{Remark}{true} % grey
-\regenv{corollary}{C8}{C9}{Corollary}{true} % blue
+\DeclareOption{assignment}{
+    % TODO: Complete this!
+}
 
-\endinput
+\pagestyle{fancy}
+\fancyhf{}
+\ProcessOptions\relax

@@ -19,7 +19,7 @@
         \begin{alignat}{1}
             \psi(x, y) &= \int M(x, y)\,dx + h(y)\\
             &= \int (y\cos x + 2xe^{y})\,dx + h(y)\\
-            &= h(y) + y\sin x+ x^{2}e^{y} + C\\
+            &= h(y) + y\sin x+ x^{2}e^{y} + c\\
             &= h(y) + y\sin x + x^{2}e^{y}
          \end{alignat}
          Notice that the constant can be neglected as it can be contained in $h(y)$. Now solving for $h(y)$,
@@ -28,15 +28,15 @@
             &\implies&\frac{dh}{dy} + \frac{\partial(y\sin x + e^{y}x^{2})}{\partial y}&=\sin x + x^{2}e^{y} - 1\\
             &&\frac{dh}{dy} + \sin x + x^{2}e^{y}&=\sin x + x^{2}e^{y} - 1\\
             &&\frac{dh}{dy}&= -1\\
-            &&h&=-y + C
+            &&h&=-y + c
          \end{alignat}
          Then,
          \begin{equation}
-             \psi(x, y) = y\sin x + x^{2}e^{y} - y + C
+             \psi(x, y) = y\sin x + x^{2}e^{y} - y + c
          \end{equation}
          Finally, $y(x)$ is given by the implicit expression
          \begin{equation}
-             y\sin x + x^{2}e^{y} - y = C
+             y\sin x + x^{2}e^{y} - y = c
          \end{equation}
     \end{example}
     \begin{example}
@@ -61,14 +61,14 @@
         is a function dependent only on $x$. However, $\forall M(x, y), N(x, y) \nexists \mu(x)$. $\mu(x)$ can be found by solving the differential equation,
         \begin{alignat}{1}
             \frac{d\mu}{dx} &= \frac{-N_{x}(x, y) + M_{y}(x, y)}{N(x, y)}\mu\\
-            \mu(x) &= \exp\bbbp{\int\frac{N_{x} - M_{y}}{N}\,dx}
+            \mu(x) &= \exp\left(\int\frac{N_{x} - M_{y}}{N}\,dx\right)
         \end{alignat}
         In this problem,
         \begin{equation}
             \frac{M_{y} - N_{x}}{N} = \frac{(3x + 2y) - (2x + y)}{x^2 + xy} = \frac{1}{x}
         \end{equation}
         \begin{equation}
-            \mu(x) = \exp\bbbp{\int\frac{dx}{x}} = x + C
+            \mu(x) = \exp\left(\int\frac{dx}{x}\right) = x + c
         \end{equation}
         Multiplying \textbf{Equation \ref{Exact2}} by $\mu(x)$ yields,
         \begin{equation}
@@ -90,7 +90,7 @@
         \end{alignat}
         Finally, $y(x)$ can be expressed as,
         \begin{equation}
-            x^{3}y + \frac{1}{2}x^{2}y^{2} = C
+            x^{3}y + \frac{1}{2}x^{2}y^{2} = c
         \end{equation}
     \end{example}
     \begin{method}[Solving Exact Differential Equations]

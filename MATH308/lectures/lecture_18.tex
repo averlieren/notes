@@ -33,11 +33,11 @@
             \lpinv{E(s + c)} = e^{-ct}\lpinv{E(s)}
         \end{equation}
         \begin{alignat}{1}
-            f(t) = e^{-\frac{3}{2}t}\cdot 2\cdot \frac{2}{5}\cdot \lci\left\{\frac{\frac{5}{2}}{s^{2} - \left(\frac{5}{2}\right)^{2}}\right\}
+            f(t) = e^{-\frac{3}{2}t}\cdot 2\cdot \frac{2}{5}\cdot \lpinv\left\{\frac{\frac{5}{2}}{s^{2} - \left(\frac{5}{2}\right)^{2}}\right\}
         \end{alignat}
         Then, by using the table, we see that
         \begin{equation}
-            \lci\left\{\frac{a}{s^{2} - a^{2}}\right\} = \sinh(at)
+            \lpinv\left\{\frac{a}{s^{2} - a^{2}}\right\} = \sinh(at)
         \end{equation}
         Therefore, the inverse Laplacian
         \begin{equation}
@@ -58,7 +58,7 @@
         \end{alignat}
         Then, the inverse Laplacian
         \begin{alignat}{1}
-            \lpinv{F(s)} &= \lci\left\{\frac{3}{s}\right\} + \lci\left\{\frac{5s}{s^{2} + 4}\right\} + \lci\left\{\frac{-4}{s^{2} + 4}\right\}\\
+            \lpinv{F(s)} &= \lpinv\left\{\frac{3}{s}\right\} + \lpinv\left\{\frac{5s}{s^{2} + 4}\right\} + \lpinv\left\{\frac{-4}{s^{2} + 4}\right\}\\
             &= 3 + \frac{5}{2}\cos(2t) - 2\sin(2t)
         \end{alignat}
     \end{example}
@@ -74,7 +74,7 @@
         \end{alignat}
         Then, the inverse Laplacian
         \begin{alignat}{2}
-            \lpinv{F(s)} &= \lci\left\{\frac{1}{(s + 2)^{2} + 1}\right\} &- \lci\left\{\frac{2s}{(s + 2)^{2} + 1}\right\}\\
+            \lpinv{F(s)} &= \lpinv\left\{\frac{1}{(s + 2)^{2} + 1}\right\} &- \lpinv\left\{\frac{2s}{(s + 2)^{2} + 1}\right\}\\
             &= e^{-2t}\sin t &- 2e^{-2t}\left(\cos t - 2\sin t\right)
         \end{alignat}
     \end{example}
@@ -103,18 +103,18 @@
             \lp{y} &= \frac{1}{s^{2} - 2s + 2} + \frac{1}{(s + 1)(s^{2}-2s + 2)}
         \end{alignat}
         \begin{equation}
-            y = \lci\left\{\frac{1}{s^{2} - 2s + 2}\right\} + \lci\left\{\frac{1}{(s + 1)(s^{2}-2s + 2)}\right\}
+            y = \lpinv\left\{\frac{1}{s^{2} - 2s + 2}\right\} + \lpinv\left\{\frac{1}{(s + 1)(s^{2}-2s + 2)}\right\}
         \end{equation}
         \begin{alignat}{1}
-            \lci\left\{\frac{1}{s^{2} - 2s + 2}\right\} &= \lci\left\{\frac{1}{(s - 1)^{2} + 1}\right\}\\
-            &= e^{t}\lci\left\{\frac{1}{s^{2} + 1}\right\}\\
+            \lpinv\left\{\frac{1}{s^{2} - 2s + 2}\right\} &= \lpinv\left\{\frac{1}{(s - 1)^{2} + 1}\right\}\\
+            &= e^{t}\lpinv\left\{\frac{1}{s^{2} + 1}\right\}\\
             &= e^{t}\sin(t)
         \end{alignat}
         \begin{alignat}{1}
-            \lci\left\{\frac{1}{(s + 1)(s^{2} - 2s + 2)}\right\} &= \lci\left\{\frac{A}{s + 1}\right\} + \lci\left\{\frac{Bs + C}{s^{2} - 2s + 2}\right\}\\
-            &= \lci\left\{\frac{-\frac{1}{5}}{s + 1}\right\} + \lci\left\{\frac{-\frac{1}{5}s + \frac{3}{5}}{s^{2} - 2s + 2}\right\}\\
-            &= \frac{1}{5}e^{-t} + \lci\left\{\frac{-\frac{1}{5}(s - 1) + \frac{1}{5} + \frac{3}{5}}{(s - 1)^{2} + 1}\right\}\\
-            &= \frac{1}{5}e^{-t} + e^{t}\lci\left\{\frac{-\frac{1}{5}s - \frac{1}{5}+ \frac{3}{5}}{s^{2} + 1}\right\}\\
+            \lpinv\left\{\frac{1}{(s + 1)(s^{2} - 2s + 2)}\right\} &= \lpinv\left\{\frac{A}{s + 1}\right\} + \lpinv\left\{\frac{Bs + C}{s^{2} - 2s + 2}\right\}\\
+            &= \lpinv\left\{\frac{-\frac{1}{5}}{s + 1}\right\} + \lpinv\left\{\frac{-\frac{1}{5}s + \frac{3}{5}}{s^{2} - 2s + 2}\right\}\\
+            &= \frac{1}{5}e^{-t} + \lpinv\left\{\frac{-\frac{1}{5}(s - 1) + \frac{1}{5} + \frac{3}{5}}{(s - 1)^{2} + 1}\right\}\\
+            &= \frac{1}{5}e^{-t} + e^{t}\lpinv\left\{\frac{-\frac{1}{5}s - \frac{1}{5}+ \frac{3}{5}}{s^{2} + 1}\right\}\\
             &= \frac{1}{5}e^{-t} + e^{t}\left(-\frac{1}{5}\cos(t) + \frac{2}{5}\sin(t)\right)
         \end{alignat}
         Therefore, the solution is
@@ -159,10 +159,10 @@
             \lp{y'' + 4y} = \lp{g(t)}
         \end{equation}
         \begin{alignat}{1}
-            y &= \lci\left\{\frac{1}{s^{2}(s^{2} + 4)}\right\} - 2\lci\left\{\frac{e^{-s}}{s^{2}(s^{2} + 4)}\right\} + \lci\left\{\frac{e^{-2s}}{s^{2}(s^{2} + 4)}\right\}\\
-            &= \frac{1}{4}\left(\lci\left\{\frac{1}{s^{2}}\right\} - \lci\left\{\frac{1}{s^{2} + 4}\right\}\right)\\
-            &\quad - \frac{1}{2}\left(\lci\left\{\frac{e^{-s}}{s^{2}}\right\} - \lci\left\{\frac{1}{s^{2} + 4}\right\}\right)\\
-            &\quad + \frac{1}{4}\left(\lci\left\{\frac{e^{-2s}}{s^{2}}\right\} - \lci\left\{\frac{e^{-2s}}{s^{2} + 4}\right\}\right)\nonumber
+            y &= \lpinv\left\{\frac{1}{s^{2}(s^{2} + 4)}\right\} - 2\lpinv\left\{\frac{e^{-s}}{s^{2}(s^{2} + 4)}\right\} + \lpinv\left\{\frac{e^{-2s}}{s^{2}(s^{2} + 4)}\right\}\\
+            &= \frac{1}{4}\left(\lpinv\left\{\frac{1}{s^{2}}\right\} - \lpinv\left\{\frac{1}{s^{2} + 4}\right\}\right)\\
+            &\quad - \frac{1}{2}\left(\lpinv\left\{\frac{e^{-s}}{s^{2}}\right\} - \lpinv\left\{\frac{1}{s^{2} + 4}\right\}\right)\\
+            &\quad + \frac{1}{4}\left(\lpinv\left\{\frac{e^{-2s}}{s^{2}}\right\} - \lpinv\left\{\frac{e^{-2s}}{s^{2} + 4}\right\}\right)\nonumber
             %TODO: Complete example.
         \end{alignat}
     \end{example}

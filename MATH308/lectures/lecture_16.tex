@@ -5,26 +5,26 @@
 \chapter{24 March 2020}
     \section{Laplacians}
     \begin{equation}
-        \lc \circ f(t) \longrightarrow F(s), f : \RR \to \RR
+        \lp \circ f(t) \longrightarrow F(s), f : \RE \to \RE
     \end{equation}
     Some uses for Laplacians include stochastic processes and probability.
 
-    Note: As the inverse Laplace transform ($\lc^{-1}$) will not be introduced in this lecture, all steps involving $\lp{y} \to y$ will be skipped in the examples in this lecture.
+    Note: As the inverse Laplace transform ($\lpinv$) will not be introduced in this lecture, all steps involving $\lp\{y\} \to y$ will be skipped in the examples in this lecture.
 
     As defined previously,
     \begin{alignat*}{2} % TODO: Fix alignment
-        \underset{\rotatebox{90}{$\,=$}}{\lp{f(t)}} &= \underset{\rotatebox{90}{$\,=$}}{\int_{0}^{\infty}e^{-st}f(t)\,dt}\\
+        \underset{\rotatebox{90}{$\,=$}}{\lp\{f(t)\}} &= \underset{\rotatebox{90}{$\,=$}}{\int_{0}^{\infty}e^{-st}f(t)\,dt}\\
         F(s) &= \lim_{x\to\infty}\int_{0}^{x}e^{-st}f(t)\,dt
     \end{alignat*}
     \begin{example}[Basic Examples]
         \begin{alignat}{1}
             f &\equiv 0\\
-            \lp{f(t)} &= \int_{0}^{\infty}(e^{-st})(0)\,dt\\
+            \lp\{f(t)\} &= \int_{0}^{\infty}(e^{-st})(0)\,dt\\
             &= 0
         \end{alignat}
         \begin{alignat}{1}
             f &\equiv c\\
-            \lp{f(t)} &= \int_{0}^{\infty}ce^{-st}\,dt\\
+            \lp\{f(t)\} &= \int_{0}^{\infty}ce^{-st}\,dt\\
             &= \lim_{x\to\infty}\int_{0}^{x}ce^{-st}\,dt\\
             &= \lim_{x\to\infty}-\frac{c}{s}e^{-st}|_{0}^{x}\\
             &= \lim_{x\to\infty}\left(\frac{1}{s}e^{-st}\right)\\
@@ -34,8 +34,8 @@
     \begin{btheorem}
         The Laplacian of a differential:
         \begin{alignat}{1}
-            \lp{f'(t)} &= s\lp{f(t)} - f(0)\\
-            \lp{f''(t)} &= s^{2}\lp{f(t)}-sf(0)-f'(0)
+            \lp\{f'(t)\} &= s\lp\{f(t)\} - f(0)\\
+            \lp\{f''(t)\} &= s^{2}\lp\{f(t)\}-sf(0)-f'(0)
         \end{alignat}
     \end{btheorem}
     % TODO: Go back and add back missing notes.
@@ -46,13 +46,13 @@
         \end{equation}
         Solution:
         \begin{alignat}{1}
-            \lp{y'' - y' - 2y} &= \lp{0}\\
-            \lp{y''} - \lp{y'} - 2\lp{y} &= 0\\
-            (s^{2}\lp{y} - sy(0) - y'(0)) - (s\lp{y} - y(0)) - 2\lp{y} &= 0
+            \lp\{y'' - y' - 2y\} &= \lp\{0\}\\
+            \lp\{y''\} - \lp\{y'\} - 2\lp\{y\} &= 0\\
+            (s^{2}\lp\{y\} - sy(0) - y'(0)) - (s\lp\{y\} - y(0)) - 2\lp\{y\} &= 0
         \end{alignat}
         \begin{alignat}{1}
-            (s^{2} - s - 2)\lp{y} - s + 1 &= 0\\
-            \lp{y} &= \frac{s - 1}{s^{2} - s - 2}\\
+            (s^{2} - s - 2)\lp\{y\} - s + 1 &= 0\\
+            \lp\{y\} &= \frac{s - 1}{s^{2} - s - 2}\\
             &= \frac{\frac{1}{3}}{s-2} + \frac{\frac{2}{3}}{s+1}\\
             \implies y &= \frac{1}{3}e^{2t} + \frac{2}{3}e^{-t}
         \end{alignat}
@@ -64,11 +64,11 @@
             y'' + y = \sin(2t), y(0) = 2, y'(0) = 1
         \end{equation}
         \begin{alignat}{1}
-            \lp{y'' + y} &= \lp{\sin(2t)}\\
-            s^2\lp{y}-sy(0)-y'(0)+\lp{y} &= \frac{2}{s^{2} + 4}
+            \lp\{y'' + y\} &= \lp\{\sin(2t)\}\\
+            s^2\lp\{y\}-sy(0)-y'(0)+\lp\{y\} &= \frac{2}{s^{2} + 4}
         \end{alignat}
         \begin{alignat}{1}
-            \lp{y} &= \frac{1}{s^{2} + 1}\left(\frac{1}{s^2 + 4} + 2s + 1\right)\\
+            \lp\{y\} &= \frac{1}{s^{2} + 1}\left(\frac{1}{s^2 + 4} + 2s + 1\right)\\
             &= \frac{2s}{s^{2} + 1} + \frac{1}{s^{2} + 1} + \frac{2}{3}\left(\frac{1}{s^{2} + 1} - \frac{1}{s^{2} + 4}\right)
         \end{alignat}
         The full solution would involve the inverse Laplacian of the last equation (\textbf{16.25}).

@@ -54,10 +54,10 @@ Topics covered in First Order Differential Equations.
     \begin{equation}
         y'' + p(t)y' + q(t)y = 0
     \end{equation}
-    If a Homogeneous SODE is defined where $p(t)$, and $q(t)$ are constants, it is considered as a \textbf{homogeneous SOLDE with Constant Coefficients} (CHSOLDE).
+    If a Homogeneous SODE is defined where $p(t)$, and $q(t)$ are constants, it is considered as a \textbf{homogeneous SOLDE with constant coefficients} (CHSOLDE).
 \end{definition}
 \np
-\section{Homogeneous Second Order Linear Differential Equations with Constant Coefficients}
+\section{Homogeneous Second Order Linear DEs with Constant Coefficients}
 \begin{example}[CHSOLDE]
     Find the general solution of
     \begin{equation}
@@ -88,9 +88,9 @@ Topics covered in First Order Differential Equations.
     \end{alignat}
     Therefore, the general solution to \textbf{Equation \ref{CHSOLDE1}}
     \begin{alignat}{1}
-        y_{c} = C_{1}e^{-3t} + C_{2}e^{-2t}
+        y_{c} = c_{1}e^{-3t} + c_{2}e^{-2t}
     \end{alignat}
-    where $C_1$ and $C_2$ are constants.
+    where $c_1$ and $c_2$ are constants.
 \end{example}
 \np
 \begin{example}
@@ -118,16 +118,16 @@ Topics covered in First Order Differential Equations.
     \begin{enumerate}
         \item Find the general solution
         \begin{equation}
-            y_{c}(t) = C_{1}y_{1} + C_{2}y_{2} \implies y_{c}(t) = C_{1}e^{-3t} + C_{2}e^{-2t}
+            y_{c}(t) = c_{1}y_{1} + c_{2}y_{2} \implies y_{c}(t) = c_{1}e^{-3t} + c_{2}e^{-2t}
         \end{equation}
-        \item Find the particular values of $C_1$ and $C_2$ such that $C_{1}y_{1}(0) + C_{2}y_{2}(0) = 2$ and $(C_{1}y_{1}(0) + C_{2}y_{2}(0))' = 3$.
+        \item Find the particular values of $c_{1}$ and $c_{2}$ such that $c_{1}y_{1}(0) + c_{2}y_{2}(0) = 2$ and $(c_{1}y_{1}(0) + c_{2}y_{2}(0))' = 3$.
         \begin{equation}
             \begin{cases}
-                C_{1}e^{-3(0)} + C_{2}e^{-2(0)} = 2\\
-                -3C_{1}e^{-3(0)} + -2C_{2}e^{-2(0)} = 3\\
+                c_{1}e^{-3(0)} + c_{2}e^{-2(0)} = 2\\
+                -3c_{1}e^{-3(0)} + -2c_{2}e^{-2(0)} = 3\\
             \end{cases}
         \end{equation}
-        Solving the linear combination yields $C_{1} = 7$, $C_{2} = 9$.
+        Solving the linear combination yields $c_{1} = 7$, $c_{2} = 9$.
         Then, the solution to this IVP is
         \begin{equation}
             y(t) = -7e^{-3t} + 9 e^{-2t}

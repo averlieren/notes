@@ -12,13 +12,13 @@
             \begin{alignat}{3}
                 &&\frac{dQ}{dt}&=\frac{1}{4}r - \frac{rQ}{100}\\
                 &\implies&Q' + \frac{r}{100}Q&=\frac{1}{4}r\\
-                &\implies&Q_{c}&=\exp\bbbp{-\frac{r}{100}t}\int\BBp{\exp\bbbp{\frac{r}{100}t}\frac{1}{4}r\,}dt\\
-                &&&=\frac{r}{4}\exp\bbbp{\frac{-r}{100}t}\BBp{\frac{100}{r}\exp\bbbp{\frac{r}{100}t}+C}\\
-                &&&=25 + \frac{r}{4}\exp\bbbp{-\frac{r}{100}t}C\\
-                &&&=25 + C\exp\bbbp{-\frac{r}{100}t}\\
+                &\implies&Q_{c}&=\exp\left(-\frac{r}{100}t\right)\int\left(\exp\left(\frac{r}{100}t\right)\frac{1}{4}r\,\right)dt\\
+                &&&=\frac{r}{4}\exp\left(\frac{-r}{100}t\right)\left(\frac{100}{r}\exp\left(\frac{r}{100}t\right)+c\right)\\
+                &&&=25 + \frac{r}{4}\exp\left(-\frac{r}{100}t\right)c\\
+                &&&=25 + c\exp\left(-\frac{r}{100}t\right)\\
                 &&Q(0)&=Q_{0}\\
-                &\implies&C&=(Q_{0} - 25)\exp\bbbp{-\frac{r}{100}t}\\
-                &\implies&Q(t)&=25 + (Q_{0} - 25)\exp\bbbp{-\frac{r}{100}t}
+                &\implies&c&=(Q_{0} - 25)\exp\left(-\frac{r}{100}t\right)\\
+                &\implies&Q(t)&=25 + (Q_{0} - 25)\exp\left(-\frac{r}{100}t\right)
             \end{alignat}
             \item Find the limiting amount, $Q_{l}$, after a long time.
             \begin{equation}
