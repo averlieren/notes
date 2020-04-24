@@ -105,7 +105,7 @@
             y = -2\sin(2t) - 4t\cos(2t) + 4\ln(\cos(2t))\sin(2t) + c_{1}\cos(2t) + c_{2}\sin(2t)
         \end{equation}
     \end{example}
-    \begin{btheorem}
+    \begin{theorem}
         \begin{equation}
             L[y] = y'' + p(t)y' + q(t)y = g(t)
         \end{equation}
@@ -117,8 +117,8 @@
         \begin{equation}
             y = c_{1}y_{1} + c_{2}y_{2} + Y
         \end{equation}
-    \end{btheorem}
-    \begin{bproof}
+    \end{theorem}
+    \begin{proof}
         Given
         \begin{equation}
             L[y] = y'' + py' + qy = g
@@ -132,8 +132,8 @@
         \begin{equation}
             y = u_{1}y_{1} + u_{2}y_{2}
         \end{equation}
-    \end{bproof}
-    \begin{bproof*}[14.1]
+    \end{proof}
+    \begin{proof*}[14.1]
         To ensure that the solution is one of the NSOLDE and not the HSOLDE, we take the derivative
         \begin{equation}
             y' = u_{1}'y_{1} + u_{1}y_{1}' + u_{2}'y_{2} + u_{2}y_{2}'
@@ -169,5 +169,5 @@
         \begin{equation}
             u_{1} = -\int \frac{y_{2}g}{W[y_{1},y_{2}]}\,dt + c_{1};\quad u_{2} = \int \frac{y_{1}g}{W[y_{1},y_{2}]}\,dt + c_{2}
         \end{equation}
-    \end{bproof*}
+    \end{proof*}
 \end{document}

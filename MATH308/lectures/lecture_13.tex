@@ -11,7 +11,7 @@
             L[y] = y'' + p(t)y' + q(t)y = g(t)
         \end{equation}
     \end{definition}
-    \begin{btheorem}
+    \begin{theorem}
         Suppose that $y_{1}, y_{2}$ are solutions of
         \begin{equation}
             L[y] = y'' + p(t)y' + q(t)y = g(t)
@@ -20,8 +20,8 @@
         \begin{equation}
             y_{1} - y_{2} = 0
         \end{equation}
-    \end{btheorem}
-    \begin{bproof}
+    \end{theorem}
+    \begin{proof}
         \begin{alignat}{1}
             L[y_{1}] & = g\\
             L[y_{2}] & = g
@@ -30,8 +30,8 @@
         \begin{equation}
             L[y_{1}] - L[y_{2}] = L[y_{1}, y_{2}] = g - g = 0
         \end{equation}
-    \end{bproof}
-    \begin{btheorem}[General Solutions to NSOLDEs]
+    \end{proof}
+    \begin{theorem}[General Solutions to NSOLDEs]
         Given the following NSOLDE
         \begin{equation}
             \label{gsnsolde}
@@ -48,14 +48,14 @@
             y = \phi(t) = c_{1}y_{1} + c_{2}y_{2} + Y
         \end{equation}
         where $y_{1}, y_{2}$ are solutions to \textbf{Equation \ref{gshsolde}}, and $Y$ is a particular solution of \textbf{Equation \ref{gsnsolde}}
-    \end{btheorem}
-    \begin{bproof}
+    \end{theorem}
+    \begin{proof}
         From the \textbf{Theorem 13.1}, we get
         \begin{equation}
             \phi - Y = c_{1}y_{1} + c_{2}y_{2}
         \end{equation}
         this is the same as \textbf{Equation \ref{gs}}.
-    \end{bproof}
+    \end{proof}
     From \textbf{Theorem  13.2}, solving NSOLDEs involves
     \begin{enumerate}
         \item Finding the general solution of the corresponding HSOLDE. (complementary solution; $y_c$)

@@ -17,7 +17,7 @@
     \end{alignat}
     And if $\frac{M_{y}(x, y) - N_{x}(x, y)}{N(x, y)}$ depends only on $x$, then $\exists\,\mu(x): \frac{d\mu}{dx} = \frac{M_{y}(x, y) - N_{x}(x, y)}{N(x, y)}\mu$. Thus, the differential equation $\mu M + \mu Ny' = 0$ is an exact differential equation.
     \section{Uniqueness and Exactness}
-    \begin{btheorem}[Uniqueness of Linear Differential Equations]
+    \begin{theorem}[Uniqueness of Linear Differential Equations]
         Consider the linear first order differential equation,
         \begin{equation}
             y' + p(t)y = g(t);\quad y(t_{0}) = y_{0}
@@ -27,15 +27,15 @@
         \begin{equation}
             \exists!\,y(t): y(t_{0}) = y_{0} \wedge y' + p(t)y = g(t)
         \end{equation}
-    \end{btheorem}
-    \begin{btheorem}[Uniqueness of Non-linear Differential Equations]
+    \end{theorem}
+    \begin{theorem}[Uniqueness of Non-linear Differential Equations]
         Consider the following,
         \begin{equation} 
             y' = f(t, y) \wedge y(t_{0}) = y_{0}
         \end{equation}
         such that $f(t, y)$ and $\frac{\partial f(t, y)}{\partial y}$ are continuous over the domains $t \in (\alpha; \beta)$, and $y \in (\gamma; \delta)$.\\
         Then, $h > 0, I = (t_{0} - h, t_{0} + h): \exists t_{0} \in I, y(t_{0}) = y_{0}$.
-    \end{btheorem}
+    \end{theorem}
     \begin{example}
         \begin{equation}
             ty' + 2y = 4t^{2};\quad y(1) = 2

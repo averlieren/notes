@@ -69,8 +69,8 @@ $\hidewidth}}} % Not Leftright arrow
 \regenv{hwquestion}{C2}{C3}{Question}{false} % beige
 \regenv{definition}{C4}{C5}{Definition}{true} % green
 \regenv{example}{C6}{C7}{Example}{true} % red/pink
-\regenv{btheorem}{C8}{C9}{Theorem}{true} % purple
-\regenv{bproof}{C2}{C3}{Proof}{true} % beige
+\regenv{theorem}{C8}{C9}{Theorem}{true} % purple
+\regenv{proof}{C2}{C3}{Proof}{true} % beige
 \regenv{remark}{CA}{CB}{Remark}{true} % grey
 \regenv{corollary}{C8}{C9}{Corollary}{true} % blue
 % </--- Commands ----> %
@@ -78,16 +78,18 @@ $\hidewidth}}} % Not Leftright arrow
 % <---- Colours ----> %
 \definecolor{C0}{HTML}{e8ecf1} % Light Blue
 \definecolor{C1}{HTML}{7393a7} % Dark Blue
-\definecolor{C2}{HTML}{f0ece2} % Light Beige
-\definecolor{C3}{HTML}{c7b198} % Dark Beige
-\definecolor{C4}{HTML}{F2F8F5} % Light Green
-\definecolor{C5}{HTML}{24A28E} % Dark Green
-\definecolor{C6}{HTML}{FEF3F1} % Light Red/Pink
-\definecolor{C7}{HTML}{7F361E} % Dark Red/Pink
-\definecolor{C8}{HTML}{F3ECF3} % Light Purple
-\definecolor{C9}{HTML}{1D1D6F} % Dark Purple
+\definecolor{C2}{HTML}{FBF0EF} % Light Beige
+\definecolor{C3}{HTML}{463F3A} % Dark Beige
+\definecolor{C4}{HTML}{F2FAF6} % Light Green
+\definecolor{C5}{HTML}{648381} % Steel Teal
+\definecolor{C6}{HTML}{FFF6EE} % Offwhite
+\definecolor{C7}{HTML}{D77A61} % Terra cotta
+\definecolor{C8}{HTML}{F9EFFF} % Magnolia
+\definecolor{C9}{HTML}{7261A3} % Dark blue-gray
 \definecolor{CA}{HTML}{F2F2F2} % Light Grey
 \definecolor{CB}{HTML}{313131} % Dark Grey
+\definecolor{background}{HTML}{475A62} % Bleu
+%\definecolor{background}{cmyk}{.3800,.1000,0,.8039}
 % <!--- Colours ----> %
 
 % <---- Aliases ---->
@@ -104,10 +106,11 @@ $\hidewidth}}} % Not Leftright arrow
 % <!--- Aliases ---->
 
 \renewcommand{\chaptername}{Lecture}
-\definecolor{background}{cmyk}{.3800,.1000,0,.8039}
 \DeclareOption{notes}{
+    \fancyhead[R]{\name}
     \fancyhead[L]{\leftmark}
     \fancyfoot[R]{\thepage}
+    \fancyfoot[L]{\rightmark}
     \author{\name}
     \renewcommand{\maketitle}{
         \begin{titlepage}
