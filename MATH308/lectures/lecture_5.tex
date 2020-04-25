@@ -4,82 +4,103 @@
 \begin{document}
 \chapter{28 January 2020}
     \section{Mathematical Modelling (cont.)}
-    \begin{example}
-        Example 2.3.1 from the textbook.
-        \begin{enumerate}
-            \item Find the amount of salt in the tank at a time $t$ ($Q(t)$).\\
-            Inference: $Q(0) = Q_{0}$
-            \begin{alignat}{3}
-                &&\frac{dQ}{dt}&=\frac{1}{4}r - \frac{rQ}{100}\\
-                &\implies&Q' + \frac{r}{100}Q&=\frac{1}{4}r\\
-                &\implies&Q_{c}&=\exp\left(-\frac{r}{100}t\right)\int\left(\exp\left(\frac{r}{100}t\right)\frac{1}{4}r\,\right)dt\\
-                &&&=\frac{r}{4}\exp\left(\frac{-r}{100}t\right)\left(\frac{100}{r}\exp\left(\frac{r}{100}t\right)+c\right)\\
-                &&&=25 + \frac{r}{4}\exp\left(-\frac{r}{100}t\right)c\\
-                &&&=25 + c\exp\left(-\frac{r}{100}t\right)\\
-                &&Q(0)&=Q_{0}\\
-                &\implies&c&=(Q_{0} - 25)\exp\left(-\frac{r}{100}t\right)\\
-                &\implies&Q(t)&=25 + (Q_{0} - 25)\exp\left(-\frac{r}{100}t\right)
-            \end{alignat}
-            \item Find the limiting amount, $Q_{l}$, after a long time.
-            \begin{equation}
-                \lim_{t\to\infty}(Q_{c}(t)) = Q_{c} = 25
-            \end{equation}
-        \end{enumerate}
-    \end{example}
-    \begin{remark}[Regarding Example 5.1]
-        Notice that no matter the amount of salt that the system starts with, it will always tend towards 25 lbs of salt in the tank.
-    \end{remark}
-    \section{Exact Differential Equations}
-    \begin{definition}[Exact Differential Equations]
-        A differential equation is exact iff
+    \begin{example}[Modelling, 2.3.1]
+        \label{ex5-1}
+        Find the amount of salt in the tank at time $t$, and find the limiting amount of salt after a long time.
+        Given: At time $t = 0$, a tank contains $Q_{0}$ lb of salt dissolved into 100 gal of water. Assume that water containing $\frac{1}{4}$lb of salt per gallon enters the tank at a rate of $r$ gal/min and leaves at the same rate. Assume that the mixture is stirred until it reaches a homogeneous mixture.\\[1em]
+        \textbf{Solution:}
+        Using the general model derived last lecture
         \begin{equation}
-            \frac{\partial M(x,y)}{\partial y} = \frac{\partial N(x,y)}{\partial x} \Leftrightarrow N(x, y)y' + M(x, y) = 0
+            Q'(t) = I(t)\gamma(t) - \frac{O(t)}{V(t)}Q(t)
         \end{equation}
+        \begin{alignat}{1}
+            I(t) &= r\ \text{gal}\,\text{min}^{-1}\\
+            O(t) &= r\ \text{gal}\,\text{min}^{-1}\\
+            V(t) &= 100\ \text{gal}\\
+            \gamma(t) &= \frac{1}{4}
+        \end{alignat}
+        \begin{alignat}{1}
+            Q' &= \frac{1}{4}r - \frac{r}{100}Q\\
+            Q' + \frac{r}{100}Q &= \frac{1}{4}r\\
+            \mu(t) &= e^{\frac{r}{100}t}\\
+            Q &= e^{-\frac{r}{100}t}\int \left(e^{\frac{r}{100}t}\right)\left(\frac{1}{4}r\right)\,dt\\
+            &= e^{-\frac{r}{100}t}\left(\frac{100}{r}e^{\frac{r}{100}t} + c\right)\\
+            &= 25 + ce^{-\frac{r}{100}t}
+        \end{alignat}
+        Plugging in $Q(0) = Q_{0}$
+        \begin{equation}
+            c = (Q_{0} - 25)e^{-\frac{r}{100}t}
+        \end{equation}
+        Then the solution is given by
+        \begin{equation}
+            Q(t) = 25 + (Q_{0} - 25)e^{-\frac{r}{100}t}
+        \end{equation}
+        After a long time,
+        \begin{equation}
+            \lim_{t\to\infty} Q(t) = 25
+        \end{equation}
+    \end{example}
+    \begin{remark}[Regarding Example \ref{ex5-1}]
+        Notice that after a long time, regardless of the inital amount of salt, $Q_{0}$, the tank will always end up with 25 lbs of salt.
+    \end{remark}
+    \np
+    \section{Exact Differential Equations}
+    \begin{definition}[Exact DE]
+        Given the following ODE
         \begin{equation}
             M(x, y)\,dx + N(x, y)\,dy = 0
         \end{equation}
+        It is considered to be exact iff
+        \begin{equation}
+            \frac{\partial M(x,y)}{\partial y} = \frac{\partial N(x,y)}{\partial x} \Leftrightarrow N(x, y)y' + M(x, y) = 0
+        \end{equation}
     \end{definition}
-    Given $\psi(x, y)$, parameterize by using $\delta(t) = \psi(f_{1}(t), f_{2}(t))$.
+    (To be honest, I don't know what's going on here, it was on the board so I copied it down.)\\[1em]
+    Given a function $\psi(x, y)$, we can define a parametric function $\delta(t) = \psi(f_{1}(t), f_{2}(t))$, where $x(t) = f_{1}(t)$, and $y(t) = f_{2}(t)$. Therefore, $\psi = \delta$
     \begin{alignat}{1}
-        \frac{d\psi(x, y)}{dt} &= \frac{d\delta}{dt}\\
+        \frac{d}{dt}\psi(x, y) &= \frac{d}{dt}\delta\\
         &= \frac{\partial \psi(x, y)}{\partial x}\frac{df_{1}}{dt} + \frac{\partial \psi(x, y)}{\partial y}\frac{df_{2}}{dt}
     \end{alignat}
     \begin{example}
         \begin{alignat}{1}
             \psi(x, y) &= x^{2}y + xy\\
-            f_{1}(t) = t&,\quad f_{2}(t) = t^{2}\\
+            f_{1}(t) = t&,\ f_{2}(t) = t^{2}\\
             \delta(t) &= \psi(f_{1}, f_{2})\\
             &= t^{2}t^{2}+t t^{2}\\
-            \delta'(t) &= 4t^{3} + 3t^{2}\label{5219}\\
+            \delta'(t) &= 4t^{3} + 3t^{2}\label{ex1-2-5}\\
             \frac{\partial \psi(x, y)}{\partial x}\cdot 1 &+ \frac{\partial \psi(x, y)}{\partial y}\cdot2t\\
             &= (2f_{1}f_{2} + f_{2})\cdot 1 + (f_{1}^{2} + f_{1})\cdot 2ty\\
-            &= 4t^{3} + 3t^{2}\label{5222}
+            &= 4t^{3} + 3t^{2}\label{ex1-2-9}
         \end{alignat}
-        Notice how \textbf{Equation \ref{5219}} and \textbf{Equation \ref{5222}} are the same, but derived via different methods.
+        Notice how \textbf{Equation \ref{ex1-2-5}} and \textbf{Equation \ref{ex1-2-9}} are the same, but derived via different methods.
     \end{example}
+    \np
     \begin{example}
-        \begin{enumerate}
-            \item $y' = \frac{\frac{1}{y}}{x}$ is an exact differential equation.\\
-            Let $M(x, y) = \frac{1}{x}$, and $N(x, y) = y$.
-            \[\frac{\partial M(x,y)}{\partial y} = \frac{\partial \frac{1}{x}}{\partial y} = 0\]
-            \[\frac{\partial N(x,y)}{\partial x} = \frac{\partial y}{\partial x} = 0\]
-            Because both partial derivatives are equal, they are exact.
-            \item $y' = x$ is exact.
-            \item $y' = \frac{xy}{x + y} \iff (x + y)\,dy + xy\,dx = 0$ is exact.
-            \item $y' = \frac{xy + x}{\frac{1}{2}x^2 + y}$ is exact.
-        \end{enumerate}
+        Show that the following equation is exact.
+        \begin{equation}
+            y' = \frac{\frac{1}{y}}{x}
+        \end{equation}
+        \textbf{Solution:}
+        \begin{equation}
+            M(x, y) = \frac{1}{x},\ N(x, y) = y
+        \end{equation}
+        \begin{alignat}{2}
+            \frac{\partial}{\partial y}M(x, y) &= \frac{\partial}{\partial y}x^{-1} &= 0\\
+            \frac{\partial}{\partial x}N(x, y) &= \frac{\partial}{\partial x}y &= 0
+        \end{alignat}
+        Therefore, the equation is exact.
     \end{example}
     \begin{theorem}[Exactness]
-        The equation \[
+        If the following equation is exact
+        \begin{equation}
             M(x, y)\,dx + N(x, y)\,dy = 0
-        \] is exact if, and only if, $\exists\,\psi(x, y)$ s.t.
-        \[
-            \frac{\partial \psi(x,y)}{\partial x} = M(x, y)
-            \]\[
-            \frac{\partial \psi(x,y)}{\partial y} = N(x, y)
-        \]
+        \end{equation}
+        then, $\exists\,\psi(x, y)$ s.t.
+        \begin{equation}
+            \frac{\partial}{\partial x}\psi(x, y) = M(x, y),\ \frac{\partial}{\partial y}\psi(x, y) = N(x, y)
+        \end{equation}
     \end{theorem}
-    \begin{remark}[Relationship]
-        Exact differential equations are a superset of the separable differential equations, i.e. all separable differential equations are exact differential equations.
+    \begin{remark}[Separable and Exact]
+        You may notice that exact ODEs look very similar to separable ODEs. That is because exact ODEs are a superset of separable ODEs, i.e. all separable ODEs are exact.
     \end{remark}
 \end{document}
