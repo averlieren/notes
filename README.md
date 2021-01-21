@@ -2,7 +2,26 @@
 My notes as a student at Texas A&M
 
 ## Courses
-- Courses marked with `n/a` under the **Available** column will not be digitized.
+#### Spring 2021
+|Course||Available|Digitization|Last Updated|
+|-|-|-|-|-|
+|CSCE 411| Design and Analysis of Algorithms | n/a | | |
+|CSCE 314| Programming Languages | n/a | | |
+|CSCE 313| Intro. to Computer Systems | n/a | | |
+|MATH 325| Mathematics of Interest | n/a | | |
+#### Fall 2020
+|Course||Available|Digitization|Last Updated|
+|-|-|-|-|-|
+|CSCE 312| Computer Organization | n/a | | |
+|CSCE 222| Discrete Structures for Computing | n/a | | |
+|CSCE 221| Data Structures and Algorithms | n/a | | |
+|CSCE 181| Intro. to Computing | n/a | | |
+|MATH 304| Linear Algebra | n/a | | |
+#### Summer 2020
+|Course||Available|Digitization|Last Updated|
+|-|-|-|-|-|
+|STAT 211| Principles of Statistics I | n/a | | |
+|CSCE 121| Intro. to Comp. Sci. Concepts and Programming | n/a | | |
 #### Spring 2020
 |Course||Available|Digitization|Last Updated|
 |-|-|-|-|-|
